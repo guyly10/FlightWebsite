@@ -1,13 +1,8 @@
 /*!
  * jQuery twitter bootstrap wizard plugin
- * Examples and documentation at: http://github.com/VinceG/twitter-bootstrap-wizard
  * version 1.4.2
  * Requires jQuery v1.3.2 or later
  * Supports Bootstrap 2.2.x, 2.3.x, 3.0
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
- * Authors: Vadim Vincent Gabriel (http://vadimg.com), Jason Gill (www.gilluminate.com)
  */
 ;(function($) {
 var bootstrapWizardCreate = function(element, options) {
@@ -109,7 +104,7 @@ var bootstrapWizardCreate = function(element, options) {
 			return false;
 		}
 
-        
+
 		historyStack.push(obj.currentIndex());
 		$navigation.find(baseItemSelector + ':eq(0) a').tab('show');
 	};
@@ -159,11 +154,11 @@ var bootstrapWizardCreate = function(element, options) {
 	this.lastIndex = function() {
 		return obj.navigationLength();
 	};
-	
+
 	this.getIndex = function(e) {
 		return $navigation.find(baseItemSelector + ($settings.withVisible ? ':visible' : '')).index(e);
 	};
-	
+
 	this.nextIndex = function() {
 		var nextIndexCandidate=this.currentIndex();
 		var nextTabCandidate=null;
@@ -181,7 +176,7 @@ var bootstrapWizardCreate = function(element, options) {
 			prevTabCandidate = $navigation.find(baseItemSelector + ($settings.withVisible ? ':visible' : '') + ":eq(" + prevIndexCandidate + ")");
 		} while ((prevTabCandidate)&&(prevTabCandidate.hasClass("disabled")));
 		return prevIndexCandidate;
-	};	
+	};
 	this.navigationLength = function() {
 		return $navigation.find(baseItemSelector + ($settings.withVisible ? ':visible' : '')).length - 1;
 	};
@@ -243,7 +238,7 @@ var bootstrapWizardCreate = function(element, options) {
 		}
 	};
 
-	var innerTabShown = function (e) {  
+	var innerTabShown = function (e) {
 		var $element = $(e.target).parent();
 		var nextTab = $navigation.find(baseItemSelector).index($element);
 

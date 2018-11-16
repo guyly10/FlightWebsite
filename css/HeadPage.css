@@ -43,7 +43,8 @@ img.Logo{
     line-height: 1;
 }
 #menu ul {
-    background: #b3c6ff;
+    /* background: #A9ACE6; */
+    background-color: transparent;
 }
 #menu > ul > li {
     float: left;
