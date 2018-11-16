@@ -5,7 +5,10 @@ img.Logo{
     width:75px;
     padding: 3px;
     border-radius: 100%;
-    align-items: right;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 1;
 }
 
 #menu,
@@ -40,9 +43,7 @@ img.Logo{
     line-height: 1;
 }
 #menu ul {
-  /* background-image: url(../images/blue_sky.png); */
     background: #b3c6ff;
-    /* opacity: 0.6; */
 }
 #menu > ul > li {
     float: left;
@@ -106,10 +107,4 @@ img.Logo{
 #menu > ul > li:hover > a:after,
 #menu > ul > li > a:hover:after {
     background: #3399ff;
-}
-tdCSS{
-  margin: 70px;
-  padding: 70px;
-  position: center;
-  background-color: black;
 }
