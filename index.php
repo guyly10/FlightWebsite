@@ -1,3 +1,17 @@
+<?php
+$error = "";
+if (isset($_POST['submit'])){
+    $uname = $_POST['uname'];
+    $pass = $_POST['psw'];
+
+    if ($uname == "admin" && $pass == "admin"){
+        header('Location: HeadPage.html');
+    }
+    else{
+        $error = "Incorrect User name or Password";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,23 +30,25 @@
 </head>
 <body>
 
-<form action="HeadPage.html">
+<form method="post">
     <div class="imgcontainer">
         <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
     </div>
 
     <div class="container">
+        <b><p class="error" style="color: red"><?php echo $error?></p></b>
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Username" id="uname" name="uname" required>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" id="psw" name="psw" required>
 
-        <button type="submit">Login</button>
+        <button type="submit" id="submit" name="submit">Login</button>
     </div>
 </form>
+<a href="SignUp.php" <button type="signup" id="signup" style="background-color: #ff8300">Sign Up</button></a>
 <footer>
-  <p style="text-align:center;"> Create by : 203371703 , 312233422 <p>
+    <p style="text-align:center;"> Create by : 203371703 , 312233422 <p>
 </footer>
 </body>
 </html>

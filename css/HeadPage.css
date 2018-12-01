@@ -11,6 +11,10 @@ img.Logo{
     z-index: 1;
 }
 
+.error{
+    color: #FF0000;
+}
+
 #menu,
 #menu ul,
 #menu ul li,
