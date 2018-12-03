@@ -29,7 +29,6 @@ if (isset($_POST['submit'])){
     <title>AGflights</title>
 </head>
 <body>
-
 <form method="post">
     <div class="imgcontainer">
         <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
