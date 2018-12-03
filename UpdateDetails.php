@@ -14,6 +14,7 @@
     <title>AGflights</title>
 </head>
 <body>
+<?php include 'FieldCheckLoginLogic.php'?>
 <a href="HeadPage.html">
     <div class="imgcontainer">
         <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
@@ -34,27 +35,33 @@
 
         <div class='panel-heading'>
             <div class="vertical-menu">
-                <b><a href="AccountPage.html" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a></b>
-                <a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details</a>
+                <a href="AccountPage.html" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a>
+                <b><a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details</a></b>
             </div>
         </div>
         <div class='panel-body'>
-            <form class='form-horizontal' role='form'>
+            <form class='form-horizontal' role='form' method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <div>
                     <img src="images/Flight_Logo.png" class="profilePic">
                 </div>
-
                 <div class='form-group'>
-                    <label class='control-label col-md-2 col-md-offset-2' for='id_first_name'>Name</label>
-                    <div class='col-md-8'>
-                        <div class='col-md-3 indent-small'>
-                            <div class='form-group internal'>
-                                <input class='form-control' id='id_first_name' placeholder='First Name' type='text'>
+                    <label class='control-label col-md-2 col-md-offset-2' for='id_first_name'>First name</label>
+                    <div class='col-md-6'>
+                        <div class='form-group'>
+                            <div class='col-md-11'>
+                                <input class='form-control' id='id_first_name' name="id_first_name" placeholder='First Name' type='text'>
+                                <span class="error"><?php echo $fName?></span>
                             </div>
                         </div>
-                        <div class='col-md-3 indent-small'>
-                            <div class='form-group internal'>
-                                <input class='form-control' id='id_last_name' placeholder='Last Name' type='text'>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='control-label col-md-2 col-md-offset-2' for='id_last_name'>Last name</label>
+                    <div class='col-md-6'>
+                        <div class='form-group'>
+                            <div class='col-md-11'>
+                                <input class='form-control' id='id_last_name' name="id_last_name" placeholder='Last Name' type='text'>
+                                <span class="error"><?php echo $lName?></span>
                             </div>
                         </div>
                     </div>
@@ -64,7 +71,8 @@
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_DOB' placeholder='Date Of Birth' type='text'>
+                                <input class='form-control' id='id_DOB' name="id_DOB" placeholder='Date Of Birth' type='text'>
+                                <span class="error"><?php echo $dob?></span>
                             </div>
                         </div>
                     </div>
@@ -74,13 +82,14 @@
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_email' placeholder='E-mail' type='text'>
+                                <input class='form-control' id='id_email' name="id_email" placeholder='E-mail' type='text'>
+                                <span class="error"><?php echo $email?></span>
                             </div>
                         </div>
                         <div class='form-group internal'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_phone' placeholder='Phone: (xxx) - xxx xxxx'
-                                       type='text'>
+                                <input class='form-control' id='id_phone' name="id_phone" placeholder='Phone: (xxx) - xxx xxxx' type='text'>
+                                <span class="error"><?php echo $phone?></span>
                             </div>
                         </div>
                     </div>
@@ -90,7 +99,20 @@
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_pass' placeholder='Password' type='text'>
+                                <input class='form-control' id='id_pass' name="id_pass" placeholder='Password' type='text'>
+                                <span class="error"><?php echo $pass?></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='control-label col-md-2 col-md-offset-2' for='id_repass'>Repeat Password</label>
+                    <div class='col-md-6'>
+                        <div class='form-group'>
+                            <div class='col-md-11'>
+                                <input class='form-control' id='id_repass' name="id_repass" placeholder='Password' type='password'>
+                                <span class="error"><?php echo $repeatPass?></span>
+                                <span class="error"><?php echo $equalPass?></span>
                             </div>
                         </div>
                     </div>
@@ -100,11 +122,13 @@
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_address' placeholder='Password' type='text'>
+                                <input class='form-control' id='id_address' name="id_address" placeholder='Address' type='text'>
+                                <span class="error"><?php echo $address?></span>
                             </div>
                         </div>
                     </div>
                 </div>
+                <button type="submit" id="register" name="register">Submit</button>
             </form>
         </div>
     </div>

@@ -15,6 +15,12 @@ img.Logo{
     color: #FF0000;
 }
 
+.profilePic{
+    height: 5cm;
+    width: 5cm;
+    position: center;
+}
+
 #menu,
 #menu ul,
 #menu ul li,
