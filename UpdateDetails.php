@@ -36,7 +36,8 @@
         <div class='panel-heading'>
             <div class="vertical-menu">
                 <a href="AccountPage.html" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a>
-                <b><a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details</a></b>
+                <b><a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details &nbsp &nbsp &nbsp</a></b>
+                <a href="ChangeProfilePic.html" style="color: black; text-decoration: none">Change Profile Pic &nbsp &nbsp &nbsp</a>
             </div>
         </div>
         <div class='panel-body'>
