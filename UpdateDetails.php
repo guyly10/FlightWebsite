@@ -5,7 +5,7 @@
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/HeadPage.css">
-    <link rel="stylesheet" href="css/SideBar.css.css">
+    <link rel="stylesheet" href="css/UpdateDetails.css">
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
     <link href='https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>

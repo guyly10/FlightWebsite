@@ -10,6 +10,7 @@
     <link href='https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <link href='https://davidstutz.github.io/bootstrap-multiselect/css/bootstrap-multiselect.css' rel='stylesheet'
           type='text/css'>
+    <link rel="stylesheet" href="css/indexLogin.css">
     <?php include 'FieldCheckLoginLogic.php'?>
     <title>AGflights</title>
 </head>
@@ -100,7 +101,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit" id="register" name="register">Submit</button>
+        <div class="container"><button type="submit" id="register" name="register">Submit</button></div>
     </form>
 </div>
 </div>

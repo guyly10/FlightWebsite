@@ -9,6 +9,7 @@ if (isset($_POST['submit'])){
     }
     else{
         $error = "Incorrect User name or Password";
+
     }
 }
 ?>
@@ -29,7 +30,7 @@ if (isset($_POST['submit'])){
     <title>AGflights</title>
 </head>
 <body>
-<form method="post">
+<form method="post" action="index.php">
     <div class="imgcontainer">
         <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
     </div>
@@ -45,7 +46,8 @@ if (isset($_POST['submit'])){
         <button type="submit" id="submit" name="submit">Login</button>
     </div>
 </form>
-<a href="SignUp.php" <button type="signup" id="signup" style="background-color: #ff8300">Sign Up</button></a>
+<div class="container">
+    <a href="SignUp.php"><button type="signup" id="signup" style="background-color:#4da6ff">Sign Up</button></div></a>
 <footer>
     <p style="text-align:center;"> Create by : 203371703 , 312233422 <p>
 </footer>
