@@ -9,7 +9,6 @@ if (isset($_POST['submit'])){
     }
     else{
         $error = "Incorrect User name or Password";
-
     }
 }
 ?>
