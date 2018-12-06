@@ -1,11 +1,14 @@
 <?php
+session_start();
 $error = "";
+$displayName = "";
 if (isset($_POST['submit'])){
     $uname = $_POST['uname'];
     $pass = $_POST['psw'];
+    $_SESSION ['uname'] = $uname;
 
     if ($uname == "admin" && $pass == "admin"){
-        header('Location: HeadPage.html');
+        header('Location: HeadPage.php');
     }
     else{
         $error = "Incorrect User name or Password";

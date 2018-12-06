@@ -15,7 +15,7 @@
 </head>
 <body>
 <?php include 'FieldCheckLoginLogic.php'?>
-<a href="HeadPage.html">
+<a href="HeadPage.php">
     <div class="imgcontainer">
         <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
     </div>
@@ -24,7 +24,7 @@
 <br>
 <div id='menu'>
     <ul>
-        <li><a href='HeadPage.html'>Home</a></li>
+        <li><a href='HeadPage.php'>Home</a></li>
         <li class='active'><a href='AccountPage.html'>Account</a></li>
         <li><a href='#'>Currency</a></li>
         <li><a href='index.php'>Logout</a></li>

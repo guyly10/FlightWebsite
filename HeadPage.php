@@ -1,3 +1,7 @@
+<?php
+session_start();
+$displayName = $_SESSION['uname'];
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +34,10 @@
     <link href="css/main.css" rel="stylesheet" media="all">
 </head>
 <body>
-<a href="HeadPage.html">
+  <div><b>
+    <?php echo "Hello, ".$displayName."!"; ?>
+  </b></div>
+<a href="HeadPage.php">
     <div class="imgcontainer">
         <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
     </div></a>
