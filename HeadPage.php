@@ -285,30 +285,6 @@ $displayName = $_SESSION['uname'];
                 <li class="tab-list__item">
                     <input class='form-control' id='review' placeholder='Write Review' type='text'>
                 </li><br><br>
-                <li class="tab-list__item active">
-                    <a class="tab-list__link"  data-toggle="tab">Add photo:</a>
-                </li>
-                <li class="tab-list__item active">
-                  <input type='file' onchange="readURL(this);" />
-                  <img  id="blah" src="#" alt="your image" />
-                  <script>
-                  function readURL(input) {
-                          if (input.files && input.files[0]) {
-                              var reader = new FileReader();
-
-                              reader.onload = function (e) {
-                                  $('#blah')
-                                      .attr('src', e.target.result)
-                                      .width(150)
-                                      .height(150));
-                              };
-
-                              reader.readAsDataURL(input.files[0]);
-                          }
-                      }
-                  </script>
-                </li>
-                <br><br>
                 <li class="tab-list__item">
                     <a class="tab-list__link"  data-toggle="tab">Rate:</a>
                     <div class="rate">
@@ -324,11 +300,55 @@ $displayName = $_SESSION['uname'];
                         <label for="star1" title="text">1 star</label>
                     </div>
                 </li>
-            </ul>
+              </ul>
+              <ul class="tab-list">
+                <li class="tab-list__item active">
+                    <a class="tab-list__link"  data-toggle="tab">Add photo:</a>
+                </li>
+                <li class="tab-list__item active">
+                  <div class='form-group'>
+                      <div class='col-md-6'>
+                          <div class='form-group'>
+                              <div class='col-md-11'>
+                                <input type='file' onchange="readURL(this);" />
+                                <img class="profilePic" id="blah" src="#" alt="your image" />
+                                <script>
+                                function readURL(input) {
+                                        if (input.files && input.files[0]) {
+                                            var reader = new FileReader();
 
+                                            reader.onload = function (e) {
+                                                $('#blah')
+                                                    .attr('src', e.target.result)
+                                                    .width(150)
+                                                    .height(150);
+                                            };
+
+                                            reader.readAsDataURL(input.files[0]);
+                                        }
+                                    }
+                                </script>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
+<form class='form-horizontal' role='form'>
+<div class="wrapper wrapper--w680">
+    <div class="card card-2">
+        <div class="card-body">
+            <ul class="tab-list">
+              <br>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </form>
+
 
 <!-- Jquery JS-->
 <script src="vendor/jquery/jquery.min.js"></script>
