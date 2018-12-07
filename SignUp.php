@@ -14,8 +14,11 @@
     <title>AGflights</title>
 </head>
 <body>
+
 <div class='panel-body'>
     <form class='form-horizontal' role='form' method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+      <a href="index.php">
+          <div class="imgcontainer">
               <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
           </div>
       </a>
