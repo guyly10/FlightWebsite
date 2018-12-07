@@ -46,7 +46,7 @@ $displayName = $_SESSION['uname'];
 <div id='menu'>
     <ul>
         <li class='active'><a href='#'>Home</a></li>
-        <li><a href='AccountPage.html'>Account</a></li>
+        <li><a href='AccountPage.php'>Account</a></li>
         <li><a href='#'>Currency</a></li>
         <li><a href='index.php'>Logout</a></li>
     </ul>
@@ -270,6 +270,14 @@ $displayName = $_SESSION['uname'];
     <div class="card card-2">
         <div class="card-body">
             <ul class="tab-list">
+
+              <li class="tab-list__item active">
+                  <a class="tab-list__link"  data-toggle="tab">Hotel Name:</a>
+              </li>
+              <li class="tab-list__item">
+                  <input class='form-control' id='hotelName' placeholder='Hotel Name' type='text'>
+              </li><br><br>
+
                 <li class="tab-list__item active">
                     <a class="tab-list__link"  data-toggle="tab">Write a Review:</a>
                 </li>

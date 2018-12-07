@@ -1,3 +1,21 @@
+<?php
+if (isset($_POST['register'])){
+     $fname = $_POST['id_first_name'];
+     $lName = $_POST['id_last_name'];
+     $dob = $_POST['id_DOB'];
+     $email = $_POST['id_email'];
+     $phone = $_POST['id_phone'];
+     $pass = $_POST['id_pass'];
+     $address = $_POST['id_address'];
+
+    if ($fname != "" && $lName != "" && $dob != "" && $email != "" && $phone != "" && $pass != "" && $address != ""){
+        header('Location: AccountPage.php');
+    }
+    else{
+        $error = "Must Complete All Fields";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -25,7 +43,7 @@
 <div id='menu'>
     <ul>
         <li><a href='HeadPage.php'>Home</a></li>
-        <li class='active'><a href='AccountPage.html'>Account</a></li>
+        <li class='active'><a href='AccountPage.php'>Account</a></li>
         <li><a href='#'>Currency</a></li>
         <li><a href='index.php'>Logout</a></li>
     </ul>
@@ -35,7 +53,7 @@
 
         <div class='panel-heading'>
             <div class="vertical-menu">
-                <a href="AccountPage.html" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a>
+                <a href="AccountPage.php" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a>
                 <b><a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details &nbsp &nbsp &nbsp</a></b>
                 <a href="ChangeProfilePic.html" style="color: black; text-decoration: none">Change Profile Pic &nbsp &nbsp &nbsp</a>
             </div>

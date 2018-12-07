@@ -1,3 +1,15 @@
+<?php
+session_start();
+$fName = $_SESSION['fName'];
+$lName = $_SESSION['lName'];
+$dob = $_SESSION['dob'];
+$email = $_SESSION['email'];
+$phone = $_SESSION['phone'];
+$pass = $_SESSION['pass'];
+$address = $_SESSION['address'];
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -24,7 +36,7 @@
 <div id='menu'>
     <ul>
         <li><a href='HeadPage.php'>Home</a></li>
-        <li class='active'><a href='AccountPage.html'>Account</a></li>
+        <li class='active'><a href='AccountPage.php'>Account</a></li>
         <li><a href='#'>Currency</a></li>
         <li><a href='index.php'>Logout</a></li>
     </ul>
@@ -34,7 +46,7 @@
 
         <div class='panel-heading'>
             <div class="vertical-menu">
-                <b><a href="AccountPage.html" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a></b>
+                <b><a href="AccountPage.php" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a></b>
                 <a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details &nbsp &nbsp &nbsp</a>
                 <a href="ChangeProfilePic.html" style="color: black; text-decoration: none">Change Profile Pic &nbsp &nbsp &nbsp</a>
             </div>
@@ -49,12 +61,12 @@
                     <div class='col-md-8'>
                         <div class='col-md-3 indent-small'>
                             <div class='form-group internal'>
-                                <input class='form-control' id='id_first_name' placeholder='First Name' type='text'>
+                                <input class='form-control' id='id_first_name' placeholder="<?php echo $fName?>" type='text'>
                             </div>
                         </div>
                         <div class='col-md-3 indent-small'>
                             <div class='form-group internal'>
-                                <input class='form-control' id='id_last_name' placeholder='Last Name' type='text'>
+                                <input class='form-control' id='id_last_name' placeholder='<?php echo $lName?>' type='text'>
                             </div>
                         </div>
                     </div>
@@ -64,7 +76,7 @@
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_DOB' placeholder='Date Of Birth' type='text'>
+                                <input class='form-control' id='id_DOB' placeholder='<?php echo $dob?>' type='text'>
                             </div>
                         </div>
                     </div>
@@ -74,12 +86,12 @@
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_email' placeholder='E-mail' type='text'>
+                                <input class='form-control' id='id_email' placeholder='<?php echo $email?>' type='text'>
                             </div>
                         </div>
                         <div class='form-group internal'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_phone' placeholder='Phone: (xxx) - xxx xxxx'
+                                <input class='form-control' id='id_phone' placeholder='<?php echo $phone?>'
                                        type='text'>
                             </div>
                         </div>
@@ -90,7 +102,7 @@
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_pass' placeholder='Password' type='text'>
+                                <input class='form-control' id='id_pass' placeholder='<?php echo $pass?>' type='text'>
                             </div>
                         </div>
                     </div>
@@ -100,7 +112,7 @@
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_address' placeholder='Password' type='text'>
+                                <input class='form-control' id='id_address' placeholder='<?php echo $address?>' type='text'>
                             </div>
                         </div>
                     </div>
