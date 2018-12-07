@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $fName = "Field can't be empty";
     }
     else if (!preg_match('/[^a-zA-Z]/', $_POST["id_first_name"])){
-        $fName = "String is ok";
+        $fName = "";
         $_SESSION['fName'] = $_POST["id_first_name"];
     }
     else{
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $lName = "Field can't be empty";
     }
     else if (!preg_match('/[^a-zA-Z]/', $_POST["id_last_name"])){
-        $lName = "String is ok";
+        $lName = "";
         $_SESSION['lName'] = $_POST["id_last_name"];
     }
     else{
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $email = "Field can't be empty";
     }
     else if (preg_match('/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/', $_POST["id_email"])){
-        $email = "String is ok";
+        $email = "";
         $_SESSION['email'] = $_POST["id_email"];
     }
     else{
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pass = "Field can't be empty";
     }
     else if (!preg_match('/[^A-Za-z0-9]+/', $_POST["id_pass"])){
-        $pass = "String is ok";
+        $pass = "";
         $_SESSION['pass'] = $_POST["id_pass"];
     }
     else{
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $repeatPass = "Field can't be empty";
     }
     else if (!preg_match('/[^A-Za-z0-9]+/', $_POST["id_repass"])){
-        $repeatPass = "String is ok";
+        $repeatPass = "";
     }
     else{
         $repeatPass = "String must contain letters and numbers only";
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $phone = "Field can't be empty";
     }
     else if (!preg_match('/\D/', $_POST["id_phone"])){
-        $phone = "String is ok";
+        $phone = "";
         $_SESSION['phone'] = $_POST["id_phone"];
     }
     else{
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $address = "Field can't be empty";
     }
     else{
-        $address = "String is ok";
+        $address = "";
         $_SESSION['address'] = $_POST["id_address"];
     }
 
@@ -106,13 +106,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $dob = "Birthday has to be before today";
     }
     else{
-        $dob = "String is ok";
+        $dob = "";
         $_SESSION['dob'] = $_POST["id_DOB"];
     }
 
     //check password and repeat password are equal
     if ($_POST["id_pass"] == $_POST["id_repass"]){
-        $equalPass = "Passwords are equal";
+        $equalPass = "";
         $_SESSION['pass'] = $_POST["id_pass"];
     }
     else{

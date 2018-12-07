@@ -254,6 +254,9 @@ $displayName = $_SESSION['uname'];
                   <a class="tab-list__link"  data-toggle="tab">Amsterdam</a>
               </li>
               <li class="tab-list__item">
+                  <img  src="images/plane4.jpg" height="60" width="60" >
+              </li>
+              <li class="tab-list__item">
                   <a class="tab-list__link"  data-toggle="tab">4/12/2018<br>16:20</a>
               </li>
               <li class="tab-list__item">
