@@ -9,8 +9,10 @@ $displayName = $_SESSION['uname'];
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/HeadPage.css">
     <link rel="stylesheet" href="css/StarCSS.css">
+    <link rel="stylesheet" href="css/uploadPic.css">
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="script.js"></script>
+      <script src="js/uploadPic.js"></script>
     <title>AGflights</title>
 
     <!-- Required meta tags-->
@@ -271,13 +273,12 @@ $displayName = $_SESSION['uname'];
         <div class="card-body">
             <ul class="tab-list">
 
-              <li class="tab-list__item active">
-                  <a class="tab-list__link"  data-toggle="tab">Hotel Name:</a>
-              </li>
-              <li class="tab-list__item">
-                  <input class='form-control' id='hotelName' placeholder='Hotel Name' type='text'>
-              </li><br><br>
-
+                <li class="tab-list__item active">
+                    <a class="tab-list__link"  data-toggle="tab">Hotel Name:</a>
+                  </li>
+                <li class="tab-list__item">
+                    <input class='form-control' id='hotelName' placeholder='Hotel Name' type='text'>
+                </li><br><br>
                 <li class="tab-list__item active">
                     <a class="tab-list__link"  data-toggle="tab">Write a Review:</a>
                 </li>
@@ -286,7 +287,28 @@ $displayName = $_SESSION['uname'];
                 </li><br><br>
                 <li class="tab-list__item active">
                     <a class="tab-list__link"  data-toggle="tab">Add photo:</a>
-                </li><br><br>
+                </li>
+                <li class="tab-list__item active">
+                  <input type='file' onchange="readURL(this);" />
+                  <img  id="blah" src="#" alt="your image" />
+                  <script>
+                  function readURL(input) {
+                          if (input.files && input.files[0]) {
+                              var reader = new FileReader();
+
+                              reader.onload = function (e) {
+                                  $('#blah')
+                                      .attr('src', e.target.result)
+                                      .width(150)
+                                      .height(150));
+                              };
+
+                              reader.readAsDataURL(input.files[0]);
+                          }
+                      }
+                  </script>
+                </li>
+                <br><br>
                 <li class="tab-list__item">
                     <a class="tab-list__link"  data-toggle="tab">Rate:</a>
                     <div class="rate">

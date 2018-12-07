@@ -19,7 +19,6 @@ $address = $_SESSION['address'];
     <link rel="stylesheet" href="css/HeadPage.css">
     <link rel="stylesheet" href="css/SideBar.css.css">
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-
     <link href='https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <link href='https://davidstutz.github.io/bootstrap-multiselect/css/bootstrap-multiselect.css' rel='stylesheet'
           type='text/css'>
@@ -48,13 +47,40 @@ $address = $_SESSION['address'];
             <div class="vertical-menu">
                 <b><a href="AccountPage.php" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a></b>
                 <a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details &nbsp &nbsp &nbsp</a>
-                <a href="ChangeProfilePic.html" style="color: black; text-decoration: none">Change Profile Pic &nbsp &nbsp &nbsp</a>
             </div>
         </div>
         <div class='panel-body'>
             <form class='form-horizontal' role='form'>
                 <div>
                     <img src="images/Flight_Logo.png" class="profilePic">
+                </div>
+                <div class='form-group'>
+                    <label class='control-label col-md-2 col-md-offset-2' for='id_pic'>Profile Picture</label>
+                    <div class='col-md-6'>
+                        <div class='form-group'>
+                            <div class='col-md-11'>
+
+                              <input type='file' onchange="readURL(this);" />
+                              <img class="profilePic" id="blah" src="#" alt="your image" />
+                              <script>
+                              function readURL(input) {
+                                      if (input.files && input.files[0]) {
+                                          var reader = new FileReader();
+
+                                          reader.onload = function (e) {
+                                              $('#blah')
+                                                  .attr('src', e.target.result)
+                                                  .width(150)
+                                                  .height(150);
+                                          };
+
+                                          reader.readAsDataURL(input.files[0]);
+                                      }
+                                  }
+                              </script>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class='form-group'>
                     <label class='control-label col-md-2 col-md-offset-2' for='id_first_name'>Name</label>
