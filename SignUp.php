@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/HeadPage.css">
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
     <link href='https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
@@ -17,6 +16,10 @@
 <body>
 <div class='panel-body'>
     <form class='form-horizontal' role='form' method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+              <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
+          </div>
+      </a>
+      <br><br>
         <div class='form-group'>
             <label class='control-label col-md-2 col-md-offset-2' for='id_first_name'>First name</label>
             <div class='col-md-6'>
@@ -112,4 +115,3 @@
 </footer>
 </body>
 </html>
-
