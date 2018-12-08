@@ -10,6 +10,7 @@
     <link href='https://davidstutz.github.io/bootstrap-multiselect/css/bootstrap-multiselect.css' rel='stylesheet'
           type='text/css'>
     <link rel="stylesheet" href="css/indexLogin.css">
+    <link rel="stylesheet" href="css/HeadPage.css">
     <?php include 'FieldCheckLoginLogic.php'?>
     <title>AGflights</title>
 </head>
@@ -22,6 +23,8 @@
               <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
           </div>
       </a>
+      <br><br>
+      <div align="center"><span style="color:#003300"><?php echo $successLogin?></span></div>
       <br><br>
         <div class='form-group'>
             <label class='control-label col-md-2 col-md-offset-2' for='id_first_name'>First name</label>
@@ -109,6 +112,8 @@
         </div>
         <div class="container"><button type="submit" id="register" name="register">Submit</button></div>
     </form>
+    <div class="container">
+        <a href="index.php"><button type="Back" id="Back" style="background-color:#4da6ff">Back to Login</button></div></a>
 </div>
 </div>
 </div>

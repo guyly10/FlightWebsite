@@ -11,6 +11,8 @@ $address = "";
 $equalPass = "";
 $now = date("d/m/Y");
 
+$successLogin = "";
+$count = 0;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -21,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     else if (!preg_match('/[^a-zA-Z]/', $_POST["id_first_name"])){
         $fName = "";
         $_SESSION['fName'] = $_POST["id_first_name"];
+        $count++;
     }
     else{
         $fName = "String must contain only letters";
@@ -33,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     else if (!preg_match('/[^a-zA-Z]/', $_POST["id_last_name"])){
         $lName = "";
         $_SESSION['lName'] = $_POST["id_last_name"];
+        $count++;
     }
     else{
         $lName = "String must contain only letters";
@@ -45,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     else if (preg_match('/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/', $_POST["id_email"])){
         $email = "";
         $_SESSION['email'] = $_POST["id_email"];
+        $count++;
     }
     else{
         $email = "String must contain @ and .com";
@@ -57,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     else if (!preg_match('/[^A-Za-z0-9]+/', $_POST["id_pass"])){
         $pass = "";
         $_SESSION['pass'] = $_POST["id_pass"];
+        $count++;
     }
     else{
         $pass = "String must contain letters and numbers only";
@@ -68,6 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     else if (!preg_match('/[^A-Za-z0-9]+/', $_POST["id_repass"])){
         $repeatPass = "";
+        $count++;
     }
     else{
         $repeatPass = "String must contain letters and numbers only";
@@ -80,6 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     else if (!preg_match('/\D/', $_POST["id_phone"])){
         $phone = "";
         $_SESSION['phone'] = $_POST["id_phone"];
+        $count++;
     }
     else{
         $phone = "String must contain numbers only";
@@ -92,30 +100,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
         $address = "";
         $_SESSION['address'] = $_POST["id_address"];
+        $count++;
     }
 
     //check DOB
     if (preg_match('/^\s*$/', $_POST["id_DOB"])){
-        $dob = "Field can't be empty";
+      $dob = date("d/m/Y",strtotime($_POST['id_DOB']));
+        //$dob = "Field can't be empty";
     }
     else if (!preg_match('/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/', $_POST["id_DOB"])){
-        $dob = "Birthday must be in the following format dd/mm/yyyy";
+        //$dob = "Birthday must be in the following format dd/mm/yyyy";
+        $dob = date("d/m/Y",strtotime($_POST['id_DOB']));
     }
-    else if (strtotime($_POST['id_DOB']) > $now){
-        $dob = "Birthday has to be before today";
+    else if (date("d/m/Y",strtotime($_POST['id_DOB'])) > $now){
+        //$dob = "Birthday has to be before today";
+        $dob = date("d/m/Y",strtotime($_POST['id_DOB']));
     }
     else{
-        $dob = "";
+      $dob = date("d/m/Y",strtotime($_POST['id_DOB']));
+        //$dob = "";
         $_SESSION['dob'] = $_POST["id_DOB"];
+        $count++;
     }
 
     //check password and repeat password are equal
     if ($_POST["id_pass"] == $_POST["id_repass"]){
         $equalPass = "";
         $_SESSION['pass'] = $_POST["id_pass"];
+        $count++;
     }
     else{
         $equalPass = "Passwords are not equal";
+    }
+    if($count == 9)
+    {
+      $successLogin = "User signed up Successfully! please go back to login Page and log in";
     }
 
 }

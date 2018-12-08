@@ -17,7 +17,7 @@ else {
 if(empty($_SESSION['lName']))
   $lName = "Last Name";
 else {
-  $lName = $_SESSION['LName'];
+  $lName = $_SESSION['lName'];
 }
 if(empty($_SESSION['dob']))
   $dob = "dd/mm/yyyy";
