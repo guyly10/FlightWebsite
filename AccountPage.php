@@ -1,12 +1,49 @@
+
+
 <?php
 session_start();
-$fName = $_SESSION['fName'];
-$lName = $_SESSION['lName'];
-$dob = $_SESSION['dob'];
-$email = $_SESSION['email'];
-$phone = $_SESSION['phone'];
-$pass = $_SESSION['pass'];
-$address = $_SESSION['address'];
+$fName = "";
+$lName = "";
+$dob = "";
+$email = "";
+$phone = "";
+$pass = "";
+$address = "";
+if(empty($_SESSION['fName']))
+  $fName = "First Name";
+else {
+  $fName = $_SESSION['fName'];
+}
+if(empty($_SESSION['lName']))
+  $lName = "Last Name";
+else {
+  $lName = $_SESSION['LName'];
+}
+if(empty($_SESSION['dob']))
+  $dob = "dd/mm/yyyy";
+else {
+  $dob = $_SESSION['dob'];
+}
+if(empty($_SESSION['email']))
+  $email = "abc@gmail.com";
+else {
+  $email = $_SESSION['email'];
+}
+if(empty($_SESSION['phone']))
+  $phone = "Phone: (xxx) - xxx xxxx";
+else {
+  $phone = $_SESSION['phone'];
+}
+if(empty($_SESSION['pass']))
+  $pass = "Password";
+else {
+  $pass = $_SESSION['pass'];
+}
+if(empty($_SESSION['address']))
+  $address = "Address";
+else {
+  $address = $_SESSION['address'];
+}
 
  ?>
 

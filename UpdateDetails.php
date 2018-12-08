@@ -1,4 +1,11 @@
 <?php
+$fname = "";
+$lName = "";
+$dob = "";
+$email = "";
+$phone = "";
+$pass = "";
+$address = "";
 if (isset($_POST['register'])){
      $fname = $_POST['id_first_name'];
      $lName = $_POST['id_last_name'];
@@ -10,9 +17,6 @@ if (isset($_POST['register'])){
 
     if ($fname != "" && $lName != "" && $dob != "" && $email != "" && $phone != "" && $pass != "" && $address != ""){
         header('Location: AccountPage.php');
-    }
-    else{
-        $error = "Must Complete All Fields";
     }
 }
 ?>
@@ -117,7 +121,7 @@ if (isset($_POST['register'])){
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_pass' name="id_pass" placeholder='Password' type='text'>
+                                <input class='form-control' id='id_pass' name="id_pass" placeholder='Password' type='password'>
                                 <span class="error"><?php echo $pass?></span>
                             </div>
                         </div>

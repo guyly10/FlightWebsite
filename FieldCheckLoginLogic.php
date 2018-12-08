@@ -12,7 +12,6 @@ $equalPass = "";
 $now = date("d/m/Y");
 
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     //check id_first_name
