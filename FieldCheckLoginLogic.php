@@ -9,8 +9,6 @@ $pass = "";
 $repeatPass = "";
 $address = "";
 $equalPass = "";
-$now = date("d/m/Y");
-
 $successLogin = "";
 $count = 0;
 
@@ -23,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     else if (!preg_match('/[^a-zA-Z]/', $_POST["id_first_name"])){
         $fName = "";
         $_SESSION['fName'] = $_POST["id_first_name"];
+        $_SESSION['uname'] = $_POST["id_first_name"];
         $count++;
     }
     else{
@@ -105,20 +104,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     //check DOB
     if (preg_match('/^\s*$/', $_POST["id_DOB"])){
-      $dob = date("d/m/Y",strtotime($_POST['id_DOB']));
-        //$dob = "Field can't be empty";
+        $dob = "Field can't be empty";
     }
     else if (!preg_match('/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/', $_POST["id_DOB"])){
-        //$dob = "Birthday must be in the following format dd/mm/yyyy";
-        $dob = date("d/m/Y",strtotime($_POST['id_DOB']));
+        $dob = "Birthday must be in the following format mm/dd/yyyy";
     }
-    else if (date("d/m/Y",strtotime($_POST['id_DOB'])) > $now){
-        //$dob = "Birthday has to be before today";
-        $dob = date("d/m/Y",strtotime($_POST['id_DOB']));
+    else if (strtotime($_POST['id_DOB']) > strtotime('now')){
+        $dob = "Birthday has to be before today";
     }
     else{
-      $dob = date("d/m/Y",strtotime($_POST['id_DOB']));
-        //$dob = "";
+        $dob = "";
         $_SESSION['dob'] = $_POST["id_DOB"];
         $count++;
     }

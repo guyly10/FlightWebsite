@@ -1,6 +1,7 @@
 <?php
 session_start();
 $displayName = $_SESSION['uname'];
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -286,7 +287,8 @@ $displayName = $_SESSION['uname'];
                     <a class="tab-list__link"  data-toggle="tab">Write a Review:</a>
                 </li>
                 <li class="tab-list__item">
-                    <input class='form-control' id='review' placeholder='Write Review' type='text'>
+                    <!-- <input class='form-control' id='review' placeholder='Write Review' type='textarea'> -->
+                    <textarea name="Text1" cols="40" rows="3" style="color: #767676;">Write Review</textarea>
                 </li><br><br>
                 <li class="tab-list__item">
                     <a class="tab-list__link"  data-toggle="tab">Rate:</a>
