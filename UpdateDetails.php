@@ -93,7 +93,7 @@ if (isset($_POST['register'])){
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_DOB' name="id_DOB" placeholder='Date Of Birth' type='text'>
+                                <input class='form-control' type="date" id='id_DOB' name="id_DOB">
                                 <span class="error"><?php echo $dob?></span>
                             </div>
                         </div>

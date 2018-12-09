@@ -103,11 +103,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     //check DOB
-    if (preg_match('/^\s*$/', $_POST["id_DOB"])){
-        $dob = "Field can't be empty";
-    }
-    else if (!preg_match('/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/', $_POST["id_DOB"])){
-        $dob = "Birthday must be in the following format mm/dd/yyyy";
+    if (empty($_POST["id_DOB"])){
+      $dob = "Field can't be empty";
     }
     else if (strtotime($_POST['id_DOB']) > strtotime('now')){
         $dob = "Birthday has to be before today";
