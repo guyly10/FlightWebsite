@@ -89,36 +89,9 @@ else {
         <div class='panel-body'>
             <form class='form-horizontal' role='form'>
                 <div>
-                    <img src="images/Flight_Logo.png" class="profilePic">
+                    <img src="images/ProfileImage.png" class="profilePic">
                 </div>
-                <div class='form-group'>
-                    <label class='control-label col-md-2 col-md-offset-2' for='id_pic'>Profile Picture</label>
-                    <div class='col-md-6'>
-                        <div class='form-group'>
-                            <div class='col-md-11'>
 
-                              <input type='file' onchange="readURL(this);" />
-                              <img class="profilePic" id="blah" src="#" alt="your image" />
-                              <script>
-                              function readURL(input) {
-                                      if (input.files && input.files[0]) {
-                                          var reader = new FileReader();
-
-                                          reader.onload = function (e) {
-                                              $('#blah')
-                                                  .attr('src', e.target.result)
-                                                  .width(150)
-                                                  .height(150);
-                                          };
-
-                                          reader.readAsDataURL(input.files[0]);
-                                      }
-                                  }
-                              </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class='form-group'>
                     <label class='control-label col-md-2 col-md-offset-2' for='id_first_name'>Name</label>
                     <div class='col-md-8'>
