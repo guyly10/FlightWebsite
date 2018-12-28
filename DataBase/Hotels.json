@@ -1,0 +1,48 @@
+{
+  "hotels":[
+    {
+      "itemId":"4",
+      "destination":"Rome - herrods",
+      "DateFrom":"10/10/2019",
+      "DateTo":"15/10/2019",
+      "rooms":[
+        {
+          "roomId":"1",
+          "adults":"2",
+          "children":"2",
+        },
+        {
+          "roomId":"2",
+          "adults":"2",
+          "children":"2",
+        }
+      ]
+    },
+    {
+      "itemId":"5",
+      "destination":"Paris - goergette",
+      "DateFrom":"15/7/2019",
+      "DateTo":"19/7/2019",
+      "rooms":[
+        {
+          "roomId":"1",
+          "adults":"2",
+          "children":"3",
+        }
+      ]
+    },
+    {
+      "itemId":"6",
+      "destination":"Vanice - on the water",
+      "DateFrom":"7/3/2019",
+      "DateTo":"9/3/2019",
+      "rooms":[
+        {
+          "roomId":"1",
+          "adults":"2",
+          "children":"0",
+        }
+      ]
+    }
+  ]
+}
