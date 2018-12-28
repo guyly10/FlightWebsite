@@ -1,7 +1,7 @@
 {
   "users":[
     {
-      "id":"1",
+      "UserId":"admin",
       "firstName":"admin",
       "lastName":"admin",
       "dob":"10/7/2000",
@@ -11,7 +11,7 @@
       "address":"my house 2"
     },
     {
-      "id":"2",
+      "UserId":"danU",
       "firstName":"Dan",
       "lastName":"Man",
       "dob":"2/5/1991",
@@ -21,7 +21,7 @@
       "address":"my house 3"
     },
     {
-      "id":"3",
+      "UserId":"rodU",
       "firstName":"Rod",
       "lastName":"Pipo",
       "dob":"4/3/1998",

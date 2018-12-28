@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION['dob'] = $_POST["id_DOB"];
         $count++;
     }
-
+    
     //check password and repeat password are equal
     if ($_POST["id_pass"] == $_POST["id_repass"]){
         $equalPass = "";

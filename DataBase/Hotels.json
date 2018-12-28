@@ -7,11 +7,13 @@
       "DateTo":"15/10/2019",
       "rooms":[
         {
+          "itemId":"4",
           "roomId":"1",
           "adults":"2",
           "children":"2",
         },
         {
+          "itemId":"4",
           "roomId":"2",
           "adults":"2",
           "children":"2",
@@ -25,6 +27,7 @@
       "DateTo":"19/7/2019",
       "rooms":[
         {
+          "itemId":"5",
           "roomId":"1",
           "adults":"2",
           "children":"3",
@@ -38,6 +41,7 @@
       "DateTo":"9/3/2019",
       "rooms":[
         {
+          "itemId":"6",
           "roomId":"1",
           "adults":"2",
           "children":"0",

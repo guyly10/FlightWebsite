@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION['uname']) || ($_SESSION['uname']==""))
+   header('Location: index.php');
+
 $fname = "";
 $lName = "";
 $dob = "";

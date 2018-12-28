@@ -1,6 +1,10 @@
 <?php
 session_start();
+if(!isset($_SESSION['uname']) || ($_SESSION['uname']==""))
+   header('Location: index.php');
+
 $displayName = $_SESSION['uname'];
+
 
  ?>
 <!DOCTYPE html>
@@ -51,7 +55,7 @@ $displayName = $_SESSION['uname'];
         <li class='active'><a href='#'>Home</a></li>
         <li><a href='AccountPage.php'>Account</a></li>
         <li><a href='#'>Currency</a></li>
-        <li><a href='index.php'>Logout</a></li>
+        <li><a href='Logout.php'>Logout</a></li>
     </ul>
 </div>
 
