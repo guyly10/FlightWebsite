@@ -9,6 +9,7 @@
       "DateTo":"15/10/2019",
       "dropOff":"10:00 AM",
       "driverAge":"25",
+      "Cost":"100$"
     },
     {
       "itemId":"8",
@@ -19,6 +20,7 @@
       "DateTo":"20/10/2019",
       "dropOff":"10:00 AM",
       "driverAge":"30",
+      "Cost":"120$"
     },
     {
       "itemId":"8",
@@ -29,6 +31,7 @@
       "DateTo":"15/10/2019",
       "dropOff":"10:00 AM",
       "driverAge":"65",
+      "Cost":"200$"
     }
   ]
 }

@@ -8,17 +8,19 @@
       "email":"abc@gmail.com",
       "phone":"0541234567",
       "password":"admin",
-      "address":"my house 2"
+      "address":"my house 2",
+      "photo":"images/adminPic.JPG"
     },
     {
       "UserId":"danU",
-      "firstName":"Dan",
+      "firstName":"Dana",
       "lastName":"Man",
       "dob":"2/5/1991",
       "email":"123@gmail.com",
       "phone":"0541234568",
       "password":"abc",
-      "address":"my house 3"
+      "address":"my house 3",
+      "photo":"images/dina.jpg"
     },
     {
       "UserId":"rodU",
@@ -28,7 +30,8 @@
       "email":"abc12@gmail.com",
       "phone":"0541234569",
       "password":"asd",
-      "address":"my house 4"
+      "address":"my house 4",
+      "photo":"images/rod.jpg"
     }
   ]
 }

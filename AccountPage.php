@@ -1,53 +1,81 @@
+
+
 <?php
 session_start();
-$fName = "";
-$lName = "";
-$dob = "";
-$email = "";
-$phone = "";
-$pass = "";
-$address = "";
-if(empty($_SESSION['fName']))
-  $fName = "First Name";
-else {
-  $fName = $_SESSION['fName'];
+if(!isset($_SESSION['uname']) || ($_SESSION['uname']==""))
+   header('Location: index.php');
+
+$displayName = $_SESSION['uname'];
+$_SESSION['userName'] = $_SESSION['uname'];
+// $fName = "";
+// $lName = "";
+// $dob = "";
+// $email = "";
+// $phone = "";
+// $pass = "";
+// $address = "";
+
+
+$json = file_get_contents("DataBase/Users.json");
+$result = json_decode($json);
+$users= $result->users;
+for($idx = 0; $idx < count($users); $idx++){
+    $obj = $users[$idx]->UserId;
+    if($obj==$_SESSION['uname']){
+      $fName=$users[$idx]->firstName;
+      $lName = $users[$idx]->lastName;
+      $dob = $users[$idx]->dob;
+      $email = $users[$idx]->email;
+      $phone = $users[$idx]->phone;
+      $pass = $users[$idx]->password;
+      $address = $users[$idx]->address;
+      $photo = $users[$idx]->photo;
+    }
 }
-if(empty($_SESSION['lName']))
-  $lName = "Last Name";
-else {
-  $lName = $_SESSION['lName'];
-}
-if(empty($_SESSION['dob']))
-  $dob = "dd/mm/yyyy";
-else {
-  $dob = $_SESSION['dob'];
-}
-if(empty($_SESSION['email']))
-  $email = "abc@gmail.com";
-else {
-  $email = $_SESSION['email'];
-}
-if(empty($_SESSION['phone']))
-  $phone = "Phone: (xxx) - xxx xxxx";
-else {
-  $phone = $_SESSION['phone'];
-}
-if(empty($_SESSION['pass']))
-  $pass = "Password";
-else {
-  $pass = $_SESSION['pass'];
-}
-if(empty($_SESSION['address']))
-  $address = "Address";
-else {
-  $address = $_SESSION['address'];
-}
+
+
+// if(empty($_SESSION['fName']))
+//   $fName = "First Name";
+// else {
+//   $fName = $_SESSION['fName'];
+// }
+// if(empty($_SESSION['lName']))
+//   $lName = "Last Name";
+// else {
+//   $lName = $_SESSION['lName'];
+// }
+// if(empty($_SESSION['dob']))
+//   $dob = "dd/mm/yyyy";
+// else {
+//   $dob = $_SESSION['dob'];
+// }
+// if(empty($_SESSION['email']))
+//   $email = "abc@gmail.com";
+// else {
+//   $email = $_SESSION['email'];
+// }
+// if(empty($_SESSION['phone']))
+//   $phone = "Phone: (xxx) - xxx xxxx";
+// else {
+//   $phone = $_SESSION['phone'];
+// }
+// if(empty($_SESSION['pass']))
+//   $pass = "Password";
+// else {
+//   $pass = $_SESSION['pass'];
+// }
+// if(empty($_SESSION['address']))
+//   $address = "Address";
+// else {
+//   $address = $_SESSION['address'];
+// }
 
  ?>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
     <meta charset="UTF-8">
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,6 +88,9 @@ else {
     <title>AGflights</title>
 </head>
 <body>
+<div><b>
+  <?php echo "Hello, ".$displayName."!"; ?>
+</b></div>
 <a href="HeadPage.php">
     <div class="imgcontainer">
         <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
@@ -87,7 +118,7 @@ else {
         <div class='panel-body'>
             <form class='form-horizontal' role='form'>
                 <div>
-                    <img src="images/ProfileImage.png" class="profilePic">
+                    <img src=<?php echo $photo?> class="profilePic">
                 </div>
 
                 <div class='form-group'>

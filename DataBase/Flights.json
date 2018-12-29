@@ -6,6 +6,7 @@
       "Destination":"Rome",
       "DateFrom":"10/10/2019",
       "DateTo":"15/10/2019",
+      "Cost":"300$"
     },
     {
       "itemId":"2",
@@ -13,6 +14,7 @@
       "Destination":"TLV-BGU",
       "DateFrom":"12/11/2019",
       "DateTo":"17/11/2019",
+      "Cost":"400$"
     },
     {
       "itemId":"3",
@@ -20,6 +22,7 @@
       "Destination":"Venice",
       "DateFrom":"2/6/2019",
       "DateTo":"5/6/2019",
+      "Cost":"500$"
     }
   ]
 }

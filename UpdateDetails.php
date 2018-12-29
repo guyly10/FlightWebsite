@@ -1,6 +1,8 @@
+<?php include 'FieldCheckLoginLogic.php'?>
 <?php
 if(!isset($_SESSION['uname']) || ($_SESSION['uname']==""))
    header('Location: index.php');
+$displayName = $_SESSION['uname'];
 
 $fname = "";
 $lName = "";
@@ -39,7 +41,10 @@ if (isset($_POST['register'])){
     <title>AGflights</title>
 </head>
 <body>
-<?php include 'FieldCheckLoginLogic.php'?>
+<div><b>
+  <?php echo "Hello, ".$displayName."!"; ?>
+</b></div>
+
 <a href="HeadPage.php">
     <div class="imgcontainer">
         <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
