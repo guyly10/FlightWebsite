@@ -5,20 +5,6 @@
       "destination":"Rome - herrods",
       "DateFrom":"10/10/2019",
       "DateTo":"15/10/2019",
-      "rooms":[
-        {
-          "itemId":"4",
-          "roomId":"1",
-          "adults":"2",
-          "children":"2",
-        },
-        {
-          "itemId":"4",
-          "roomId":"2",
-          "adults":"2",
-          "children":"2",
-        }
-      ],
       "Cost":"100$"
     },
     {
@@ -26,14 +12,6 @@
       "destination":"Paris - goergette",
       "DateFrom":"15/7/2019",
       "DateTo":"19/7/2019",
-      "rooms":[
-        {
-          "itemId":"5",
-          "roomId":"1",
-          "adults":"2",
-          "children":"3",
-        }
-      ],
       "Cost":"120$"
     },
     {
@@ -41,14 +19,6 @@
       "destination":"Vanice - on the water",
       "DateFrom":"7/3/2019",
       "DateTo":"9/3/2019",
-      "rooms":[
-        {
-          "itemId":"6",
-          "roomId":"1",
-          "adults":"2",
-          "children":"0",
-        }
-      ],
       "Cost":"200$"
     }
   ]
