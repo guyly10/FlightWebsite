@@ -1,12 +1,25 @@
 <?php
 session_start();
-if(!isset($_SESSION['uname']) || ($_SESSION['uname']==""))
-   header('Location: index.php');
+if (!isset($_SESSION['uname']) || ($_SESSION['uname'] == ""))
+    header('Location: index.php');
 
 $displayName = $_SESSION['uname'];
 
+$json = file_get_contents("DataBase/Commercial.json");
+$result = json_decode($json);
+$commercial = $result->commercial;
 
- ?>
+for ($idx = 0; $idx < count($commercial); $idx++) {
+    $city = $commercial[$idx]->city;
+    $goDate = $commercial[$idx]->goDate;
+    $goHour = $commercial[$idx]->goHour;
+    $returnDate = $commercial[$idx]->returnDate;
+    $returnHour = $commercial[$idx]->returnHour;
+    $price = $commercial[$idx]->price;
+    $img = $commercial[$idx]->img;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +30,7 @@ $displayName = $_SESSION['uname'];
     <link rel="stylesheet" href="css/uploadPic.css">
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="script.js"></script>
-      <script src="js/uploadPic.js"></script>
+    <script src="js/uploadPic.js"></script>
     <title>AGflights</title>
 
     <!-- Required meta tags-->
@@ -30,8 +43,10 @@ $displayName = $_SESSION['uname'];
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
 
     <!-- Vendor CSS-->
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
@@ -41,15 +56,16 @@ $displayName = $_SESSION['uname'];
     <link href="css/main.css" rel="stylesheet" media="all">
 </head>
 <body>
-  <div><b>
-    <?php echo "Hello, ".$displayName."!"; ?>
-  </b></div>
+<div><b>
+        <?php echo "Hello, " . $displayName . "!"; ?>
+    </b></div>
 <a href="HeadPage.php">
     <div class="imgcontainer">
         <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
-    </div></a>
-    <br>
-    <br>
+    </div>
+</a>
+<br>
+<br>
 <div id='menu'>
     <ul>
         <li class='active'><a href='#'>Home</a></li>
@@ -59,7 +75,7 @@ $displayName = $_SESSION['uname'];
     </ul>
 </div>
 
-<div >
+<div>
     <div class="wrapper wrapper--w680">
         <div class="card card-2">
             <div class="card-body">
@@ -79,26 +95,30 @@ $displayName = $_SESSION['uname'];
                         <form method="POST" action="#">
                             <div class="input-group">
                                 <label class="label">where:</label>
-                                <input class="input--style-1" type="text" name="address" placeholder="City, region or specific hotel" required="required">
+                                <input class="input--style-1" type="text" name="address"
+                                       placeholder="City, region or specific hotel" required="required">
                             </div>
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">check-in:</label>
-                                        <input class="input--style-1" type="text" name="check-in" placeholder="mm/dd/yyyy" id="input-start">
+                                        <input class="input--style-1" type="text" name="check-in"
+                                               placeholder="mm/dd/yyyy" id="input-start">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">check-out:</label>
-                                        <input class="input--style-1" type="text" name="check-out" placeholder="mm/dd/yyyy" id="input-end">
+                                        <input class="input--style-1" type="text" name="check-out"
+                                               placeholder="mm/dd/yyyy" id="input-end">
                                     </div>
                                 </div>
                             </div>
                             <div class="input-group">
                                 <label class="label">travellers:</label>
                                 <div class="input-group-icon" id="js-select-special">
-                                    <input class="input--style-1" type="text" name="traveller" value="1 Adult, 0 Children, 1 Room" disabled="disabled" id="info">
+                                    <input class="input--style-1" type="text" name="traveller"
+                                           value="1 Adult, 0 Children, 1 Room" disabled="disabled" id="info">
                                     <i class="zmdi zmdi-chevron-down input-icon"></i>
                                 </div>
                                 <div class="dropdown-select">
@@ -138,7 +158,8 @@ $displayName = $_SESSION['uname'];
                         <form method="POST" action="#">
                             <div class="input-group">
                                 <label class="label">location:</label>
-                                <input class="input--style-1" type="text" name="location" placeholder="Destination, hotel name" required="required">
+                                <input class="input--style-1" type="text" name="location"
+                                       placeholder="Destination, hotel name" required="required">
                             </div>
                             <div class="row row-space">
                                 <div class="col-2">
@@ -174,7 +195,8 @@ $displayName = $_SESSION['uname'];
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">pick up:</label>
-                                        <input class="input--style-1 js-single-datepicker" type="text" name="pickup" placeholder="mm/dd/yyyy" data-drop="1">
+                                        <input class="input--style-1 js-single-datepicker" type="text" name="pickup"
+                                               placeholder="mm/dd/yyyy" data-drop="1">
                                         <div class="dropdown-datepicker" id="dropdown-datepicker1"></div>
                                     </div>
                                 </div>
@@ -197,7 +219,8 @@ $displayName = $_SESSION['uname'];
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">drop off:</label>
-                                        <input class="input--style-1 js-single-datepicker" type="text" name="dropoff" placeholder="mm/dd/yyyy" data-drop="2">
+                                        <input class="input--style-1 js-single-datepicker" type="text" name="dropoff"
+                                               placeholder="mm/dd/yyyy" data-drop="2">
                                         <div class="dropdown-datepicker" id="dropdown-datepicker2"></div>
                                     </div>
                                 </div>
@@ -223,23 +246,27 @@ $displayName = $_SESSION['uname'];
                         <form method="POST" action="#">
                             <div class="input-group">
                                 <label class="label">origin:</label>
-                                <input class="input--style-1" type="text" name="origin" placeholder="City or airport" required="required">
+                                <input class="input--style-1" type="text" name="origin" placeholder="City or airport"
+                                       required="required">
                             </div>
                             <div class="input-group">
                                 <label class="label">destination:</label>
-                                <input class="input--style-1" type="text" name="destination" placeholder="City or airport" required="required">
+                                <input class="input--style-1" type="text" name="destination"
+                                       placeholder="City or airport" required="required">
                             </div>
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">Departing:</label>
-                                        <input class="input--style-1" type="text" name="check-in" placeholder="mm/dd/yyyy" id="input-start-2">
+                                        <input class="input--style-1" type="text" name="check-in"
+                                               placeholder="mm/dd/yyyy" id="input-start-2">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">returning:</label>
-                                        <input class="input--style-1" type="text" name="check-out" placeholder="mm/dd/yyyy" id="input-end-2">
+                                        <input class="input--style-1" type="text" name="check-out"
+                                               placeholder="mm/dd/yyyy" id="input-end-2">
                                     </div>
                                 </div>
                             </div>
@@ -254,23 +281,23 @@ $displayName = $_SESSION['uname'];
 <div class="wrapper wrapper--w680">
     <div class="card card-2">
         <div class="card-body">
-          <ul class="tab-list">
-              <li class="tab-list__item active">
-                  <a class="tab-list__link"  data-toggle="tab">Amsterdam</a>
-              </li>
-              <li class="tab-list__item">
-                  <img  src="images/plane4.jpg" height="60" width="60" >
-              </li>
-              <li class="tab-list__item">
-                  <a class="tab-list__link"  data-toggle="tab">4/12/2018<br>16:20</a>
-              </li>
-              <li class="tab-list__item">
-                  <a class="tab-list__link"  data-toggle="tab">4/12/2018<br>16:20</a>
-              </li>
-              <li class="tab-list__item">
-                  <a class="tab-list__link"  data-toggle="tab">500$</a>
-              </li>
-          </ul>
+            <ul class="tab-list">
+                <li class="tab-list__item active">
+                    <a class="tab-list__link" data-toggle="tab"><?php echo $city ?></a>
+                </li>
+                <li class="tab-list__item">
+                    <img src=<?php echo $img ?> height="60" width="60">
+                </li>
+                <li class="tab-list__item">
+                    <a class="tab-list__link" data-toggle="tab"><?php echo $goDate ?><br><?php echo $goHour ?></a>
+                </li>
+                <li class="tab-list__item">
+                    <a class="tab-list__link" data-toggle="tab"><?php echo $returnDate ?><br><?php echo $returnHour ?></a>
+                </li>
+                <li class="tab-list__item">
+                    <a class="tab-list__link" data-toggle="tab"><?php echo $price ?></a>
+                </li>
+            </ul>
 
         </div>
     </div>
@@ -282,81 +309,83 @@ $displayName = $_SESSION['uname'];
             <ul class="tab-list">
 
                 <li class="tab-list__item active">
-                    <a class="tab-list__link"  data-toggle="tab">Hotel Name:</a>
-                  </li>
+                    <a class="tab-list__link" data-toggle="tab">Hotel Name:</a>
+                </li>
                 <li class="tab-list__item">
                     <input class='form-control' id='hotelName' placeholder='Hotel Name' type='text'>
-                </li><br><br>
+                </li>
+                <br><br>
                 <li class="tab-list__item active">
-                    <a class="tab-list__link"  data-toggle="tab">Write a Review:</a>
+                    <a class="tab-list__link" data-toggle="tab">Write a Review:</a>
                 </li>
                 <li class="tab-list__item">
                     <!-- <input class='form-control' id='review' placeholder='Write Review' type='textarea'> -->
                     <textarea name="Text1" cols="40" rows="3" style="color: #767676;">Write Review</textarea>
-                </li><br><br>
+                </li>
+                <br><br>
                 <li class="tab-list__item">
-                    <a class="tab-list__link"  data-toggle="tab">Rate:</a>
+                    <a class="tab-list__link" data-toggle="tab">Rate:</a>
                     <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" />
+                        <input type="radio" id="star5" name="rate" value="5"/>
                         <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
+                        <input type="radio" id="star4" name="rate" value="4"/>
                         <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
+                        <input type="radio" id="star3" name="rate" value="3"/>
                         <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
+                        <input type="radio" id="star2" name="rate" value="2"/>
                         <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
+                        <input type="radio" id="star1" name="rate" value="1"/>
                         <label for="star1" title="text">1 star</label>
                     </div>
                 </li>
-              </ul>
-              <ul class="tab-list">
+            </ul>
+            <ul class="tab-list">
                 <li class="tab-list__item active">
-                    <a class="tab-list__link"  data-toggle="tab">Add photo:</a>
+                    <a class="tab-list__link" data-toggle="tab">Add photo:</a>
                 </li>
                 <li class="tab-list__item active">
-                  <div class='form-group'>
-                      <div class='col-md-6'>
-                          <div class='form-group'>
-                              <div class='col-md-11'>
-                                <input type='file' onchange="readURL(this);" />
-                                <img class="profilePic" id="blah" src="#" alt="your image" />
-                                <script>
-                                function readURL(input) {
-                                        if (input.files && input.files[0]) {
-                                            var reader = new FileReader();
+                    <div class='form-group'>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input type='file' onchange="readURL(this);"/>
+                                    <img class="profilePic" id="blah" src="#" alt="your image"/>
+                                    <script>
+                                        function readURL(input) {
+                                            if (input.files && input.files[0]) {
+                                                var reader = new FileReader();
 
-                                            reader.onload = function (e) {
-                                                $('#blah')
-                                                    .attr('src', e.target.result)
-                                                    .width(150)
-                                                    .height(150);
-                                            };
+                                                reader.onload = function (e) {
+                                                    $('#blah')
+                                                        .attr('src', e.target.result)
+                                                        .width(150)
+                                                        .height(150);
+                                                };
 
-                                            reader.readAsDataURL(input.files[0]);
+                                                reader.readAsDataURL(input.files[0]);
+                                            }
                                         }
-                                    }
-                                </script>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
     </div>
 </div>
 <form class='form-horizontal' role='form'>
-<div class="wrapper wrapper--w680">
-    <div class="card card-2">
-        <div class="card-body">
-            <ul class="tab-list">
-              <br>
-          </ul>
+    <div class="wrapper wrapper--w680">
+        <div class="card card-2">
+            <div class="card-body">
+                <ul class="tab-list">
+                    <br>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
-  </form>
+</form>
 
 
 <!-- Jquery JS-->
@@ -373,7 +402,8 @@ $displayName = $_SESSION['uname'];
 <script src="js/global.js"></script>
 
 <footer>
-  <p style="text-align:center;"> Create by : 203371703 , 312233422 <p>
+    <p style="text-align:center;"> Create by : 203371703 , 312233422
+    <p>
 </footer>
 </body>
 </html>

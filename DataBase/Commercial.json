@@ -1,0 +1,13 @@
+{
+  "commercial" :[
+    {
+      "city":"AMSTERDAM",
+      "goDate":"4/12/2018",
+      "goHour":"16:20",
+      "returnDate":"8/12/2018",
+      "returnHour":"16:20",
+      "price":"500$",
+      "img": "images/plane4.jpg"
+    }
+  ]
+}
