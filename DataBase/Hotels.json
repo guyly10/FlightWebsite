@@ -1,0 +1,25 @@
+{
+  "hotels":[
+    {
+      "itemId":"4",
+      "destination":"Rome - herrods",
+      "DateFrom":"10/10/2019",
+      "DateTo":"15/10/2019",
+      "Cost":"100$"
+    },
+    {
+      "itemId":"5",
+      "destination":"Paris - goergette",
+      "DateFrom":"15/7/2019",
+      "DateTo":"19/7/2019",
+      "Cost":"120$"
+    },
+    {
+      "itemId":"6",
+      "destination":"Vanice - on the water",
+      "DateFrom":"7/3/2019",
+      "DateTo":"9/3/2019",
+      "Cost":"200$"
+    }
+  ]
+}

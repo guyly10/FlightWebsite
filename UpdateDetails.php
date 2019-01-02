@@ -1,4 +1,9 @@
+<?php include 'FieldCheckLoginLogic.php'?>
 <?php
+if(!isset($_SESSION['uname']) || ($_SESSION['uname']==""))
+   header('Location: index.php');
+$displayName = $_SESSION['uname'];
+
 $fname = "";
 $lName = "";
 $dob = "";
@@ -36,7 +41,10 @@ if (isset($_POST['register'])){
     <title>AGflights</title>
 </head>
 <body>
-<?php include 'FieldCheckLoginLogic.php'?>
+<div><b>
+  <?php echo "Hello, ".$displayName."!"; ?>
+</b></div>
+
 <a href="HeadPage.php">
     <div class="imgcontainer">
         <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
@@ -59,6 +67,14 @@ if (isset($_POST['register'])){
             <div class="vertical-menu">
                 <a href="AccountPage.php" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a>
                 <b><a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details &nbsp &nbsp &nbsp</a></b>
+                <a href="UserOrders.php" style="color: black; text-decoration: none">View Trip Details &nbsp &nbsp &nbsp</a>
+                <a href= <?php if($_SESSION['uname']=="admin") {echo "AdminInfo.php";}?>  style="color: black; text-decoration: none">
+                  <?php
+                  if($_SESSION['uname']=="admin"){
+                     echo "All users information";
+                   }
+                  ?>
+                </a>
             </div>
         </div>
         <div class='panel-body'>

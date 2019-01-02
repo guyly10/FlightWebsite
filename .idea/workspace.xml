@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eeeca2d3-ffbb-40b6-bae0-c7db1f149731" name="Default Changelist" comment="" />
+    <list default="true" id="eeeca2d3-ffbb-40b6-bae0-c7db1f149731" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AccountPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AccountPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UpdateDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/UpdateDetails.php" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,17 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AccountPage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SignUp.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
+            <state relative-caret-position="102">
+              <caret line="93" selection-start-line="93" selection-end-line="93" />
             </state>
           </provider>
         </entry>
@@ -44,8 +39,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UpdateDetails.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+            <state relative-caret-position="247">
+              <caret line="64" column="130" selection-start-line="64" selection-start-column="130" selection-end-line="64" selection-end-column="130" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SignUp.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="26" column="93" lean-forward="true" selection-start-line="26" selection-start-column="93" selection-end-line="26" selection-end-column="93" />
             </state>
           </provider>
         </entry>
@@ -108,6 +112,7 @@
         <option value="$PROJECT_DIR$/indexphp.php" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/StarCSS.css" />
+        <option value="$PROJECT_DIR$/SignUp.php" />
         <option value="$PROJECT_DIR$/css/HeadPage.css" />
         <option value="$PROJECT_DIR$/css/UpdateDetails.css" />
         <option value="$PROJECT_DIR$/account.php" />
@@ -118,7 +123,6 @@
         <option value="$PROJECT_DIR$/ChangeProfilePic.html" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/AccountPage.php" />
-        <option value="$PROJECT_DIR$/SignUp.php" />
         <option value="$PROJECT_DIR$/UpdateDetails.php" />
       </list>
     </option>
@@ -213,12 +217,12 @@
       <workItem from="1544253491911" duration="131000" />
       <workItem from="1544271868164" duration="845000" />
       <workItem from="1544272755853" duration="236000" />
-      <workItem from="1544273046122" duration="8096000" />
+      <workItem from="1544273046122" duration="5548000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89244000" />
+    <option name="totallyTimeSpent" value="86696000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
@@ -370,24 +374,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AccountPage.php">
+    <entry file="file://$PROJECT_DIR$/SignUp.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="16" />
+        <state relative-caret-position="391">
+          <caret line="26" column="93" lean-forward="true" selection-start-line="26" selection-start-column="93" selection-end-line="26" selection-end-column="93" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SignUp.php">
+    <entry file="file://$PROJECT_DIR$/AccountPage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
+        <state relative-caret-position="102">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UpdateDetails.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+        <state relative-caret-position="247">
+          <caret line="64" column="130" selection-start-line="64" selection-start-column="130" selection-end-line="64" selection-end-column="130" />
         </state>
       </provider>
     </entry>

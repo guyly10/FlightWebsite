@@ -10,6 +10,13 @@ img.Logo{
     top: 0px;
     z-index: 1;
 }
+img.pic{
+    height: 75px;
+    width:75px;
+    padding: 3px;
+    border-radius: 100%;
+    position: absolute;
+}
 
 .error{
     color: #FF0000;

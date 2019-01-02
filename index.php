@@ -5,10 +5,11 @@ $displayName = "";
 if (isset($_POST['submit'])){
     $uname = $_POST['uname'];
     $pass = $_POST['psw'];
-    $_SESSION ['uname'] = $uname;
 
-    if ($uname == "admin" && $pass == "admin"){
+    if (($uname == "admin" && $pass == "admin")||($uname == "danU" && $pass == "abc")||($uname == "rodU" && $pass == "asd")){
+        $_SESSION ['uname'] = $uname;
         header('Location: HeadPage.php');
+        exit();
     }
     else{
         $error = "Incorrect User name or Password";
