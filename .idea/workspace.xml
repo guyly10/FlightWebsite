@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eeeca2d3-ffbb-40b6-bae0-c7db1f149731" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AccountPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AccountPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignUp.php" beforeDir="false" afterPath="$PROJECT_DIR$/SignUp.php" afterDir="false" />
-    </list>
+    <list default="true" id="eeeca2d3-ffbb-40b6-bae0-c7db1f149731" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,8 +44,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UpdateDetails.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="121" column="46" selection-start-line="121" selection-start-column="46" selection-end-line="121" selection-end-column="46" />
+            <state relative-caret-position="306">
+              <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -122,8 +118,8 @@
         <option value="$PROJECT_DIR$/ChangeProfilePic.html" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/AccountPage.php" />
-        <option value="$PROJECT_DIR$/UpdateDetails.php" />
         <option value="$PROJECT_DIR$/SignUp.php" />
+        <option value="$PROJECT_DIR$/UpdateDetails.php" />
       </list>
     </option>
   </component>
@@ -131,7 +127,7 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP from XAMPP" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="135" />
     <option name="y" value="-12" />
     <option name="width" value="2588" />
@@ -217,15 +213,15 @@
       <workItem from="1544253491911" duration="131000" />
       <workItem from="1544271868164" duration="845000" />
       <workItem from="1544272755853" duration="236000" />
-      <workItem from="1544273046122" duration="7364000" />
+      <workItem from="1544273046122" duration="8096000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88512000" />
+    <option name="totallyTimeSpent" value="89244000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
@@ -390,8 +386,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/UpdateDetails.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="121" column="46" selection-start-line="121" selection-start-column="46" selection-end-line="121" selection-end-column="46" />
+        <state relative-caret-position="306">
+          <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
         </state>
       </provider>
     </entry>
