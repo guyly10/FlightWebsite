@@ -158,11 +158,11 @@ for($idx = 0; $idx < count($hotels); $idx++){
         <table style="width:50%">
           <h3>Flight</h3>
           <tr>
-            <td>origin</td>
-            <td>Destination</td>
-            <td>Date From</td>
-            <td>Date To</td>
-            <td>Cost</td>
+            <td><b>origin</b></td>
+            <td><b>Destination</b></td>
+            <td><b>Date From</b></td>
+            <td><b>Date To</b></td>
+            <td><b>Cost</b></td>
           </tr>
           <tr>
             <td><?php echo $originF?></td>
@@ -177,10 +177,10 @@ for($idx = 0; $idx < count($hotels); $idx++){
         <table style="width:40%">
           <h3>Hotels</h3>
           <tr>
-            <td>Destination</td>
-            <td>Date From</td>
-            <td>Date To</td>
-            <td>Cost</td>
+            <td><b>Destination</b></td>
+            <td><b>Date From</b></td>
+            <td><b>Date To</b></td>
+            <td><b>Cost</b></td>
           </tr>
           <tr>
             <td><?php echo $destinationH?></td>
@@ -194,14 +194,14 @@ for($idx = 0; $idx < count($hotels); $idx++){
         <table style="width:70%">
           <h3>Cars</h3>
           <tr>
-            <td>Destination</td>
-            <td>Date From</td>
-            <td>Pickup Hour</td>
-            <td>Date To</td>
-            <td>Drop Off</td>
-            <td>Car Group</td>
-            <td>Driver Age</td>
-            <td>Cost</td>
+            <td><b>Destination</b></td>
+            <td><b>Date From</b></td>
+            <td><b>Pickup Hour</b></td>
+            <td><b>Date To</b></td>
+            <td><b>Drop Off</b></td>
+            <td><b>Car Group</b></td>
+            <td><b>Driver Age</b></td>
+            <td><b>Cost</b></td>
           </tr>
           <tr>
             <td><?php echo $destinationC?></td>

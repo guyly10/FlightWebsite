@@ -82,8 +82,8 @@ for($idx = 0; $idx < count($users); $idx++){
         <table style="width:50%">
           <h3>Users</h3>
           <tr>
-            <td>User Id</td>
-            <td>Password</td>
+            <td><b>User Id</b></td>
+            <td><b>Password</b></td>
           </tr>
           <?php
           for($id = 0; $id < count($items); $id++)
