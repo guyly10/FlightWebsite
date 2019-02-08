@@ -1,3 +1,4 @@
+<?php include 'FieldCheckLoginLogic.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +12,12 @@
           type='text/css'>
     <link rel="stylesheet" href="css/indexLogin.css">
     <link rel="stylesheet" href="css/HeadPage.css">
-    <?php include 'FieldCheckLoginLogic.php'?>
     <title>AGflights</title>
 </head>
 <body>
 
 <div class='panel-body'>
-    <form class='form-horizontal' role='form' method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form class='form-horizontal' role='form' method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
       <a href="index.php">
           <div class="imgcontainer">
               <img src="images/Flight_Logo.png" alt="Logo" class="Logo">

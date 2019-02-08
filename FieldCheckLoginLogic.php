@@ -12,6 +12,12 @@ $equalPass = "";
 $successLogin = "";
 $count = 0;
 
+$dbServerName = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "FlightWebsite";
+$conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     //check id_first_name
@@ -127,7 +133,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if($count == 9)
     {
       $successLogin = "User signed up Successfully! please go back to login Page and log in";
+
+        $sql = "INSERT INTO users (UserID, firstName, lastName, dob, email, phone, password, address, photo) 
+            VALUES ('$fName', '$lName', '$dob', '$email', '$phone', '$pass', '$address', 'empty');";
+        $result = mysqli_query($conn, $sql);
     }
+
 
 }
 ?>

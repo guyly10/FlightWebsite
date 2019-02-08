@@ -1,3 +1,4 @@
+<?php include 'DataBaseConn.php'?>
 <?php
 session_start();
 if (!isset($_SESSION['uname']) || ($_SESSION['uname'] == ""))
@@ -5,18 +6,18 @@ if (!isset($_SESSION['uname']) || ($_SESSION['uname'] == ""))
 
 $displayName = $_SESSION['uname'];
 
-$json = file_get_contents("DataBase/Commercial.json");
-$result = json_decode($json);
-$commercial = $result->commercial;
+$sql = "SELECT * FROM commercials;";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 
-for ($idx = 0; $idx < count($commercial); $idx++) {
-    $city = $commercial[$idx]->city;
-    $goDate = $commercial[$idx]->goDate;
-    $goHour = $commercial[$idx]->goHour;
-    $returnDate = $commercial[$idx]->returnDate;
-    $returnHour = $commercial[$idx]->returnHour;
-    $price = $commercial[$idx]->price;
-    $img = $commercial[$idx]->img;
+for ($idx = 0; $idx < 8; $idx++) {
+    $city = $row['city'];
+    $goDate = $row['goDate'];
+    $goHour = $row['goHour'];
+    $returnDate = $row['returnDate'];
+    $returnHour = $row['returnHour'];
+    $price = $row['price'];
+    $img = $row['img'];
 }
 
 ?>

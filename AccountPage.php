@@ -1,36 +1,26 @@
-
-
+<?php include 'DataBaseConn.php' ?>
 <?php
 session_start();
-if(!isset($_SESSION['uname']) || ($_SESSION['uname']==""))
-   header('Location: index.php');
+if (!isset($_SESSION['uname']) || ($_SESSION['uname'] == ""))
+    header('Location: index.php');
 
 $displayName = $_SESSION['uname'];
 $_SESSION['userName'] = $_SESSION['uname'];
-// $fName = "";
-// $lName = "";
-// $dob = "";
-// $email = "";
-// $phone = "";
-// $pass = "";
-// $address = "";
 
+$sql = "SELECT * FROM users WHERE UserID = '$displayName';";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 
-$json = file_get_contents("DataBase/Users.json");
-$result = json_decode($json);
-$users= $result->users;
-for($idx = 0; $idx < count($users); $idx++){
-    $obj = $users[$idx]->UserId;
-    if($obj==$_SESSION['uname']){
-      $fName=$users[$idx]->firstName;
-      $lName = $users[$idx]->lastName;
-      $dob = $users[$idx]->dob;
-      $email = $users[$idx]->email;
-      $phone = $users[$idx]->phone;
-      $pass = $users[$idx]->password;
-      $address = $users[$idx]->address;
-      $photo = $users[$idx]->photo;
-    }
+for ($idx = 0; $idx < 9; $idx++) {
+    $fName = $row['firstName'];
+    $lName = $row['lastName'];
+    $dob = $row['dob'];
+    $email = $row['email'];
+    $phone = $row['phone'];
+    $pass = $row['password'];
+    $address = $row['address'];
+    $photo = $row['photo'];
+
 }
 
 
@@ -70,12 +60,12 @@ for($idx = 0; $idx < count($users); $idx++){
 //   $address = $_SESSION['address'];
 // }
 
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -89,8 +79,8 @@ for($idx = 0; $idx < count($users); $idx++){
 </head>
 <body>
 <div><b>
-  <?php echo "Hello, ".$displayName."!"; ?>
-</b></div>
+        <?php echo "Hello, " . $displayName . "!"; ?>
+    </b></div>
 <a href="HeadPage.php">
     <div class="imgcontainer">
         <img src="images/Flight_Logo.png" alt="Logo" class="Logo">
@@ -111,22 +101,27 @@ for($idx = 0; $idx < count($users); $idx++){
 
         <div class='panel-heading'>
             <div class="vertical-menu">
-                <b><a href="AccountPage.php" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a></b>
-                <a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details &nbsp &nbsp &nbsp</a>
-                <a href="UserOrders.php" style="color: black; text-decoration: none">View Trip Details &nbsp &nbsp &nbsp</a>
-                <a href= <?php if($_SESSION['uname']=="admin") {echo "AdminInfo.php";}?>  style="color: black; text-decoration: none">
-                  <?php
-                  if($_SESSION['uname']=="admin"){
-                     echo "All users information";
-                   }
-                  ?>
+                <b><a href="AccountPage.php" style="color: black; text-decoration: none">Profile &nbsp &nbsp
+                        &nbsp</a></b>
+                <a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details &nbsp
+                    &nbsp &nbsp</a>
+                <a href="UserOrders.php" style="color: black; text-decoration: none">View Trip Details &nbsp &nbsp
+                    &nbsp</a>
+                <a href= <?php if ($_SESSION['uname'] == "admin") {
+                    echo "AdminInfo.php";
+                } ?>  style="color: black; text-decoration: none">
+                <?php
+                if ($_SESSION['uname'] == "admin") {
+                    echo "All users information";
+                }
+                ?>
                 </a>
             </div>
         </div>
         <div class='panel-body'>
             <form class='form-horizontal' role='form'>
                 <div>
-                    <img src=<?php echo $photo?> class="profilePic">
+                    <img src=<?php echo $photo ?> class="profilePic">
                 </div>
 
                 <div class='form-group'>
@@ -134,12 +129,14 @@ for($idx = 0; $idx < count($users); $idx++){
                     <div class='col-md-8'>
                         <div class='col-md-3 indent-small'>
                             <div class='form-group internal'>
-                                <input class='form-control' id='id_first_name' placeholder="<?php echo $fName?>" type='text'>
+                                <input class='form-control' id='id_first_name' placeholder="<?php echo $fName ?>"
+                                       type='text'>
                             </div>
                         </div>
                         <div class='col-md-3 indent-small'>
                             <div class='form-group internal'>
-                                <input class='form-control' id='id_last_name' placeholder='<?php echo $lName?>' type='text'>
+                                <input class='form-control' id='id_last_name' placeholder='<?php echo $lName ?>'
+                                       type='text'>
                             </div>
                         </div>
                     </div>
@@ -149,7 +146,7 @@ for($idx = 0; $idx < count($users); $idx++){
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_DOB' placeholder='<?php echo $dob?>' type='text'>
+                                <input class='form-control' id='id_DOB' placeholder='<?php echo $dob ?>' type='text'>
                             </div>
                         </div>
                     </div>
@@ -159,12 +156,13 @@ for($idx = 0; $idx < count($users); $idx++){
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_email' placeholder='<?php echo $email?>' type='text'>
+                                <input class='form-control' id='id_email' placeholder='<?php echo $email ?>'
+                                       type='text'>
                             </div>
                         </div>
                         <div class='form-group internal'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_phone' placeholder='<?php echo $phone?>'
+                                <input class='form-control' id='id_phone' placeholder='<?php echo $phone ?>'
                                        type='text'>
                             </div>
                         </div>
@@ -175,7 +173,7 @@ for($idx = 0; $idx < count($users); $idx++){
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_pass' placeholder='<?php echo $pass?>' type='text'>
+                                <input class='form-control' id='id_pass' placeholder='<?php echo $pass ?>' type='text'>
                             </div>
                         </div>
                     </div>
@@ -185,7 +183,8 @@ for($idx = 0; $idx < count($users); $idx++){
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <div class='col-md-11'>
-                                <input class='form-control' id='id_address' placeholder='<?php echo $address?>' type='text'>
+                                <input class='form-control' id='id_address' placeholder='<?php echo $address ?>'
+                                       type='text'>
                             </div>
                         </div>
                     </div>

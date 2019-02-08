@@ -1,12 +1,18 @@
+<?php include 'DataBaseConn.php'?>
 <?php
 session_start();
 $error = "";
 $displayName = "";
+
 if (isset($_POST['submit'])){
     $uname = $_POST['uname'];
     $pass = $_POST['psw'];
 
-    if (($uname == "admin" && $pass == "admin")||($uname == "danU" && $pass == "abc")||($uname == "rodU" && $pass == "asd")){
+    $sql = "SELECT * FROM users WHERE UserID = '$uname';";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    if (($uname == $row['UserID'] && $pass == $row['password'])){
         $_SESSION ['uname'] = $uname;
         header('Location: HeadPage.php');
         exit();
