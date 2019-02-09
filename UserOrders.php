@@ -22,38 +22,38 @@ $sqlCars = "SELECT * FROM cars;";
 $resultCars = mysqli_query($conn, $sqlCars);
 $cars = array();
 
-$itemIdC = "";
-$destinationC = "";
-$carGroupC = "";
-$DateFromC = "";
-$pickupHourC = "";
-$DateToC = "";
-$dropOffC = "";
-$driverAgeC = "";
-$CostC = "";
+$itemIdC = array();
+$destinationC = array();
+$carGroupC = array();
+$DateFromC = array();
+$pickupHourC = array();
+$DateToC = array();
+$dropOffC = array();
+$driverAgeC = array();
+$CostC = array();
 
 while ($rowCars = mysqli_fetch_assoc($resultCars)){
     for ($idx = 0; $idx < count($items); $idx++){
         if ($rowCars['itemId'] == $items[$idx]){
-            $itemIdC = $rowCars['itemId'];
-            $destinationC = $rowCars['destination'];
-            $carGroupC = $rowCars['carGroup'];
-            $DateFromC = $rowCars['DateFrom'];
-            $pickupHourC = $rowCars['pickupHour'];
-            $DateToC = $rowCars['DateTo'];
-            $dropOffC = $rowCars['dropOff'];
-            $driverAgeC = $rowCars['driverAge'];
-            $CostC = $rowCars['Cost'];
+            array_push($itemIdC, $rowCars['itemId']);
+            array_push($destinationC, $rowCars['destination']);
+            array_push($carGroupC, $rowCars['carGroup']);
+            array_push($DateFromC, $rowCars['DateFrom']);
+            array_push($pickupHourC, $rowCars['pickupHour']);
+            array_push($DateToC, $rowCars['DateTo']);
+            array_push($dropOffC, $rowCars['dropOff']);
+            array_push($driverAgeC, $rowCars['driverAge']);
+            array_push($CostC, $rowCars['Cost']);
         }
     }
 }
 
-$itemIdF = "";
-$originF = "";
-$DestinationF = "";
-$DateFromF = "";
-$DateToF = "";
-$CostF = "";
+$itemIdF = array();
+$originF = array();
+$DestinationF = array();
+$DateFromF = array();
+$DateToF = array();
+$CostF = array();
 
 $sqlFlight = "SELECT * FROM flights;";
 $resultFlight = mysqli_query($conn, $sqlFlight);
@@ -62,12 +62,12 @@ $flights = array();
 while ($rowFlight = mysqli_fetch_assoc($resultFlight)){
     for ($idx = 0; $idx < count($items); $idx++){
         if ($rowFlight['itemId'] == $items[$idx]){
-            $itemIdF = $rowFlight['itemId'];
-            $originF = $rowFlight['origin'];
-            $DestinationF = $rowFlight['Destination'];
-            $DateFromF = $rowFlight['DateFrom'];
-            $DateToF = $rowFlight['DateTo'];
-            $CostF = $rowFlight['Cost'];
+            array_push($itemIdF, $rowFlight['itemId']);
+            array_push($originF, $rowFlight['origin']);
+            array_push($DestinationF, $rowFlight['Destination']);
+            array_push($DateFromF, $rowFlight['DateFrom']);
+            array_push($DateToF, $rowFlight['DateTo']);
+            array_push($CostF, $rowFlight['Cost']);
         }
     }
 }
@@ -76,20 +76,20 @@ $sqlHotels = "SELECT * FROM hotels;";
 $resultHotels = mysqli_query($conn, $sqlHotels);
 $hotels = array();
 
-$itemIdH = "";
-$destinationH = "";
-$DateFromH = "";
-$DateToH = "";
-$CostH = "";
+$itemIdH = array();
+$destinationH = array();
+$DateFromH = array();
+$DateToH = array();
+$CostH = array();
 
 while ($rowHotels = mysqli_fetch_assoc($resultHotels)){
     for ($idx = 0; $idx < count($items); $idx++){
         if ($rowHotels['itemId'] == $items[$idx]){
-            $itemIdH = $rowHotels['itemId'];
-            $destinationH = $rowHotels['destination'];
-            $DateFromH = $rowHotels['DateFrom'];
-            $DateToH = $rowHotels['DateTo'];
-            $CostH = $rowHotels['Cost'];
+            array_push($itemIdH, $rowHotels['itemId']);
+            array_push($destinationH, $rowHotels['destination']);
+            array_push($DateFromH, $rowHotels['DateFrom']);
+            array_push($DateToH, $rowHotels['DateTo']);
+            array_push($CostH, $rowHotels['Cost']);
         }
     }
 }
@@ -160,11 +160,21 @@ while ($rowHotels = mysqli_fetch_assoc($resultHotels)){
                 <td><b>Cost</b></td>
             </tr>
             <tr>
-                <td><?php echo $originF ?></td>
-                <td><?php echo $DestinationF ?></td>
-                <td><?php echo $DateFromF ?></td>
-                <td><?php echo $DateToF ?></td>
-                <td><?php echo $CostF ?></td>
+                <td><?php foreach ($originF as $value){
+                        echo $value; echo "<br>";;
+                    } ?></td>
+                <td><?php foreach ($DestinationF as $value){
+                        echo $value; echo "<br>";;
+                    } ?></td>
+                <td><?php foreach ($DateFromF as $value){
+                        echo $value; echo "<br>";
+                    } ?></td>
+                <td><?php foreach ($DateToF as $value){
+                        echo $value; echo "<br>";
+                    }?></td>
+                <td><?php foreach ($CostF as $value){
+                        echo $value; echo "<br>";
+                    }?></td>
             </tr>
         </table>
         <br>
@@ -178,10 +188,18 @@ while ($rowHotels = mysqli_fetch_assoc($resultHotels)){
                 <td><b>Cost</b></td>
             </tr>
             <tr>
-                <td><?php echo $destinationH ?></td>
-                <td><?php echo $DateFromH ?></td>
-                <td><?php echo $DateToH ?></td>
-                <td><?php echo $CostH ?></td>
+                <td><?php foreach ($destinationH as $value){
+                        echo $value; echo "<br>";
+                    } ?></td>
+                <td><?php foreach ($DateFromH as $value){
+                        echo $value; echo "<br>";
+                    } ?></td>
+                <td><?php foreach ($DateToH as $value){
+                        echo $value; echo "<br>";
+                    } ?></td>
+                <td><?php foreach ($CostH as $value){
+                        echo $value; echo "<br>";
+                    } ?></td>
             </tr>
         </table>
         <br>
@@ -199,14 +217,30 @@ while ($rowHotels = mysqli_fetch_assoc($resultHotels)){
                 <td><b>Cost</b></td>
             </tr>
             <tr>
-                <td><?php echo $destinationC ?></td>
-                <td><?php echo $DateFromC ?></td>
-                <td><?php echo $pickupHourC ?></td>
-                <td><?php echo $DateToC ?></td>
-                <td><?php echo $dropOffC ?></td>
-                <td><?php echo $carGroupC ?></td>
-                <td><?php echo $driverAgeC ?></td>
-                <td><?php echo $CostC ?></td>
+                <td><?php foreach ($destinationC as $value){
+                    echo $value; echo "<br>";
+                    }?></td>
+                <td><?php foreach ($DateFromC as $value){
+                        echo $value; echo "<br>";
+                    } ?></td>
+                <td><?php foreach ($pickupHourC as $value){
+                        echo $value; echo "<br>";
+                    } ?></td>
+                <td><?php foreach ($DateToC as $value){
+                        echo $value; echo "<br>";
+                    } ?></td>
+                <td><?php foreach ($dropOffC as $value){
+                        echo $value; echo "<br>";
+                    } ?></td>
+                <td><?php foreach ($carGroupC as $value){
+                        echo $value; echo "<br>";
+                    } ?></td>
+                <td><?php foreach ($driverAgeC as $value){
+                        echo $value; echo "<br>";
+                    } ?></td>
+                <td><?php foreach ($CostC as $value){
+                        echo $value; echo "<br>";
+                    } ?></td>
             </tr>
         </table>
     </div>

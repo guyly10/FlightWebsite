@@ -10,6 +10,8 @@ $sql = "SELECT * FROM commercials;";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
+//need to change to show more than one commercial
+
 for ($idx = 0; $idx < 8; $idx++) {
     $city = $row['city'];
     $goDate = $row['goDate'];
