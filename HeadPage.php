@@ -90,22 +90,21 @@ if (isset($_POST['submit2'])){
 }
 if (isset($_POST['submit3'])){
   if($_POST['origin']!=null || $_POST['origin']!= ''){
-    $validation = "in 3";
     $origin = $_POST['origin'];
     $destination_flight = $_POST['destination'];
     $check_in = $_POST['check_in3'];
     $check_out = $_POST['check_out3'];
 
-    $sql = "SELECT * FROM flights WHERE destination LIKE '%$origin%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
+    $sql = "SELECT * FROM flights WHERE origin LIKE '%$origin%' AND Destination LIKE '%$destination_flight%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
-    if ($origin == $row['$origin'] ){
+    if ($origin == $row['origin'] ){
       $_SESSION ['origin'] = $row['origin'];
       $_SESSION ['destination_flight'] = $row['destination'];
       $_SESSION ['check_in'] = $row['DateFrom'];
       $_SESSION ['check_out'] = $row['DateTo'];
       $_SESSION ['cost'] = $row['Cost'];
-        header('Location: index.php');
+        header('Location: SearchResults.php');
         exit();
     }
     else {
@@ -340,34 +339,34 @@ if (isset($_POST['submit3'])){
                         </form>
                     </div>
                     <div class="tab-pane" id="tab3">
-                        <form id="form3" method="post" action="">
+                        <form id="form3" method="post" action="HeadPage.php">
                             <div class="input-group">
                                 <label class="label">origin:</label>
-                                <input id="origin" class="input--style-1" type="text" name="origin" placeholder="City or airport"
+                                <input id="origin" name="origin" class="input--style-1" type="text" name="origin" placeholder="City or airport"
                                        required="required">
                             </div>
                             <div class="input-group">
                                 <label class="label">destination:</label>
-                                <input id="destination" class="input--style-1" type="text" name="destination"
+                                <input id="destination" name="destination" class="input--style-1" type="text" name="destination"
                                        placeholder="City or airport" required="required">
                             </div>
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">Departing:</label>
-                                        <input id="check_in3" class="input--style-1" type="text" name="check-in"
+                                        <input id="check_in3" name="check_in3" class="input--style-1" type="text" name="check-in"
                                                placeholder="mm/dd/yyyy" id="input-start-2">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">returning:</label>
-                                        <input id="check_out3" class="input--style-1" type="text" name="check-out"
+                                        <input id="check_out3" name="check_out3" class="input--style-1" type="text" name="check-out"
                                                placeholder="mm/dd/yyyy" id="input-end-2">
                                     </div>
                                 </div>
                             </div>
-                            <button id="submit3" class="btn-submit" type="submit">search</button>
+                            <button id="submit3" name="submit3" class="btn-submit" type="submit">search</button>
                         </form>
                         <?php
                         if (isset($_POST['submit1'])){

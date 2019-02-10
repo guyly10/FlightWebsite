@@ -122,14 +122,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $equalPass = "Passwords are not equal";
     }
     if ($count == 9) {
+        $sqlUserName = "SELECT * FROM users WHERE UserID = '$dFName';";
+        $resultUserName = mysqli_query($conn, $sqlUserName);
+        $rowUserName = mysqli_fetch_assoc($resultUserName);
 
-        //$try = (string)$fName;
+        $sqlEmail = "SELECT * FROM users WHERE email = '$dEmail';";
+        $resultEmail = mysqli_query($conn, $sqlEmail);
+        $rowEmail = mysqli_fetch_assoc($resultEmail);
 
-        $sql = "INSERT INTO users (UserID, firstName, lastName)
-                VALUES ('$dFName', '$dFName', '$dLName');";
-        mysqli_query($conn, $sql);
+        if ($rowUserName['UserID'] == $dFName) {
+            $fName = "User Name already exists";
+        } else if ($rowEmail['email'] == $dEmail) {
+            $email = "Email already exists";
+        } else {
+            $sql = "INSERT INTO users (UserID, firstName, lastName, dob, email, phone, password, address, photo)
+                VALUES ('$dFName', '$dFName', '$dLName', '$dDob', '$dEmail', '$dPhone', '$dPass', '$dAddress', 'empty');";
+            mysqli_query($conn, $sql);
 
-        $successLogin = "User signed up Successfully! please go back to login Page and log in";
+            $successLogin = "User signed up Successfully! please go back to login Page and log in";
+        }
+
+
     }
 
 

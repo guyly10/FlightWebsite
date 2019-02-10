@@ -1,89 +1,9 @@
 <?php include 'DataBaseConn.php'?>
 <?php
-// if (!isset($_SESSION['uname']) || ($_SESSION['uname'] == ""))
-//     header('Location: index.php');
 
-// $displayName = "hjbyyg";
-// $validation = "";
-// if (isset($_POST['submit'])){
-//   $validation= "!!@#@#@!#@!#!@#!@#!@!#!@#!#!";
-//   if($_POST['where']!=null || $_POST['where']!= ''){
-//     $validation = "in 1";
-//     $where = $_POST['where'];
-//     $check_in = $_POST['check_in1'];
-//     $check_out = $_POST['check_out1'];
-//
-//     $sql = "SELECT * FROM hotels WHERE destination LIKE '%$where%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
-//     $result = mysqli_query($conn, $sql);
-//     $row = mysqli_fetch_assoc($result);
-//
-//     // for loop to get all hotels in the destination
-//     if ($where == $row['destination'] ){
-//         $_SESSION ['where'] = $row['destination'];
-//         $_SESSION ['check_in'] = $row['DateFrom'];
-//         $_SESSION ['check_out'] = $row['DateTo'];
-//         $_SESSION ['cost'] = $row['Cost'];
-//         header('Location: index.php');
-//         exit();
-//     }
-//     else {
-//       header('Location: AccountPage.php');
-//       exit();
-//     }
-//   }
-//   else if($_POST['location']!=null || $_POST['location']!= ''){
-//     $validation = "in 2";
-//     $location = $_POST['location'];
-//     $car_group = $_POST['car_group'];
-//     $check_in = $_POST['check_in2'];
-//     $check_out = $_POST['check_out2'];
-//
-//     $sql = "SELECT * FROM cars WHERE destination LIKE '%$location%' AND carGroup = '$car_group' AND DateFrom = '$check_in' And DateTo = '$check_out';";
-//     $result = mysqli_query($conn, $sql);
-//     $row = mysqli_fetch_assoc($result);
-//     if ($location == $row['destination'] ){
-//       $_SESSION ['location'] = $row['destination'];
-//       $_SESSION ['car_group'] = $row['carGroup'];
-//       $_SESSION ['driver_age'] = $row['driverAge'];
-//       $_SESSION ['dropoff'] = $row['dropOff'];
-//       $_SESSION ['pickup'] = $row['pickupHour'];
-//       $_SESSION ['check_in'] = $row['DateFrom'];
-//       $_SESSION ['check_out'] = $row['DateTo'];
-//       $_SESSION ['cost'] = $row['Cost'];
-//         header('Location: index.php');
-//         exit();
-//     }
-//     else {
-//       header('Location: AccountPage.php');
-//       exit();
-//     }
-//   }
-//   else if($_POST['origin']!=null || $_POST['origin']!= ''){
-//     $validation = "in 3";
-//     $origin = $_POST['origin'];
-//     $destination_flight = $_POST['destination'];
-//     $check_in = $_POST['check_in3'];
-//     $check_out = $_POST['check_out3'];
-//
-//     $sql = "SELECT * FROM flights WHERE destination LIKE '%$origin%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
-//     $result = mysqli_query($conn, $sql);
-//     $row = mysqli_fetch_assoc($result);
-//     if ($origin == $row['$origin'] ){
-//       $_SESSION ['origin'] = $row['origin'];
-//       $_SESSION ['destination_flight'] = $row['destination'];
-//       $_SESSION ['check_in'] = $row['DateFrom'];
-//       $_SESSION ['check_out'] = $row['DateTo'];
-//       $_SESSION ['cost'] = $row['Cost'];
-//         header('Location: index.php');
-//         exit();
-//     }
-//     else {
-//       header('Location: AccountPage.php');
-//       exit();
-//     }
-//   }
-//
-// }
+session_start();
+$displayName = $_SESSION['uname'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,7 +42,7 @@
 </head>
 <body>
 <div><b>
-        <?php echo "Hello, " . $displayName . " !".$validation; ?>
+        <?php echo "Hello, " . $displayName . " !";?>
     </b></div>
 <a href="HeadPage.php">
     <div class="imgcontainer">
