@@ -1,15 +1,23 @@
 <?php include 'DataBaseConn.php'?>
+
 <?php
 session_start();
 if (!isset($_SESSION['uname']) || ($_SESSION['uname'] == ""))
     header('Location: index.php');
 
 $displayName = $_SESSION['uname'];
-
+$validation = "";
 $sql = "SELECT * FROM commercials;";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
+// $sql = "SELECT * FROM cars WHERE destination LIKE '%Rome%' AND carGroup = 'group 1' AND DateFrom = '10/10/2019' And DateTo = '15/10/2019';";
+// $result = mysqli_query($conn, $sql);
+// $row = mysqli_fetch_assoc($result);
+// if ("Rome" == $row['destination'] ){
+//     header('Location: index.php');
+//     exit();
+// }
 //need to change to show more than one commercial
 
 for ($idx = 0; $idx < 8; $idx++) {
@@ -20,6 +28,92 @@ for ($idx = 0; $idx < 8; $idx++) {
     $returnHour = $row['returnHour'];
     $price = $row['price'];
     $img = $row['img'];
+}
+
+// if (isset($_POST['submit1'])){
+//   header('Location: AccountPage.php');
+//   exit();
+//   // $validation= "!!@#@#@!#@!#!@#!@#!@!#!@#!#!";
+//   // if($_POST['where']!=null || $_POST['where']!= ''){
+//   //   $validation = "in 1";
+//   //   $where = $_POST['where'];
+//   //   $check_in = $_POST['check_in1'];
+//   //   $check_out = $_POST['check_out1'];
+//   //
+//   //   $sql = "SELECT * FROM hotels WHERE destination LIKE '%$where%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
+//   //   $result = mysqli_query($conn, $sql);
+//   //   $row = mysqli_fetch_assoc($result);
+//   //
+//   //   // for loop to get all hotels in the destination
+//   //   if ($where == $row['destination'] ){
+//   //       $_SESSION ['where'] = $row['destination'];
+//   //       $_SESSION ['check_in'] = $row['DateFrom'];
+//   //       $_SESSION ['check_out'] = $row['DateTo'];
+//   //       $_SESSION ['cost'] = $row['Cost'];
+//   //       header('Location: index.php');
+//   //       exit();
+//   //   }
+//   //   else {
+//   //     header('Location: AccountPage.php');
+//   //     exit();
+//   //   }
+//   // }
+// }
+if (isset($_POST['submit2'])){
+  if($_POST['location']!=null || $_POST['location']!= ''){
+    $validation = "in 2";
+    $location = $_POST['location'];
+    $car_group = $_POST['car_group'];
+    $check_in = $_POST['check_in2'];
+    $check_out = $_POST['check_out2'];
+
+    $sql = "SELECT * FROM cars WHERE destination LIKE '%$location%' AND carGroup = '$car_group' AND DateFrom = '$check_in' And DateTo = '$check_out';";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    if ($location == $row['destination'] ){
+      $_SESSION ['location'] = $row['destination'];
+      $_SESSION ['car_group'] = $row['carGroup'];
+      $_SESSION ['driver_age'] = $row['driverAge'];
+      $_SESSION ['dropoff'] = $row['dropOff'];
+      $_SESSION ['pickup'] = $row['pickupHour'];
+      $_SESSION ['check_in'] = $row['DateFrom'];
+      $_SESSION ['check_out'] = $row['DateTo'];
+      $_SESSION ['cost'] = $row['Cost'];
+        header('Location: index.php');
+        exit();
+    }
+    else {
+      header('Location: AccountPage.php');
+      exit();
+    }
+  }
+}
+if (isset($_POST['submit3'])){
+  if($_POST['origin']!=null || $_POST['origin']!= ''){
+    $validation = "in 3";
+    $origin = $_POST['origin'];
+    $destination_flight = $_POST['destination'];
+    $check_in = $_POST['check_in3'];
+    $check_out = $_POST['check_out3'];
+
+    $sql = "SELECT * FROM flights WHERE destination LIKE '%$origin%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    if ($origin == $row['$origin'] ){
+      $_SESSION ['origin'] = $row['origin'];
+      $_SESSION ['destination_flight'] = $row['destination'];
+      $_SESSION ['check_in'] = $row['DateFrom'];
+      $_SESSION ['check_out'] = $row['DateTo'];
+      $_SESSION ['cost'] = $row['Cost'];
+        header('Location: index.php');
+        exit();
+    }
+    else {
+      header('Location: AccountPage.php');
+      exit();
+    }
+  }
+
 }
 
 ?>
@@ -60,7 +154,7 @@ for ($idx = 0; $idx < 8; $idx++) {
 </head>
 <body>
 <div><b>
-        <?php echo "Hello, " . $displayName . "!"; ?>
+        <?php echo "Hello, " . $displayName . " !".$validation; ?>
     </b></div>
 <a href="HeadPage.php">
     <div class="imgcontainer">
@@ -95,24 +189,24 @@ for ($idx = 0; $idx < 8; $idx++) {
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
-                        <form method="POST" action="#">
+                        <form id="form1" method="post" action="HeadPage.php">
                             <div class="input-group">
                                 <label class="label">where:</label>
-                                <input class="input--style-1" type="text" name="address"
+                                <input id="where" class="input--style-1" type="text" name="address"
                                        placeholder="City, region or specific hotel" required="required">
                             </div>
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">check-in:</label>
-                                        <input class="input--style-1" type="text" name="check-in"
+                                        <input id="chek_in1" class="input--style-1" type="text" name="check-in"
                                                placeholder="mm/dd/yyyy" id="input-start">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">check-out:</label>
-                                        <input class="input--style-1" type="text" name="check-out"
+                                        <input id="chek_out1" class="input--style-1" type="text" name="check-out"
                                                placeholder="mm/dd/yyyy" id="input-end">
                                     </div>
                                 </div>
@@ -154,14 +248,14 @@ for ($idx = 0; $idx < 8; $idx++) {
                                 </div>
                             </div>
 
-                            <button class="btn-submit" type="submit">search</button>
+                            <button id="submit1" class="btn-submit" type="submit">search</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="tab2">
-                        <form method="POST" action="#">
+                        <form id="form2" method="post" action="">
                             <div class="input-group">
                                 <label class="label">location:</label>
-                                <input class="input--style-1" type="text" name="location"
+                                <input id="location" class="input--style-1" type="text" name="location"
                                        placeholder="Destination, hotel name" required="required">
                             </div>
                             <div class="row row-space">
@@ -183,7 +277,7 @@ for ($idx = 0; $idx < 8; $idx++) {
                                     <div class="input-group">
                                         <label class="label">car group:</label>
                                         <div class="rs-select2 js-select-simple select--no-search">
-                                            <select name="car-group">
+                                            <select id="car_group"name="car-group">
                                                 <option selected="selected">Group S-car</option>
                                                 <option>Group 1</option>
                                                 <option>Group 2</option>
@@ -198,7 +292,7 @@ for ($idx = 0; $idx < 8; $idx++) {
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">pick up:</label>
-                                        <input class="input--style-1 js-single-datepicker" type="text" name="pickup"
+                                        <input id="check_in2" class="input--style-1 js-single-datepicker" type="text" name="pickup"
                                                placeholder="mm/dd/yyyy" data-drop="1">
                                         <div class="dropdown-datepicker" id="dropdown-datepicker1"></div>
                                     </div>
@@ -222,7 +316,7 @@ for ($idx = 0; $idx < 8; $idx++) {
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">drop off:</label>
-                                        <input class="input--style-1 js-single-datepicker" type="text" name="dropoff"
+                                        <input id="check_out2" class="input--style-1 js-single-datepicker" type="text" name="dropoff"
                                                placeholder="mm/dd/yyyy" data-drop="2">
                                         <div class="dropdown-datepicker" id="dropdown-datepicker2"></div>
                                     </div>
@@ -242,39 +336,70 @@ for ($idx = 0; $idx < 8; $idx++) {
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn-submit m-t-0" type="submit">search</button>
+                            <button id="submit2" class="btn-submit m-t-0" type="submit">search</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="tab3">
-                        <form method="POST" action="#">
+                        <form id="form3" method="post" action="">
                             <div class="input-group">
                                 <label class="label">origin:</label>
-                                <input class="input--style-1" type="text" name="origin" placeholder="City or airport"
+                                <input id="origin" class="input--style-1" type="text" name="origin" placeholder="City or airport"
                                        required="required">
                             </div>
                             <div class="input-group">
                                 <label class="label">destination:</label>
-                                <input class="input--style-1" type="text" name="destination"
+                                <input id="destination" class="input--style-1" type="text" name="destination"
                                        placeholder="City or airport" required="required">
                             </div>
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">Departing:</label>
-                                        <input class="input--style-1" type="text" name="check-in"
+                                        <input id="check_in3" class="input--style-1" type="text" name="check-in"
                                                placeholder="mm/dd/yyyy" id="input-start-2">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">returning:</label>
-                                        <input class="input--style-1" type="text" name="check-out"
+                                        <input id="check_out3" class="input--style-1" type="text" name="check-out"
                                                placeholder="mm/dd/yyyy" id="input-end-2">
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn-submit" type="submit">search</button>
+                            <button id="submit3" class="btn-submit" type="submit">search</button>
                         </form>
+                        <?php
+                        if (isset($_POST['submit1'])){
+                          header('Location: AccountPage.php');
+                          exit();
+                          // $validation= "!!@#@#@!#@!#!@#!@#!@!#!@#!#!";
+                          // if($_POST['where']!=null || $_POST['where']!= ''){
+                          //   $validation = "in 1";
+                          //   $where = $_POST['where'];
+                          //   $check_in = $_POST['check_in1'];
+                          //   $check_out = $_POST['check_out1'];
+                          //
+                          //   $sql = "SELECT * FROM hotels WHERE destination LIKE '%$where%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
+                          //   $result = mysqli_query($conn, $sql);
+                          //   $row = mysqli_fetch_assoc($result);
+                          //
+                          //   // for loop to get all hotels in the destination
+                          //   if ($where == $row['destination'] ){
+                          //       $_SESSION ['where'] = $row['destination'];
+                          //       $_SESSION ['check_in'] = $row['DateFrom'];
+                          //       $_SESSION ['check_out'] = $row['DateTo'];
+                          //       $_SESSION ['cost'] = $row['Cost'];
+                          //       header('Location: index.php');
+                          //       exit();
+                          //   }
+                          //   else {
+                          //     header('Location: AccountPage.php');
+                          //     exit();
+                          //   }
+                          // }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
