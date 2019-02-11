@@ -1,0 +1,20 @@
+{
+  "flights":[
+    {
+      "itemId":"17",
+      "origin":"USA",
+      "destination":"TLV-BGU",
+      "DateFrom":"15/10/2019",
+      "DateTo":"20/10/2019",
+      "Cost":"200$"
+    },
+    {
+      "itemId":"18",
+      "origin":"TLV-BGU",
+      "destination":"USA",
+      "DateFrom":"20/10/2019",
+      "DateTo":"30/10/2019",
+      "Cost":"300$"
+    }
+  ]
+}

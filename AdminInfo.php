@@ -6,6 +6,7 @@ if(!isset($_SESSION['uname']) || ($_SESSION['uname']!="Admin"))
 
 $displayName = $_SESSION['uname'];
 $_SESSION['userName'] = $_SESSION['uname'];
+$uploadF = "";
 
 $users = array();
 $passwords = array();
@@ -17,24 +18,28 @@ while ($rowUsers = mysqli_fetch_assoc($resultUsers)){
             array_push($passwords, $rowUsers['password']);
         }
 }
-// $fName = "";
-// $lName = "";
-// $dob = "";
-// $email = "";
-// $phone = "";
-// $pass = "";
-// $address = "";
 
+if (isset($_POST['uploadFligts'])){
+  $_POST['uploadFligts']=null;
+  $json = file_get_contents("Jsons/newFlights.json");
+  $result = json_decode($json);
+  $flights= $result->flights;
+  for($idx = 0; $idx < count($flights); $idx++){
+    $itemId = $flights[$idx]->itemId;
+    $origin = $flights[$idx]->origin;
+    $destination = $flights[$idx]->destination;
+    $DateFrom = $flights[$idx]->DateFrom;
+    $DateTo = $flights[$idx]->DateTo;
+    $Cost = $flights[$idx]->Cost;
 
-// $json = file_get_contents("DataBase/Users.json");
-// $result = json_decode($json);
-// $users= $result->users;
-// $items = array();
-// $passwords = array();
-// for($idx = 0; $idx < count($users); $idx++){
-//     array_push($items ,$users[$idx]->UserId);
-//     array_push($passwords ,$users[$idx]->password);
-//   }
+    $sql = "INSERT INTO flights (ItemId, origin, Destination, DateFrom, DateTo, Cost)
+        VALUES ('$itemId', '$origin', '$destination', '$DateFrom', '$DateTo', '$Cost');";
+    mysqli_query($conn, $sql);
+    $uploadF = "Flights Added Successfully";
+    }
+
+}
+
 
  ?>
 
@@ -101,13 +106,16 @@ while ($rowUsers = mysqli_fetch_assoc($resultUsers)){
           <td><?php foreach ($passwords as $value){
                   echo $value; echo "<br>";;
               } ?></td>
-          <!-- <?php
-          // for($id = 0; $id < count($items); $id++)
-          //   echo "<tr><td>$items[$id]</td><td>$passwords[$id]</td></tr>";
-          // ?> -->
         </table>
         <br>
         <br>
+        <div>
+          <form method="post" action="AdminInfo.php">
+            <button id="uploadFligts" name="uploadFligts" type="submit" class="btn-submit">Upload Flights</button>
+          </form>
+          <br>
+          <h4><?php echo $uploadF ?></h4>
+        </div>
     </div>
 </div>
 <footer>
