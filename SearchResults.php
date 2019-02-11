@@ -143,7 +143,6 @@ if (isset($_POST['submit3'])){
     </ul>
 </div>
 
-<div>
     <div class="wrapper wrapper--w680">
         <div class="card card-2">
 
@@ -255,7 +254,6 @@ if (isset($_POST['submit3'])){
 
         </div>
     </div>
-</div>
 
 
 

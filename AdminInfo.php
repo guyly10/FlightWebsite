@@ -1,12 +1,22 @@
-
-
+<?php include 'DataBaseConn.php'?>
 <?php
 session_start();
-if(!isset($_SESSION['uname']) || ($_SESSION['uname']!="admin"))
+if(!isset($_SESSION['uname']) || ($_SESSION['uname']!="Admin"))
    header('Location: index.php');
 
 $displayName = $_SESSION['uname'];
 $_SESSION['userName'] = $_SESSION['uname'];
+
+$users = array();
+$passwords = array();
+$sqlUsers = "SELECT * FROM users;";
+$resultUsers = mysqli_query($conn, $sqlUsers);
+while ($rowUsers = mysqli_fetch_assoc($resultUsers)){
+        if ($rowUsers['UserID']!='' && $rowUsers['password']!=''){
+            array_push($users, $rowUsers['UserID']);
+            array_push($passwords, $rowUsers['password']);
+        }
+}
 // $fName = "";
 // $lName = "";
 // $dob = "";
@@ -16,15 +26,15 @@ $_SESSION['userName'] = $_SESSION['uname'];
 // $address = "";
 
 
-$json = file_get_contents("DataBase/Users.json");
-$result = json_decode($json);
-$users= $result->users;
-$items = array();
-$passwords = array();
-for($idx = 0; $idx < count($users); $idx++){
-    array_push($items ,$users[$idx]->UserId);
-    array_push($passwords ,$users[$idx]->password);
-  }
+// $json = file_get_contents("DataBase/Users.json");
+// $result = json_decode($json);
+// $users= $result->users;
+// $items = array();
+// $passwords = array();
+// for($idx = 0; $idx < count($users); $idx++){
+//     array_push($items ,$users[$idx]->UserId);
+//     array_push($passwords ,$users[$idx]->password);
+//   }
 
  ?>
 
@@ -70,9 +80,9 @@ for($idx = 0; $idx < count($users); $idx++){
                 <a href="AccountPage.php" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a>
                 <a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details &nbsp &nbsp &nbsp</a>
                 <a href="UserOrders.php" style="color: black; text-decoration: none">View Trip Details &nbsp &nbsp &nbsp</a>
-                <b><a href= <?php if($_SESSION['uname']=="admin") {echo "AdminInfo.php";}?>  style="color: black; text-decoration: none">
+                <b><a href= <?php if($_SESSION['uname']=="Admin") {echo "AdminInfo.php";}?>  style="color: black; text-decoration: none">
                   <?php
-                  if($_SESSION['uname']=="admin"){
+                  if($_SESSION['uname']=="Admin"){
                      echo "All users information";
                    }
                   ?>
@@ -85,10 +95,16 @@ for($idx = 0; $idx < count($users); $idx++){
             <td><b>User Id</b></td>
             <td><b>Password</b></td>
           </tr>
-          <?php
-          for($id = 0; $id < count($items); $id++)
-            echo "<tr><td>$items[$id]</td><td>$passwords[$id]</td></tr>";
-          ?>
+          <td><?php foreach ($users as $value){
+                  echo $value; echo "<br>";;
+              } ?></td>
+          <td><?php foreach ($passwords as $value){
+                  echo $value; echo "<br>";;
+              } ?></td>
+          <!-- <?php
+          // for($id = 0; $id < count($items); $id++)
+          //   echo "<tr><td>$items[$id]</td><td>$passwords[$id]</td></tr>";
+          // ?> -->
         </table>
         <br>
         <br>

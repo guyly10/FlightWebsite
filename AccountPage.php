@@ -107,11 +107,11 @@ for ($idx = 0; $idx < 9; $idx++) {
                     &nbsp &nbsp</a>
                 <a href="UserOrders.php" style="color: black; text-decoration: none">View Trip Details &nbsp &nbsp
                     &nbsp</a>
-                <a href= <?php if ($_SESSION['uname'] == "admin") {
+                <a href= <?php if ($_SESSION['uname'] == "Admin") {
                     echo "AdminInfo.php";
                 } ?>  style="color: black; text-decoration: none">
                 <?php
-                if ($_SESSION['uname'] == "admin") {
+                if ($_SESSION['uname'] == "Admin") {
                     echo "All users information";
                 }
                 ?>
