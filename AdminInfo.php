@@ -19,8 +19,7 @@ while ($rowUsers = mysqli_fetch_assoc($resultUsers)){
         }
 }
 
-if (isset($_POST['uploadFligts'])){
-  $_POST['uploadFligts']=null;
+if (isset($_POST['Submit'])){
   $json = file_get_contents("Jsons/newFlights.json");
   $result = json_decode($json);
   $flights= $result->flights;
@@ -110,8 +109,9 @@ if (isset($_POST['uploadFligts'])){
         <br>
         <br>
         <div>
-          <form method="post" action="AdminInfo.php">
-            <button id="uploadFligts" name="uploadFligts" type="submit" class="btn-submit">Upload Flights</button>
+          <form method="post" action="">
+            <input type="submit" value="Upload Flights" name="Submit">
+            <!-- <button id="uploadFligts" name="uploadFligts" type="submit" class="btn-submit">Upload Flights</button> -->
           </form>
           <br>
           <h4><?php echo $uploadF ?></h4>
