@@ -139,11 +139,11 @@ while ($rowHotels = mysqli_fetch_assoc($resultHotels)){
                     &nbsp &nbsp</a>
                 <b><a href="UserOrders.php" style="color: black; text-decoration: none">View Trip Details &nbsp &nbsp
                         &nbsp</a></b>
-                <a href= <?php if ($_SESSION['uname'] == "admin") {
+                <a href= <?php if ($_SESSION['uname'] == "Admin") {
                     echo "AdminInfo.php";
                 } ?>  style="color: black; text-decoration: none">
                 <?php
-                if ($_SESSION['uname'] == "admin") {
+                if ($_SESSION['uname'] == "Admin") {
                     echo "All users information";
                 }
                 ?>

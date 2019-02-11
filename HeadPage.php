@@ -6,20 +6,10 @@ if (!isset($_SESSION['uname']) || ($_SESSION['uname'] == ""))
     header('Location: index.php');
 
 $displayName = $_SESSION['uname'];
-$validation = "";
 $sql = "SELECT * FROM commercials;";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-
-// $sql = "SELECT * FROM cars WHERE destination LIKE '%Rome%' AND carGroup = 'group 1' AND DateFrom = '10/10/2019' And DateTo = '15/10/2019';";
-// $result = mysqli_query($conn, $sql);
-// $row = mysqli_fetch_assoc($result);
-// if ("Rome" == $row['destination'] ){
-//     header('Location: index.php');
-//     exit();
-// }
 //need to change to show more than one commercial
-
 for ($idx = 0; $idx < 8; $idx++) {
     $city = $row['city'];
     $goDate = $row['goDate'];
@@ -28,91 +18,6 @@ for ($idx = 0; $idx < 8; $idx++) {
     $returnHour = $row['returnHour'];
     $price = $row['price'];
     $img = $row['img'];
-}
-
-// if (isset($_POST['submit1'])){
-//   header('Location: AccountPage.php');
-//   exit();
-//   // $validation= "!!@#@#@!#@!#!@#!@#!@!#!@#!#!";
-//   // if($_POST['where']!=null || $_POST['where']!= ''){
-//   //   $validation = "in 1";
-//   //   $where = $_POST['where'];
-//   //   $check_in = $_POST['check_in1'];
-//   //   $check_out = $_POST['check_out1'];
-//   //
-//   //   $sql = "SELECT * FROM hotels WHERE destination LIKE '%$where%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
-//   //   $result = mysqli_query($conn, $sql);
-//   //   $row = mysqli_fetch_assoc($result);
-//   //
-//   //   // for loop to get all hotels in the destination
-//   //   if ($where == $row['destination'] ){
-//   //       $_SESSION ['where'] = $row['destination'];
-//   //       $_SESSION ['check_in'] = $row['DateFrom'];
-//   //       $_SESSION ['check_out'] = $row['DateTo'];
-//   //       $_SESSION ['cost'] = $row['Cost'];
-//   //       header('Location: index.php');
-//   //       exit();
-//   //   }
-//   //   else {
-//   //     header('Location: AccountPage.php');
-//   //     exit();
-//   //   }
-//   // }
-// }
-if (isset($_POST['submit2'])){
-  if($_POST['location']!=null || $_POST['location']!= ''){
-    $validation = "in 2";
-    $location = $_POST['location'];
-    $car_group = $_POST['car_group'];
-    $check_in = $_POST['check_in2'];
-    $check_out = $_POST['check_out2'];
-
-    $sql = "SELECT * FROM cars WHERE destination LIKE '%$location%' AND carGroup = '$car_group' AND DateFrom = '$check_in' And DateTo = '$check_out';";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-    if ($location == $row['destination'] ){
-      $_SESSION ['location'] = $row['destination'];
-      $_SESSION ['car_group'] = $row['carGroup'];
-      $_SESSION ['driver_age'] = $row['driverAge'];
-      $_SESSION ['dropoff'] = $row['dropOff'];
-      $_SESSION ['pickup'] = $row['pickupHour'];
-      $_SESSION ['check_in'] = $row['DateFrom'];
-      $_SESSION ['check_out'] = $row['DateTo'];
-      $_SESSION ['cost'] = $row['Cost'];
-        header('Location: index.php');
-        exit();
-    }
-    else {
-      header('Location: AccountPage.php');
-      exit();
-    }
-  }
-}
-if (isset($_POST['submit3'])){
-  if($_POST['origin']!=null || $_POST['origin']!= ''){
-    $origin = $_POST['origin'];
-    $destination_flight = $_POST['destination'];
-    $check_in = $_POST['check_in3'];
-    $check_out = $_POST['check_out3'];
-
-    $sql = "SELECT * FROM flights WHERE origin LIKE '%$origin%' AND Destination LIKE '%$destination_flight%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-    if ($origin == $row['origin'] ){
-      $_SESSION ['origin'] = $row['origin'];
-      $_SESSION ['destination_flight'] = $row['destination'];
-      $_SESSION ['check_in'] = $row['DateFrom'];
-      $_SESSION ['check_out'] = $row['DateTo'];
-      $_SESSION ['cost'] = $row['Cost'];
-        header('Location: SearchResults.php');
-        exit();
-    }
-    else {
-      header('Location: AccountPage.php');
-      exit();
-    }
-  }
-
 }
 
 ?>
@@ -153,7 +58,7 @@ if (isset($_POST['submit3'])){
 </head>
 <body>
 <div><b>
-        <?php echo "Hello, " . $displayName . " !".$validation; ?>
+        <?php echo "Hello, " . $displayName . " !"; ?>
     </b></div>
 <a href="HeadPage.php">
     <div class="imgcontainer">
@@ -188,24 +93,24 @@ if (isset($_POST['submit3'])){
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
-                        <form id="form1" method="post" action="HeadPage.php">
+                        <form id="form1" method="post" action="SearchResults.php">
                             <div class="input-group">
                                 <label class="label">where:</label>
-                                <input id="where" class="input--style-1" type="text" name="address"
+                                <input id="where" name="where" class="input--style-1" type="text" name="address"
                                        placeholder="City, region or specific hotel" required="required">
                             </div>
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">check-in:</label>
-                                        <input id="chek_in1" class="input--style-1" type="text" name="check-in"
+                                        <input id="check_in1" name="check_in1" class="input--style-1" type="text" name="check-in"
                                                placeholder="mm/dd/yyyy" id="input-start">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">check-out:</label>
-                                        <input id="chek_out1" class="input--style-1" type="text" name="check-out"
+                                        <input id="check_out1" name="check_out1" class="input--style-1" type="text" name="check-out"
                                                placeholder="mm/dd/yyyy" id="input-end">
                                     </div>
                                 </div>
@@ -247,14 +152,14 @@ if (isset($_POST['submit3'])){
                                 </div>
                             </div>
 
-                            <button id="submit1" class="btn-submit" type="submit">search</button>
+                            <button id="submit1" name="submit1" class="btn-submit" type="submit">search</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="tab2">
-                        <form id="form2" method="post" action="">
+                        <form id="form2" method="post" action="SearchResults.php">
                             <div class="input-group">
                                 <label class="label">location:</label>
-                                <input id="location" class="input--style-1" type="text" name="location"
+                                <input id="location"name="location" class="input--style-1" type="text" name="location"
                                        placeholder="Destination, hotel name" required="required">
                             </div>
                             <div class="row row-space">
@@ -276,11 +181,11 @@ if (isset($_POST['submit3'])){
                                     <div class="input-group">
                                         <label class="label">car group:</label>
                                         <div class="rs-select2 js-select-simple select--no-search">
-                                            <select id="car_group"name="car-group">
+                                            <select id="car_group" name="car_group">
                                                 <option selected="selected">Group S-car</option>
-                                                <option>Group 1</option>
-                                                <option>Group 2</option>
-                                                <option>Group 3</option>
+                                                <option value="group 1">Group 1</option>
+                                                <option value="group 2">Group 2</option>
+                                                <option value="group 3">Group 3</option>
                                             </select>
                                             <div class="select-dropdown"></div>
                                         </div>
@@ -291,8 +196,10 @@ if (isset($_POST['submit3'])){
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">pick up:</label>
-                                        <input id="check_in2" class="input--style-1 js-single-datepicker" type="text" name="pickup"
-                                               placeholder="mm/dd/yyyy" data-drop="1">
+                                        <input id="check_in2" name="check_in2" class="input--style-1" type="text"
+                                               placeholder="mm/dd/yyyy" id="input-start-2">
+                                        <!-- <input id="check_in2" name="check_in2" class="input--style-1 js-single-datepicker" type="text"
+                                               placeholder="mm/dd/yyyy" data-drop="1"> -->
                                         <div class="dropdown-datepicker" id="dropdown-datepicker1"></div>
                                     </div>
                                 </div>
@@ -315,8 +222,10 @@ if (isset($_POST['submit3'])){
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">drop off:</label>
-                                        <input id="check_out2" class="input--style-1 js-single-datepicker" type="text" name="dropoff"
-                                               placeholder="mm/dd/yyyy" data-drop="2">
+                                        <input id="check_out2" name="check_out2" class="input--style-1" type="text"
+                                               placeholder="mm/dd/yyyy" id="input-start-2">
+                                        <!-- <input id="check_out2" name=="check_out2" class="input--style-1 js-single-datepicker" type="text" name="dropoff"
+                                               placeholder="mm/dd/yyyy" data-drop="2"> -->
                                         <div class="dropdown-datepicker" id="dropdown-datepicker2"></div>
                                     </div>
                                 </div>
@@ -335,11 +244,11 @@ if (isset($_POST['submit3'])){
                                     </div>
                                 </div>
                             </div>
-                            <button id="submit2" class="btn-submit m-t-0" type="submit">search</button>
+                            <button id="submit2" name="submit2" class="btn-submit m-t-0" type="submit">search</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="tab3">
-                        <form id="form3" method="post" action="HeadPage.php">
+                        <form id="form3" method="post" action="SearchResults.php">
                             <div class="input-group">
                                 <label class="label">origin:</label>
                                 <input id="origin" name="origin" class="input--style-1" type="text" name="origin" placeholder="City or airport"
@@ -354,7 +263,7 @@ if (isset($_POST['submit3'])){
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">Departing:</label>
-                                        <input id="check_in3" name="check_in3" class="input--style-1" type="text" name="check-in"
+                                        <input id="check_in3" name="check_in3" class="input--style-1" type="text"
                                                placeholder="mm/dd/yyyy" id="input-start-2">
                                     </div>
                                 </div>
@@ -368,37 +277,6 @@ if (isset($_POST['submit3'])){
                             </div>
                             <button id="submit3" name="submit3" class="btn-submit" type="submit">search</button>
                         </form>
-                        <?php
-                        if (isset($_POST['submit1'])){
-                          header('Location: AccountPage.php');
-                          exit();
-                          // $validation= "!!@#@#@!#@!#!@#!@#!@!#!@#!#!";
-                          // if($_POST['where']!=null || $_POST['where']!= ''){
-                          //   $validation = "in 1";
-                          //   $where = $_POST['where'];
-                          //   $check_in = $_POST['check_in1'];
-                          //   $check_out = $_POST['check_out1'];
-                          //
-                          //   $sql = "SELECT * FROM hotels WHERE destination LIKE '%$where%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
-                          //   $result = mysqli_query($conn, $sql);
-                          //   $row = mysqli_fetch_assoc($result);
-                          //
-                          //   // for loop to get all hotels in the destination
-                          //   if ($where == $row['destination'] ){
-                          //       $_SESSION ['where'] = $row['destination'];
-                          //       $_SESSION ['check_in'] = $row['DateFrom'];
-                          //       $_SESSION ['check_out'] = $row['DateTo'];
-                          //       $_SESSION ['cost'] = $row['Cost'];
-                          //       header('Location: index.php');
-                          //       exit();
-                          //   }
-                          //   else {
-                          //     header('Location: AccountPage.php');
-                          //     exit();
-                          //   }
-                          // }
-                        }
-                        ?>
                     </div>
                 </div>
             </div>

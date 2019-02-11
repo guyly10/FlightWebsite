@@ -68,9 +68,9 @@ if (isset($_POST['register'])){
                 <a href="AccountPage.php" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a>
                 <b><a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details &nbsp &nbsp &nbsp</a></b>
                 <a href="UserOrders.php" style="color: black; text-decoration: none">View Trip Details &nbsp &nbsp &nbsp</a>
-                <a href= <?php if($_SESSION['uname']=="admin") {echo "AdminInfo.php";}?>  style="color: black; text-decoration: none">
+                <a href= <?php if($_SESSION['uname']=="Admin") {echo "AdminInfo.php";}?>  style="color: black; text-decoration: none">
                   <?php
-                  if($_SESSION['uname']=="admin"){
+                  if($_SESSION['uname']=="Admin"){
                      echo "All users information";
                    }
                   ?>
