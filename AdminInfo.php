@@ -36,6 +36,12 @@ if (isset($_POST['Submit'])){
     mysqli_query($conn, $sql);
     $uploadF = "Flights Added Successfully";
     }
+    foreach ($users as $value) {
+        $msg = "New Flights added to the system , please Check it out !";
+        $sql = "INSERT INTO notifications (user,msg)
+          VALUES ('$value', '$msg');";
+        mysqli_query($conn, $sql);
+    }
 
 }
 
