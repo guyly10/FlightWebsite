@@ -1,6 +1,5 @@
 <?php include 'DataBaseConn.php'?>
 <?php
-
 session_start();
 if (!isset($_SESSION['uname']) || ($_SESSION['uname'] == ""))
     header('Location: index.php');
@@ -10,6 +9,7 @@ $searchc = "display:none";
 $searchh = "display:none";
 $searchf = "display:none";
 
+$itemIdH = array();
 $destinationH = array();
 $DateFromH = array();
 $DateToH = array();
@@ -24,6 +24,7 @@ if (isset($_POST['submit1'])){
     $sql = "SELECT * FROM hotels WHERE destination LIKE '%$where%' AND DateFrom = '$check_in1' And DateTo = '$check_out1';";
     $resultHotels = mysqli_query($conn, $sql);
     while ($rowHotels = mysqli_fetch_assoc($resultHotels)){
+                array_push($itemIdH, $rowHotels['itemId']);
                 array_push($destinationH, $rowHotels['destination']);
                 array_push($DateFromH, $rowHotels['DateFrom']);
                 array_push($DateToH, $rowHotels['DateTo']);
@@ -32,6 +33,7 @@ if (isset($_POST['submit1'])){
   }
 }
 
+$itemIdC = array();
 $destinationC = array();
 $carGroupC = array();
 $DateFromC = array();
@@ -51,6 +53,7 @@ if (isset($_POST['submit2'])){
     $sql = "SELECT * FROM cars WHERE destination LIKE '%$location%' AND carGroup = '$car_group' AND DateFrom = '$check_in' And DateTo = '$check_out';";
     $resultCars = mysqli_query($conn, $sql);
     while ($rowCars = mysqli_fetch_assoc($resultCars)){
+                array_push($itemIdC, $rowCars['itemId']);
                 array_push($destinationC, $rowCars['destination']);
                 array_push($carGroupC, $rowCars['carGroup']);
                 array_push($DateFromC, $rowCars['DateFrom']);
@@ -62,6 +65,7 @@ if (isset($_POST['submit2'])){
     }
   }
 }
+$itemIdF = array();
 $originF = array();
 $DestinationF = array();
 $DateFromF = array();
@@ -79,6 +83,7 @@ if (isset($_POST['submit3'])){
     $sql = "SELECT * FROM flights WHERE origin LIKE '%$origin%' AND Destination LIKE '%$destination_flight%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
     $resultFlight = mysqli_query($conn, $sql);
     while ($rowFlight = mysqli_fetch_assoc($resultFlight)){
+            array_push($itemIdF, $rowFlight['itemId']);
             array_push($originF, $rowFlight['origin']);
             array_push($DestinationF, $rowFlight['Destination']);
             array_push($DateFromF, $rowFlight['DateFrom']);
@@ -154,6 +159,7 @@ if (isset($_POST['submit3'])){
                   <table style="width:50%">
                       <h3>Flight</h3>
                       <tr>
+                          <td><b>Order #</b></td>
                           <td><b>origin</b></td>
                           <td><b>Destination</b></td>
                           <td><b>Date From</b></td>
@@ -161,6 +167,9 @@ if (isset($_POST['submit3'])){
                           <td><b>Cost</b></td>
                       </tr>
                       <tr>
+                          <td><a href="ShoppingCart.php"><?php foreach ($itemIdF as $value){
+                                  echo $value; echo "<br>";;
+                                  } ?></a></td>
                         <td><?php foreach ($originF as $value){
                                 echo $value; echo "<br>";;
                             } ?></td>
@@ -185,12 +194,16 @@ if (isset($_POST['submit3'])){
                     <table style="width:40%">
                         <h3>Hotels</h3>
                         <tr>
+                            <td><b>Order #</b></td>
                             <td><b>Destination</b></td>
                             <td><b>Date From</b></td>
                             <td><b>Date To</b></td>
                             <td><b>Cost</b></td>
                           </tr>
                           <tr>
+                              <td><a href="" onclick="addHotelToShoppingCart(event)"><?php foreach ($itemIdH as $value){
+                                      echo $value; echo "<br>";
+                                      } ?></a></td>
                             <td><?php foreach ($destinationH as $value){
                                     echo $value; echo "<br>";
                                 } ?></td>
@@ -212,6 +225,7 @@ if (isset($_POST['submit3'])){
                   <table style="width:70%">
                       <h3>Cars</h3>
                       <tr>
+                          <td><b>Order #</b></td>
                           <td><b>Destination</b></td>
                           <td><b>Date From</b></td>
                           <td><b>Pickup Hour</b></td>
@@ -222,6 +236,9 @@ if (isset($_POST['submit3'])){
                           <td><b>Cost</b></td>
                       </tr>
                       <tr>
+                          <td><a onclick="addToShoppingCart"><?php foreach ($itemIdC as $value){
+                                  echo $value; echo "<br>";
+                              }?></a></td>
                         <td><?php foreach ($destinationC as $value){
                             echo $value; echo "<br>";
                             }?></td>
@@ -257,7 +274,16 @@ if (isset($_POST['submit3'])){
 
 
 
+<script type="text/javascript">
+    function addHotelToShoppingCart(e) {
 
+        var itemID = e.target.innerText;
+
+        alert(itemID);
+
+
+    }
+</script>
 <!-- Jquery JS-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <!-- Vendor JS-->

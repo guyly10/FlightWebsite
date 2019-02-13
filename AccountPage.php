@@ -107,6 +107,8 @@ for ($idx = 0; $idx < 9; $idx++) {
                     &nbsp &nbsp</a>
                 <a href="UserOrders.php" style="color: black; text-decoration: none">View Trip Details &nbsp &nbsp
                     &nbsp</a>
+                <a href="ShoppingCart.php" style="color: black; text-decoration: none">Shopping Cart &nbsp &nbsp
+                    &nbsp</a>
                 <a href= <?php if ($_SESSION['uname'] == "Admin") {
                     echo "AdminInfo.php";
                 } ?>  style="color: black; text-decoration: none">

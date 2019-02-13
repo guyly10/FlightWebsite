@@ -90,6 +90,8 @@ if (isset($_POST['Submit'])){
                 <a href="AccountPage.php" style="color: black; text-decoration: none">Profile &nbsp &nbsp &nbsp</a>
                 <a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details &nbsp &nbsp &nbsp</a>
                 <a href="UserOrders.php" style="color: black; text-decoration: none">View Trip Details &nbsp &nbsp &nbsp</a>
+                <a href="ShoppingCart.php" style="color: black; text-decoration: none">Shopping Cart &nbsp &nbsp
+                    &nbsp</a>
                 <b><a href= <?php if($_SESSION['uname']=="Admin") {echo "AdminInfo.php";}?>  style="color: black; text-decoration: none">
                   <?php
                   if($_SESSION['uname']=="Admin"){
