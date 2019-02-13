@@ -6,6 +6,17 @@ if (!isset($_SESSION['uname']) || ($_SESSION['uname'] == ""))
     header('Location: index.php');
 
 $displayName = $_SESSION['uname'];
+$displayNotification = '';
+$sqlNotification = "SELECT * FROM notifications where user='$displayName';";
+$resultN = mysqli_query($conn, $sqlNotification);
+$rowN = mysqli_fetch_assoc($resultN);
+if($rowN['msg']!=null && $rowN['msg']!=''){
+  $displayNotification =$rowN['msg'];
+  /**DELETE NOTIFICATION**/
+  $sqlDeleteN = "DELETE FROM notifications WHERE user='$displayName' AND msg='$displayNotification';";
+  mysqli_query($conn, $sqlDeleteN);
+}
+
 $sql = "SELECT * FROM commercials;";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
@@ -58,7 +69,7 @@ for ($idx = 0; $idx < 8; $idx++) {
 </head>
 <body>
 <div><b>
-        <?php echo "Hello, " . $displayName . " !"; ?>
+        <?php echo "Hello, " . $displayName . " ! ".$displayNotification; ?>
     </b></div>
 <a href="HeadPage.php">
     <div class="imgcontainer">
