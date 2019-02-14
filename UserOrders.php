@@ -5,95 +5,101 @@ if (!isset($_SESSION['uname']) || ($_SESSION['uname'] == ""))
     header('Location: index.php');
 
 $displayName = $_SESSION['uname'];
-$_SESSION['userName'] = $_SESSION['uname'];
-
-
-$sqlOrders = "SELECT * FROM orders;";
-$resultOrders = mysqli_query($conn, $sqlOrders);
+$chosenHotel = '';
+$chosenFlight = '';
+$chosenCar = '';
+//$sqlOrders = "SELECT * FROM orders;";
+//$resultOrders = mysqli_query($conn, $sqlOrders);
 $items = array();
 
-while ($rowOrders = mysqli_fetch_assoc($resultOrders)){
-    if ($rowOrders['UserId'] == $displayName){
-        array_push($items, $rowOrders['itemId']);
-    }
-}
+$itemsH = $_SESSION['idH'];
+$itemsF = $_SESSION['idF'];
+$itemsC = $_SESSION['idC'];
 
-$sqlCars = "SELECT * FROM cars;";
-$resultCars = mysqli_query($conn, $sqlCars);
-$cars = array();
+for ($idH = 0; $idH < count($itemsH); $idH++) {
+    if (isset($_POST[$idH])) {
+        $chosenHotel= $itemsH[$idH];
 
-$itemIdC = array();
-$destinationC = array();
-$carGroupC = array();
-$DateFromC = array();
-$pickupHourC = array();
-$DateToC = array();
-$dropOffC = array();
-$driverAgeC = array();
-$CostC = array();
+        if($displayName != "" && $chosenHotel != ""){
+            $sql = "DELETE FROM cart WHERE UserId = '$displayName' AND itemId='$chosenHotel';";
+            mysqli_query($conn, $sql);
 
-while ($rowCars = mysqli_fetch_assoc($resultCars)){
-    for ($idx = 0; $idx < count($items); $idx++){
-        if ($rowCars['itemId'] == $items[$idx]){
-            array_push($itemIdC, $rowCars['itemId']);
-            array_push($destinationC, $rowCars['destination']);
-            array_push($carGroupC, $rowCars['carGroup']);
-            array_push($DateFromC, $rowCars['DateFrom']);
-            array_push($pickupHourC, $rowCars['pickupHour']);
-            array_push($DateToC, $rowCars['DateTo']);
-            array_push($dropOffC, $rowCars['dropOff']);
-            array_push($driverAgeC, $rowCars['driverAge']);
-            array_push($CostC, $rowCars['Cost']);
+            $sqlInsert = "INSERT INTO orders (UserId, itemId)
+                VALUES ('$displayName', '$chosenHotel');";
+            mysqli_query($conn, $sqlInsert);
+        }
+
+        $sqlOrder = "SELECT * FROM orders;";
+        $resultOrder = mysqli_query($conn, $sqlOrder);
+
+        while ($rowOrder = mysqli_fetch_assoc($resultOrder)){
+            if ($rowOrder['UserId'] == $displayName){
+                array_push($items, $rowOrder['itemId']);
+            }
         }
     }
 }
 
-$itemIdF = array();
-$originF = array();
-$DestinationF = array();
-$DateFromF = array();
-$DateToF = array();
-$CostF = array();
 
-$sqlFlight = "SELECT * FROM flights;";
-$resultFlight = mysqli_query($conn, $sqlFlight);
-$flights = array();
+for ($idF = 0; $idF < count($itemsF); $idF++) {
+    if (isset($_POST[$idF])) {
+        $chosenFlight= $itemsF[$idF];
 
-while ($rowFlight = mysqli_fetch_assoc($resultFlight)){
-    for ($idx = 0; $idx < count($items); $idx++){
-        if ($rowFlight['itemId'] == $items[$idx]){
-            array_push($itemIdF, $rowFlight['itemId']);
-            array_push($originF, $rowFlight['origin']);
-            array_push($DestinationF, $rowFlight['Destination']);
-            array_push($DateFromF, $rowFlight['DateFrom']);
-            array_push($DateToF, $rowFlight['DateTo']);
-            array_push($CostF, $rowFlight['Cost']);
+        array_push($itemsF, $idF);
+
+            $sql = "DELETE FROM cart WHERE UserId = '$displayName' AND itemId='$chosenFlight';";
+            mysqli_query($conn, $sql);
+
+            $sqlInsert = "INSERT INTO orders (UserId, itemId)
+                VALUES ('$displayName', '$chosenFlight');";
+            mysqli_query($conn, $sqlInsert);
+
+
+        $sqlOrder = "SELECT * FROM orders;";
+        $resultOrder = mysqli_query($conn, $sqlOrder);
+
+        while ($rowOrder = mysqli_fetch_assoc($resultOrder)){
+            if ($rowOrder['UserId'] == $displayName){
+                array_push($items, $rowOrder['itemId']);
+            }
         }
     }
 }
 
-$sqlHotels = "SELECT * FROM hotels;";
-$resultHotels = mysqli_query($conn, $sqlHotels);
-$hotels = array();
+for ($idC = 0; $idC < count($itemsC); $idC++) {
+    if (isset($_POST[$idC])) {
+        $chosenCar= $itemsC[$idC];
 
-$itemIdH = array();
-$destinationH = array();
-$DateFromH = array();
-$DateToH = array();
-$CostH = array();
+        if($displayName != "" && $chosenCar != ""){
+            $sql = "DELETE FROM cart WHERE UserId = '$displayName' AND itemId='$chosenCar';";
+            mysqli_query($conn, $sql);
 
-while ($rowHotels = mysqli_fetch_assoc($resultHotels)){
-    for ($idx = 0; $idx < count($items); $idx++){
-        if ($rowHotels['itemId'] == $items[$idx]){
-            array_push($itemIdH, $rowHotels['itemId']);
-            array_push($destinationH, $rowHotels['destination']);
-            array_push($DateFromH, $rowHotels['DateFrom']);
-            array_push($DateToH, $rowHotels['DateTo']);
-            array_push($CostH, $rowHotels['Cost']);
+            $sqlInsert = "INSERT INTO orders (UserId, itemId)
+                VALUES ('$displayName', '$chosenCar');";
+            mysqli_query($conn, $sqlInsert);
+        }
+
+        $sqlOrder = "SELECT * FROM orders;";
+        $resultOrder = mysqli_query($conn, $sqlOrder);
+
+        while ($rowOrder = mysqli_fetch_assoc($resultCart)){
+            if ($rowOrder['UserId'] == $displayName){
+                array_push($items, $rowOrder['itemId']);
+            }
         }
     }
 }
+
+//while ($rowOrders = mysqli_fetch_assoc($resultOrders)){
+//    if ($rowOrders['UserId'] == $displayName){
+//        array_push($items, $rowOrders['itemId']);
+//    }
+//}
+
+$displayName = $_SESSION['uname'];
+$_SESSION['userName'] = $_SESSION['uname'];
 ?>
+<?php include 'DisplayOrdersLogic.php' ?>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">

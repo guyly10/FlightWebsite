@@ -1,6 +1,90 @@
+<?php include 'DataBaseConn.php' ?>
 <?php
 session_start();
+if (!isset($_SESSION['uname']) || ($_SESSION['uname'] == ""))
+    header('Location: index.php');
+
+$displayName = $_SESSION['uname'];
+$Confirm = "Confirm";
+$chosenHotel = '';
+$chosenFlight = '';
+$chosenCar = '';
+$items = array();
+
+$itemsH = $_SESSION['idH'];
+$itemsF = $_SESSION['idF'];
+$itemsC = $_SESSION['idC'];
+
+for ($idH = 0; $idH < count($itemsH); $idH++) {
+    if (isset($_POST[$idH])) {
+        $chosenHotel = $itemsH[$idH];
+
+        if ($displayName != "" && $chosenHotel != "") {
+            $sql = "INSERT INTO cart (UserId, itemId)
+                VALUES ('$displayName', '$chosenHotel');";
+            mysqli_query($conn, $sql);
+        }
+
+        $sqlCart = "SELECT * FROM cart;";
+        $resultCart = mysqli_query($conn, $sqlCart);
+
+        while ($rowCart = mysqli_fetch_assoc($resultCart)) {
+            if ($rowCart['UserId'] == $displayName) {
+                array_push($items, $rowCart['itemId']);
+            }
+        }
+    }
+}
+
+
+for ($idF = 0; $idF < count($itemsF); $idF++) {
+    if (isset($_POST[$idF])) {
+        $chosenFlight = $itemsF[$idF];
+
+
+            $sql = "INSERT INTO cart (UserId, itemId)
+                VALUES ('$displayName', '$chosenFlight');";
+            mysqli_query($conn, $sql);
+
+
+        $sqlCart = "SELECT * FROM cart;";
+        $resultCart = mysqli_query($conn, $sqlCart);
+
+        while ($rowCart = mysqli_fetch_assoc($resultCart)) {
+            if ($rowCart['UserId'] == $displayName) {
+                array_push($items, $rowCart['itemId']);
+            }
+        }
+    }
+}
+
+for ($idC = 0; $idC < count($itemsC); $idC++) {
+    if (isset($_POST[$idC])) {
+        $chosenCar = $itemsC[$idC];
+
+        if ($displayName != "" && $chosenCar != "") {
+            $sql = "INSERT INTO cart (UserId, itemId)
+                VALUES ('$displayName', '$chosenCar');";
+            mysqli_query($conn, $sql);
+        }
+
+        $sqlCart = "SELECT * FROM cart;";
+        $resultCart = mysqli_query($conn, $sqlCart);
+
+        while ($rowCart = mysqli_fetch_assoc($resultCart)) {
+            if ($rowCart['UserId'] == $displayName) {
+                array_push($items, $rowCart['itemId']);
+            }
+        }
+    }
+}
+
+$_SESSION['idH'] = $itemsH;
+$_SESSION['idF'] = $itemsF;
+$_SESSION['idC'] = $itemsC;
+
 ?>
+<?php include 'DisplayOrdersLogic.php' ?>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -19,7 +103,10 @@ session_start();
 </head>
 <body>
 <div><b>
-        <?php echo "Hello, " . $displayName . "!"; ?>
+        <?php echo "Hello, " . $displayName . " !"; ?>
+        <?php foreach ($itemsF as $value){
+            echo $value." ";
+        }?>
     </b></div>
 <a href="HeadPage.php">
     <div class="imgcontainer">
@@ -45,9 +132,9 @@ session_start();
                 <a href="UpdateDetails.php" style="color: black; text-decoration: none">Update Personal Details &nbsp
                     &nbsp &nbsp</a>
                 <a href="UserOrders.php" style="color: black; text-decoration: none">View Trip Details &nbsp &nbsp
-                        &nbsp</a>
+                    &nbsp</a>
                 <b><a href="ShoppingCart.php" style="color: black; text-decoration: none">Shopping Cart &nbsp &nbsp
-                    &nbsp</a></b>
+                        &nbsp</a></b>
                 <a href= <?php if ($_SESSION['uname'] == "Admin") {
                     echo "AdminInfo.php";
                 } ?>  style="color: black; text-decoration: none">
@@ -62,6 +149,7 @@ session_start();
         <table style="width:50%">
             <h3>Flight</h3>
             <tr>
+                <td><b>Confirm</b></td>
                 <td><b>origin</b></td>
                 <td><b>Destination</b></td>
                 <td><b>Date From</b></td>
@@ -69,21 +157,18 @@ session_start();
                 <td><b>Cost</b></td>
             </tr>
             <tr>
-                <td><?php foreach ($originF as $value){
-                        echo $value; echo "<br>";;
-                    } ?></td>
-                <td><?php foreach ($DestinationF as $value){
-                        echo $value; echo "<br>";;
-                    } ?></td>
-                <td><?php foreach ($DateFromF as $value){
-                        echo $value; echo "<br>";
-                    } ?></td>
-                <td><?php foreach ($DateToF as $value){
-                        echo $value; echo "<br>";
-                    }?></td>
-                <td><?php foreach ($CostF as $value){
-                        echo $value; echo "<br>";
-                    }?></td>
+                <?php
+                for ($id = 0; $id < count($itemIdF); $id++)
+                    echo "<tr><td>
+                              <form method='post' action='UserOrders.php'>
+                                <button type='submit' name='$id'>$Confirm</button>
+                                   </form></td>
+                                  <td>$originF[$id]</td>
+                                  <td>$DestinationF[$id]</td>
+                                  <td>$DateFromF[$id]</td>
+                                  <td>$DateToF[$id]</td>
+                                  <td>$CostF[$id]</td></tr>";
+                ?>
             </tr>
         </table>
         <br>
@@ -91,24 +176,24 @@ session_start();
         <table style="width:40%">
             <h3>Hotels</h3>
             <tr>
+                <td><b>Confirm</b></td>
                 <td><b>Destination</b></td>
                 <td><b>Date From</b></td>
                 <td><b>Date To</b></td>
                 <td><b>Cost</b></td>
             </tr>
             <tr>
-                <td><?php foreach ($destinationH as $value){
-                        echo $value; echo "<br>";
-                    } ?></td>
-                <td><?php foreach ($DateFromH as $value){
-                        echo $value; echo "<br>";
-                    } ?></td>
-                <td><?php foreach ($DateToH as $value){
-                        echo $value; echo "<br>";
-                    } ?></td>
-                <td><?php foreach ($CostH as $value){
-                        echo $value; echo "<br>";
-                    } ?></td>
+                <?php
+                for ($id = 0; $id < count($itemIdH); $id++)
+                    echo "<tr><td>
+                              <form method='post' action='UserOrders.php'>
+                                <button type='submit' name='$id'>$Confirm</button>
+                                 </form></td>
+                                 <td>$destinationH[$id]</td>
+                                 <td>$DateFromH[$id]</td>
+                                 <td>$DateToH[$id]</td>
+                                 <td>$CostH[$id]</td></tr>";
+                ?>
             </tr>
         </table>
         <br>
@@ -116,6 +201,7 @@ session_start();
         <table style="width:70%">
             <h3>Cars</h3>
             <tr>
+                <td><b>Confirm</b></td>
                 <td><b>Destination</b></td>
                 <td><b>Date From</b></td>
                 <td><b>Pickup Hour</b></td>
@@ -126,30 +212,21 @@ session_start();
                 <td><b>Cost</b></td>
             </tr>
             <tr>
-                <td><?php foreach ($destinationC as $value){
-                        echo $value; echo "<br>";
-                    }?></td>
-                <td><?php foreach ($DateFromC as $value){
-                        echo $value; echo "<br>";
-                    } ?></td>
-                <td><?php foreach ($pickupHourC as $value){
-                        echo $value; echo "<br>";
-                    } ?></td>
-                <td><?php foreach ($DateToC as $value){
-                        echo $value; echo "<br>";
-                    } ?></td>
-                <td><?php foreach ($dropOffC as $value){
-                        echo $value; echo "<br>";
-                    } ?></td>
-                <td><?php foreach ($carGroupC as $value){
-                        echo $value; echo "<br>";
-                    } ?></td>
-                <td><?php foreach ($driverAgeC as $value){
-                        echo $value; echo "<br>";
-                    } ?></td>
-                <td><?php foreach ($CostC as $value){
-                        echo $value; echo "<br>";
-                    } ?></td>
+                <?php
+                for ($id = 0; $id < count($itemIdC); $id++)
+                    echo "<tr><td>
+                             <form method='post' action='UserOrders.php'>
+                               <button type='submit' name='$id'>$Confirm</button>
+                                  </form></td>
+                                  <td>$destinationC[$id]</td>
+                                  <td>$DateFromC[$id]</td>
+                                  <td>$pickupHourC[$id]</td>
+                                  <td>$DateToC[$id]</td>
+                                  <td>$dropOffC[$id]</td>
+                                  <td>$carGroupC[$id]</td>
+                                  <td>$driverAgeC[$id]</td>
+                                  <td>$CostC[$id]</td></tr>";
+                ?>
             </tr>
         </table>
     </div>

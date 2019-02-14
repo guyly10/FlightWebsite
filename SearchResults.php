@@ -1,10 +1,11 @@
-<?php include 'DataBaseConn.php'?>
+<?php include 'DataBaseConn.php' ?>
 <?php
 session_start();
 if (!isset($_SESSION['uname']) || ($_SESSION['uname'] == ""))
     header('Location: index.php');
 $displayName = $_SESSION['uname'];
 
+$addToShoppingCart = "Add To Shopping Cart";
 $searchc = "display:none";
 $searchh = "display:none";
 $searchf = "display:none";
@@ -14,24 +15,29 @@ $destinationH = array();
 $DateFromH = array();
 $DateToH = array();
 $CostH = array();
-if (isset($_POST['submit1'])){
-  $searchh ="";
-  if($_POST['where']!=null && $_POST['where']!= ''){
-    $where = $_POST['where'];
-    $check_in1 = $_POST['check_in1'];
-    $check_out1 = $_POST['check_out1'];
+if (isset($_POST['submit1'])) {
+    $searchh = "";
+    if ($_POST['where'] != null && $_POST['where'] != '') {
+        $where = $_POST['where'];
+        $check_in1 = $_POST['check_in1'];
+        $check_out1 = $_POST['check_out1'];
 
-    $sql = "SELECT * FROM hotels WHERE destination LIKE '%$where%' AND DateFrom = '$check_in1' And DateTo = '$check_out1';";
-    $resultHotels = mysqli_query($conn, $sql);
-    while ($rowHotels = mysqli_fetch_assoc($resultHotels)){
-                array_push($itemIdH, $rowHotels['itemId']);
-                array_push($destinationH, $rowHotels['destination']);
-                array_push($DateFromH, $rowHotels['DateFrom']);
-                array_push($DateToH, $rowHotels['DateTo']);
-                array_push($CostH, $rowHotels['Cost']);
+        $sql = "SELECT * FROM hotels WHERE destination LIKE '%$where%' AND DateFrom = '$check_in1' And DateTo = '$check_out1';";
+        $resultHotels = mysqli_query($conn, $sql);
+        while ($rowHotels = mysqli_fetch_assoc($resultHotels)) {
+            array_push($itemIdH, $rowHotels['itemId']);
+            array_push($destinationH, $rowHotels['destination']);
+            array_push($DateFromH, $rowHotels['DateFrom']);
+            array_push($DateToH, $rowHotels['DateTo']);
+            array_push($CostH, $rowHotels['Cost']);
+        }
     }
-  }
 }
+
+$_SESSION['idH'] = $itemIdH;
+
+
+
 
 $itemIdC = array();
 $destinationC = array();
@@ -42,29 +48,32 @@ $DateToC = array();
 $dropOffC = array();
 $driverAgeC = array();
 $CostC = array();
-if (isset($_POST['submit2'])){
-  $searchc ="";
-  if($_POST['location']!=null && $_POST['location']!= ''){
-    $location = $_POST['location'];
-    $car_group = $_POST['car_group'];
-    $check_in = $_POST['check_in2'];
-    $check_out = $_POST['check_out2'];
+if (isset($_POST['submit2'])) {
+    $searchc = "";
+    if ($_POST['location'] != null && $_POST['location'] != '') {
+        $location = $_POST['location'];
+        $car_group = $_POST['car_group'];
+        $check_in = $_POST['check_in2'];
+        $check_out = $_POST['check_out2'];
 
-    $sql = "SELECT * FROM cars WHERE destination LIKE '%$location%' AND carGroup = '$car_group' AND DateFrom = '$check_in' And DateTo = '$check_out';";
-    $resultCars = mysqli_query($conn, $sql);
-    while ($rowCars = mysqli_fetch_assoc($resultCars)){
-                array_push($itemIdC, $rowCars['itemId']);
-                array_push($destinationC, $rowCars['destination']);
-                array_push($carGroupC, $rowCars['carGroup']);
-                array_push($DateFromC, $rowCars['DateFrom']);
-                array_push($pickupHourC, $rowCars['pickupHour']);
-                array_push($DateToC, $rowCars['DateTo']);
-                array_push($dropOffC, $rowCars['dropOff']);
-                array_push($driverAgeC, $rowCars['driverAge']);
-                array_push($CostC, $rowCars['Cost']);
+        $sql = "SELECT * FROM cars WHERE destination LIKE '%$location%' AND carGroup = '$car_group' AND DateFrom = '$check_in' And DateTo = '$check_out';";
+        $resultCars = mysqli_query($conn, $sql);
+        while ($rowCars = mysqli_fetch_assoc($resultCars)) {
+            array_push($itemIdC, $rowCars['itemId']);
+            array_push($destinationC, $rowCars['destination']);
+            array_push($carGroupC, $rowCars['carGroup']);
+            array_push($DateFromC, $rowCars['DateFrom']);
+            array_push($pickupHourC, $rowCars['pickupHour']);
+            array_push($DateToC, $rowCars['DateTo']);
+            array_push($dropOffC, $rowCars['dropOff']);
+            array_push($driverAgeC, $rowCars['driverAge']);
+            array_push($CostC, $rowCars['Cost']);
+        }
     }
-  }
 }
+
+$_SESSION['idC'] = $itemIdC;
+
 $itemIdF = array();
 $originF = array();
 $DestinationF = array();
@@ -72,26 +81,29 @@ $DateFromF = array();
 $DateToF = array();
 $CostF = array();
 
-if (isset($_POST['submit3'])){
-  $searchf ="";
-  if($_POST['origin']!=null && $_POST['origin']!= ''){
-    $origin = $_POST['origin'];
-    $destination_flight = $_POST['destination'];
-    $check_in = $_POST['check_in3'];
-    $check_out = $_POST['check_out3'];
+if (isset($_POST['submit3'])) {
+    $searchf = "";
+    if ($_POST['origin'] != null && $_POST['origin'] != '') {
+        $origin = $_POST['origin'];
+        $destination_flight = $_POST['destination'];
+        $check_in = $_POST['check_in3'];
+        $check_out = $_POST['check_out3'];
 
-    $sql = "SELECT * FROM flights WHERE origin LIKE '%$origin%' AND Destination LIKE '%$destination_flight%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
-    $resultFlight = mysqli_query($conn, $sql);
-    while ($rowFlight = mysqli_fetch_assoc($resultFlight)){
+        $sql = "SELECT * FROM flights WHERE origin LIKE '%$origin%' AND Destination LIKE '%$destination_flight%' AND DateFrom = '$check_in' And DateTo = '$check_out';";
+        $resultFlight = mysqli_query($conn, $sql);
+        while ($rowFlight = mysqli_fetch_assoc($resultFlight)) {
             array_push($itemIdF, $rowFlight['itemId']);
             array_push($originF, $rowFlight['origin']);
             array_push($DestinationF, $rowFlight['Destination']);
             array_push($DateFromF, $rowFlight['DateFrom']);
             array_push($DateToF, $rowFlight['DateTo']);
             array_push($CostF, $rowFlight['Cost']);
+        }
     }
-  }
 }
+
+$_SESSION['idF'] = $itemIdF;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +142,7 @@ if (isset($_POST['submit3'])){
 </head>
 <body>
 <div><b>
-        <?php echo "Hello, " . $displayName . " !";?>
+        <?php echo "Hello, " . $displayName . " !"; ?>
     </b></div>
 <a href="HeadPage.php">
     <div class="imgcontainer">
@@ -148,49 +160,43 @@ if (isset($_POST['submit3'])){
     </ul>
 </div>
 
-    <div class="wrapper wrapper--w680">
-        <div class="card card-2">
+<div class="wrapper wrapper--w680">
+    <div class="card card-2">
 
-          <div class='container'>
-              <div class='panel panel-primary dialog-panel'>
+        <div class='container'>
+            <div class='panel panel-primary dialog-panel'>
                 <h2>Search Results</h2>
                 <br>
                 <div style='<?php echo $searchf ?>'>
-                  <table style="width:50%">
-                      <h3>Flight</h3>
-                      <tr>
-                          <td><b>Order #</b></td>
-                          <td><b>origin</b></td>
-                          <td><b>Destination</b></td>
-                          <td><b>Date From</b></td>
-                          <td><b>Date To</b></td>
-                          <td><b>Cost</b></td>
-                      </tr>
-                      <tr>
-                          <td><a href="ShoppingCart.php"><?php foreach ($itemIdF as $value){
-                                  echo $value; echo "<br>";;
-                                  } ?></a></td>
-                        <td><?php foreach ($originF as $value){
-                                echo $value; echo "<br>";;
-                            } ?></td>
-                        <td><?php foreach ($DestinationF as $value){
-                                echo $value; echo "<br>";;
-                            } ?></td>
-                        <td><?php foreach ($DateFromF as $value){
-                                echo $value; echo "<br>";
-                            } ?></td>
-                        <td><?php foreach ($DateToF as $value){
-                                echo $value; echo "<br>";
-                            }?></td>
-                        <td><?php foreach ($CostF as $value){
-                                echo $value; echo "<br>";
-                            }?></td>
-                      </tr>
-                  </table>
+                    <table style="width:50%">
+                        <h3>Flight</h3>
+                        <tr>
+                            <td><b>Order #</b></td>
+                            <td><b>origin</b></td>
+                            <td><b>Destination</b></td>
+                            <td><b>Date From</b></td>
+                            <td><b>Date To</b></td>
+                            <td><b>Cost</b></td>
+                        </tr>
+                        <tr>
+                            <?php
+                            for ($id = 0; $id < count($itemIdF); $id++)
+                                echo "<tr><td>
+                                        <form method='post' action='ShoppingCart.php'>
+                                            <button type='submit' name='$id'>$addToShoppingCart</button>
+                                        </form></td>
+                                  <td>$originF[$id]</td>
+                                  <td>$DestinationF[$id]</td>
+                                  <td>$DateFromF[$id]</td>
+                                  <td>$DateToF[$id]</td>
+                                  <td>$CostF[$id]</td></tr>";
+                            ?>
+                        </tr>
+                    </table>
                 </div>
-                  <br>
-                  <br>
-                  <div style='<?php echo $searchh ?>'>
+                <br>
+                <br>
+                <div style='<?php echo $searchh ?>'>
                     <table style="width:40%">
                         <h3>Hotels</h3>
                         <tr>
@@ -199,91 +205,61 @@ if (isset($_POST['submit3'])){
                             <td><b>Date From</b></td>
                             <td><b>Date To</b></td>
                             <td><b>Cost</b></td>
-                          </tr>
-                          <tr>
-                              <td><a href="" onclick="addHotelToShoppingCart(event)"><?php foreach ($itemIdH as $value){
-                                      echo $value; echo "<br>";
-                                      } ?></a></td>
-                            <td><?php foreach ($destinationH as $value){
-                                    echo $value; echo "<br>";
-                                } ?></td>
-                            <td><?php foreach ($DateFromH as $value){
-                                    echo $value; echo "<br>";
-                                } ?></td>
-                            <td><?php foreach ($DateToH as $value){
-                                    echo $value; echo "<br>";
-                                } ?></td>
-                            <td><?php foreach ($CostH as $value){
-                                    echo $value; echo "<br>";
-                                } ?></td>
-                          </tr>
-                        </table>
-                  </div>
-                  <br>
-                  <br>
-                  <div style='<?php echo $searchc ?>'>
-                  <table style="width:70%">
-                      <h3>Cars</h3>
-                      <tr>
-                          <td><b>Order #</b></td>
-                          <td><b>Destination</b></td>
-                          <td><b>Date From</b></td>
-                          <td><b>Pickup Hour</b></td>
-                          <td><b>Date To</b></td>
-                          <td><b>Drop Off</b></td>
-                          <td><b>Car Group</b></td>
-                          <td><b>Driver Age</b></td>
-                          <td><b>Cost</b></td>
-                      </tr>
-                      <tr>
-                          <td><a onclick="addToShoppingCart"><?php foreach ($itemIdC as $value){
-                                  echo $value; echo "<br>";
-                              }?></a></td>
-                        <td><?php foreach ($destinationC as $value){
-                            echo $value; echo "<br>";
-                            }?></td>
-                        <td><?php foreach ($DateFromC as $value){
-                                echo $value; echo "<br>";
-                            } ?></td>
-                        <td><?php foreach ($pickupHourC as $value){
-                                echo $value; echo "<br>";
-                            } ?></td>
-                        <td><?php foreach ($DateToC as $value){
-                                echo $value; echo "<br>";
-                            } ?></td>
-                        <td><?php foreach ($dropOffC as $value){
-                                echo $value; echo "<br>";
-                            } ?></td>
-                        <td><?php foreach ($carGroupC as $value){
-                                echo $value; echo "<br>";
-                            } ?></td>
-                        <td><?php foreach ($driverAgeC as $value){
-                                echo $value; echo "<br>";
-                            } ?></td>
-                        <td><?php foreach ($CostC as $value){
-                                echo $value; echo "<br>";
-                            } ?></td>
-                      </tr>
-                  </table>
+                        </tr>
+                        <?php
+                        for ($id = 0; $id < count($itemIdH); $id++)
+                            echo "<tr><td>
+                                        <form method='post' action='ShoppingCart.php'>
+                                            <button type='submit' name='$id'>$addToShoppingCart</button>
+                                        </form></td>
+                                  <td>$destinationH[$id]</td>
+                                  <td>$DateFromH[$id]</td>
+                                  <td>$DateToH[$id]</td>
+                                  <td>$CostH[$id]</td></tr>";
+                        ?>
+                    </table>
                 </div>
-              </div>
-          </div>
-
+                <br>
+                <br>
+                <div style='<?php echo $searchc ?>'>
+                    <table style="width:70%">
+                        <h3>Cars</h3>
+                        <tr>
+                            <td><b>Order #</b></td>
+                            <td><b>Destination</b></td>
+                            <td><b>Date From</b></td>
+                            <td><b>Pickup Hour</b></td>
+                            <td><b>Date To</b></td>
+                            <td><b>Drop Off</b></td>
+                            <td><b>Car Group</b></td>
+                            <td><b>Driver Age</b></td>
+                            <td><b>Cost</b></td>
+                        </tr>
+                        <tr>
+                            <?php
+                            for ($id = 0; $id < count($itemIdC); $id++)
+                                echo "<tr><td>
+                                        <form method='post' action='ShoppingCart.php'>
+                                            <button type='submit' name='$id'>$addToShoppingCart</button>
+                                        </form></td>
+                                  <td>$destinationC[$id]</td>
+                                  <td>$DateFromC[$id]</td>
+                                  <td>$pickupHourC[$id]</td>
+                                  <td>$DateToC[$id]</td>
+                                  <td>$dropOffC[$id]</td>
+                                  <td>$carGroupC[$id]</td>
+                                  <td>$driverAgeC[$id]</td>
+                                  <td>$CostC[$id]</td></tr>";
+                            ?>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
+
     </div>
+</div>
 
-
-
-<script type="text/javascript">
-    function addHotelToShoppingCart(e) {
-
-        var itemID = e.target.innerText;
-
-        alert(itemID);
-
-
-    }
-</script>
 <!-- Jquery JS-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <!-- Vendor JS-->
