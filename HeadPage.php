@@ -83,6 +83,8 @@ for ($idx = 0; $idx < 8; $idx++) {
         <li class='active'><a href='#'>Home</a></li>
         <li><a href='AccountPage.php'>Account</a></li>
         <li><a href='#'>Currency</a></li>
+        <li><a href='Reviews.php'>Write Review</a></li>
+        <li><a href='UsersReviews.php'>Users Reviews</a></li>
         <li><a href='Logout.php'>Logout</a></li>
     </ul>
 </div>
@@ -319,78 +321,6 @@ for ($idx = 0; $idx < 8; $idx++) {
     </div>
 </div>
 
-<div class="wrapper wrapper--w680">
-    <div class="card card-2">
-        <div class="card-body">
-            <ul class="tab-list">
-
-                <li class="tab-list__item active">
-                    <a class="tab-list__link" data-toggle="tab">Hotel Name:</a>
-                </li>
-                <li class="tab-list__item">
-                    <input class='form-control' id='hotelName' placeholder='Hotel Name' type='text'>
-                </li>
-                <br><br>
-                <li class="tab-list__item active">
-                    <a class="tab-list__link" data-toggle="tab">Write a Review:</a>
-                </li>
-                <li class="tab-list__item">
-                    <!-- <input class='form-control' id='review' placeholder='Write Review' type='textarea'> -->
-                    <textarea name="Text1" cols="40" rows="3" style="color: #767676;">Write Review</textarea>
-                </li>
-                <br><br>
-                <li class="tab-list__item">
-                    <a class="tab-list__link" data-toggle="tab">Rate:</a>
-                    <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5"/>
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4"/>
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3"/>
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2"/>
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1"/>
-                        <label for="star1" title="text">1 star</label>
-                    </div>
-                </li>
-            </ul>
-            <ul class="tab-list">
-                <li class="tab-list__item active">
-                    <a class="tab-list__link" data-toggle="tab">Add photo:</a>
-                </li>
-                <li class="tab-list__item active">
-                    <div class='form-group'>
-                        <div class='col-md-6'>
-                            <div class='form-group'>
-                                <div class='col-md-11'>
-                                    <input type='file' onchange="readURL(this);"/>
-                                    <img class="profilePic" id="blah" src="#" alt="your image"/>
-                                    <script>
-                                        function readURL(input) {
-                                            if (input.files && input.files[0]) {
-                                                var reader = new FileReader();
-
-                                                reader.onload = function (e) {
-                                                    $('#blah')
-                                                        .attr('src', e.target.result)
-                                                        .width(150)
-                                                        .height(150);
-                                                };
-
-                                                reader.readAsDataURL(input.files[0]);
-                                            }
-                                        }
-                                    </script>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
 <form class='form-horizontal' role='form'>
     <div class="wrapper wrapper--w680">
         <div class="card card-2">

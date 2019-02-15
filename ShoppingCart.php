@@ -77,18 +77,28 @@ while ($rowCart = mysqli_fetch_assoc($resultCart)) {
     }
 }
 
+$hotels = array();
+$sqlCart = "SELECT * FROM hotels JOIN cart ON hotels.itemId=cart.itemId;";
+$resultCart = mysqli_query($conn, $sqlCart);
 
-$items1 = array();
-$mergedItems = array_merge($itemsH, $itemsF);
-$mergedItems = array_merge($mergedItems, $itemsC);
-
-foreach ($items as $val1){
-    foreach ($mergedItems as $val2){
-        if ($val1 == $val2){
-            array_push($items1, $val2);
-        }
+while ($rowCart = mysqli_fetch_assoc($resultCart)) {
+    if ($rowCart['UserId'] == $displayName) {
+        array_push($hotels, $rowCart['itemId']);
     }
 }
+
+
+// $items1 = array();
+// $mergedItems = array_merge($itemsH, $itemsF);
+// $mergedItems = array_merge($mergedItems, $itemsC);
+//
+// foreach ($items as $val1){
+//     foreach ($mergedItems as $val2){
+//         if ($val1 == $val2){
+//             array_push($items1, $val2);
+//         }
+//     }
+// }
 
 
 $_SESSION['idh1'] = $itemsH;
@@ -116,7 +126,7 @@ $_SESSION['idc1'] = $itemsC;
 <body>
 <div><b>
         <?php echo "Hello, " . $displayName . " !"; ?><br>
-        <?php foreach ($itemsH as $value){
+        <?php foreach ($hotels as $value){
             echo $value;
         } ?><br>
         <?php foreach ($itemsF as $value){
@@ -125,15 +135,15 @@ $_SESSION['idc1'] = $itemsC;
         <?php foreach ($itemsC as $value){
             echo $value;
         } ?><br>
-        <?php foreach ($mergedItems as $value){
+        <!-- <?php foreach ($mergedItems as $value){
             echo $value;
-        } ?><br>
+        } ?><br> -->
         <?php foreach ($items as $value){
             echo $value;
         } ?><br>
-        <?php foreach ($items1 as $value){
+        <!-- <?php foreach ($items1 as $value){
             echo $value;
-        } ?>
+        } ?> -->
     </b></div>
 <a href="HeadPage.php">
     <div class="imgcontainer">
@@ -147,6 +157,8 @@ $_SESSION['idc1'] = $itemsC;
         <li><a href='HeadPage.php'>Home</a></li>
         <li class='active'><a href='AccountPage.php'>Account</a></li>
         <li><a href='#'>Currency</a></li>
+        <li><a href='Reviews.php'>Write Review</a></li>
+        <li><a href='UsersReviews.php'>Users Reviews</a></li>
         <li><a href='index.php'>Logout</a></li>
     </ul>
 </div>
