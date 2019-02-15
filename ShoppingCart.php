@@ -77,14 +77,6 @@ while ($rowCart = mysqli_fetch_assoc($resultCart)) {
     }
 }
 
-foreach ($items as $value){
-    $sqlHotels = "SELECT * FROM hotels WHERE itemId='$value';";
-    $resultHotels = mysqli_query($conn, $sqlHotels);
-    $rowHotels = mysqli_fetch_assoc($resultHotels);
-    if ($rowHotels['itemId'] == null || $rowHotels['itemId'] ==''){
-        array_push($itemsH, $value);
-    }
-}
 
 $items1 = array();
 $mergedItems = array_merge($itemsH, $itemsF);
