@@ -8,13 +8,11 @@ $displayName = $_SESSION['uname'];
 $chosenHotel = '';
 $chosenFlight = '';
 $chosenCar = '';
-//$sqlOrders = "SELECT * FROM orders;";
-//$resultOrders = mysqli_query($conn, $sqlOrders);
 $items = array();
 
-$itemsH = $_SESSION['idH'];
-$itemsF = $_SESSION['idF'];
-$itemsC = $_SESSION['idC'];
+$itemsH = $_SESSION['idh1'];
+$itemsF = $_SESSION['idf1'];
+$itemsC = $_SESSION['idc1'];
 
 for ($idH = 0; $idH < count($itemsH); $idH++) {
     if (isset($_POST[$idH])) {
@@ -24,47 +22,48 @@ for ($idH = 0; $idH < count($itemsH); $idH++) {
             $sql = "DELETE FROM cart WHERE UserId = '$displayName' AND itemId='$chosenHotel';";
             mysqli_query($conn, $sql);
 
+            unset($itemsH[$idH]);
+
             $sqlInsert = "INSERT INTO orders (UserId, itemId)
                 VALUES ('$displayName', '$chosenHotel');";
             mysqli_query($conn, $sqlInsert);
         }
-
-        $sqlOrder = "SELECT * FROM orders;";
-        $resultOrder = mysqli_query($conn, $sqlOrder);
-
-        while ($rowOrder = mysqli_fetch_assoc($resultOrder)){
-            if ($rowOrder['UserId'] == $displayName){
-                array_push($items, $rowOrder['itemId']);
-            }
-        }
     }
 }
+
+//$sqlOrder = "SELECT * FROM orders;";
+//$resultOrder = mysqli_query($conn, $sqlOrder);
+//
+//while ($rowOrder = mysqli_fetch_assoc($resultOrder)){
+//    if ($rowOrder['UserId'] == $displayName){
+//        array_push($items, $rowOrder['itemId']);
+//    }
+//}
 
 
 for ($idF = 0; $idF < count($itemsF); $idF++) {
     if (isset($_POST[$idF])) {
         $chosenFlight= $itemsF[$idF];
 
-        array_push($itemsF, $idF);
-
             $sql = "DELETE FROM cart WHERE UserId = '$displayName' AND itemId='$chosenFlight';";
             mysqli_query($conn, $sql);
+
+            unset($itemsF[$idF]);
 
             $sqlInsert = "INSERT INTO orders (UserId, itemId)
                 VALUES ('$displayName', '$chosenFlight');";
             mysqli_query($conn, $sqlInsert);
-
-
-        $sqlOrder = "SELECT * FROM orders;";
-        $resultOrder = mysqli_query($conn, $sqlOrder);
-
-        while ($rowOrder = mysqli_fetch_assoc($resultOrder)){
-            if ($rowOrder['UserId'] == $displayName){
-                array_push($items, $rowOrder['itemId']);
-            }
-        }
     }
 }
+
+//$sqlOrder = "SELECT * FROM orders;";
+//$resultOrder = mysqli_query($conn, $sqlOrder);
+//
+//while ($rowOrder = mysqli_fetch_assoc($resultOrder)){
+//    if ($rowOrder['UserId'] == $displayName){
+//        array_push($items, $rowOrder['itemId']);
+//    }
+//}
 
 for ($idC = 0; $idC < count($itemsC); $idC++) {
     if (isset($_POST[$idC])) {
@@ -74,30 +73,29 @@ for ($idC = 0; $idC < count($itemsC); $idC++) {
             $sql = "DELETE FROM cart WHERE UserId = '$displayName' AND itemId='$chosenCar';";
             mysqli_query($conn, $sql);
 
+            unset($itemsC[$idC]);
+
             $sqlInsert = "INSERT INTO orders (UserId, itemId)
                 VALUES ('$displayName', '$chosenCar');";
             mysqli_query($conn, $sqlInsert);
         }
-
-        $sqlOrder = "SELECT * FROM orders;";
-        $resultOrder = mysqli_query($conn, $sqlOrder);
-
-        while ($rowOrder = mysqli_fetch_assoc($resultCart)){
-            if ($rowOrder['UserId'] == $displayName){
-                array_push($items, $rowOrder['itemId']);
-            }
-        }
     }
 }
 
-//while ($rowOrders = mysqli_fetch_assoc($resultOrders)){
-//    if ($rowOrders['UserId'] == $displayName){
-//        array_push($items, $rowOrders['itemId']);
-//    }
-//}
+$sqlOrder = "SELECT * FROM orders;";
+$resultOrder = mysqli_query($conn, $sqlOrder);
 
-$displayName = $_SESSION['uname'];
-$_SESSION['userName'] = $_SESSION['uname'];
+while ($rowOrder = mysqli_fetch_assoc($resultOrder)){
+    if ($rowOrder['UserId'] == $displayName){
+        array_push($items, $rowOrder['itemId']);
+    }
+}
+
+$_SESSION['idH'] = $itemsH ;
+$_SESSION['idF'] = $itemsF ;
+$_SESSION['idC'] = $itemsC ;
+
+
 ?>
 <?php include 'DisplayOrdersLogic.php' ?>
 
