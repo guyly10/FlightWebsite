@@ -46,6 +46,14 @@ if(isset($_POST['confirmBtn']))
     $conn->query("DELETE FROM usersflights WHERE UserId = '$displayName'");
 
 
+    $res = $conn->query("SELECT * FROM userscommercials WHERE UserId = '$displayName'");
+    while($row = $res->fetch_assoc())
+    {
+        $flightCommercial = $row['commercialId'];
+        $conn->query("INSERT INTO orders (UserId, itemId)
+                VALUES ('$displayName', '$flightCommercial')");
+    }
+    $conn->query("DELETE FROM userscommercials WHERE UserId = '$displayName'");
 
 
     $conn->query("DELETE FROM cart WHERE UserId = '$displayName'");

@@ -28,16 +28,6 @@ for ($idH = 0; $idH < count($itemsH); $idH++) {
     }
 }
 
-//$sqlCart = "SELECT * FROM cart;";
-//$resultCart = mysqli_query($conn, $sqlCart);
-//
-//while ($rowCart = mysqli_fetch_assoc($resultCart)) {
-//    if ($rowCart['UserId'] == $displayName) {
-//        array_push($items, $rowCart['itemId']);
-//    }
-//}
-
-
 for ($idF = 0; $idF < count($itemsF); $idF++) {
     if (isset($_POST[$idF])) {
         $chosenFlight = $itemsF[$idF];
@@ -62,6 +52,16 @@ for ($idC = 0; $idC < count($itemsC); $idC++) {
     }
 }
 
+if (isset($_POST['SugBtn'])){
+
+    if ($displayName != "") {
+        $sql = "INSERT INTO cart (UserId, itemId)
+                VALUES ('$displayName', '100');";
+        mysqli_query($conn, $sql);
+        $conn->query("INSERT INTO userscommercials (UserId, commercialId) VALUES ('$displayName','100')");
+    }
+}
+
 $sqlCart = "SELECT * FROM cart;";
 $resultCart = mysqli_query($conn, $sqlCart);
 
@@ -71,28 +71,8 @@ while ($rowCart = mysqli_fetch_assoc($resultCart)) {
     }
 }
 
-$hotels = array();
-$sqlCart = "SELECT * FROM hotels JOIN cart ON hotels.itemId=cart.itemId;";
-$resultCart = mysqli_query($conn, $sqlCart);
-
-while ($rowCart = mysqli_fetch_assoc($resultCart)) {
-    if ($rowCart['UserId'] == $displayName) {
-        array_push($hotels, $rowCart['itemId']);
-    }
-}
 
 
-// $items1 = array();
-// $mergedItems = array_merge($itemsH, $itemsF);
-// $mergedItems = array_merge($mergedItems, $itemsC);
-//
-// foreach ($items as $val1){
-//     foreach ($mergedItems as $val2){
-//         if ($val1 == $val2){
-//             array_push($items1, $val2);
-//         }
-//     }
-// }
 
 
 $_SESSION['idh1'] = $itemsH;
