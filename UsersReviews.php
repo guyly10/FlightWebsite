@@ -25,6 +25,18 @@ while ($rowR = mysqli_fetch_assoc($resultReviews)) {
 $page = $_SERVER['PHP_SELF'];
 $sec = "20";
 
+for($i=0;$i<count($Topics);$i++){
+  if(isset($_POST[$i])){
+    $CommenterU = $displayName;
+    $comment = $_POST['Comment'];
+    $reviewer=$reviewers[$i];
+    $Topic = $Topics[$i];
+    $sql = "INSERT INTO comments (UserId,Topic, CommenterU, Comment)
+        VALUES ('$reviewer','$Topic', '$displayName' , '$comment');";
+    mysqli_query($conn, $sql);
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,8 +117,37 @@ $sec = "20";
                           </div>
                         </p><br><br>
                       </div>
+                      <p><strong><u> Comments </u></strong>
+                      <br>
+                      <div class="form-group internal">';
+
+                      $CurrnetReviewer=$reviewers[$index];
+                      $CurrentTopic = $Topics[$index];
+                      $sql = "SELECT * FROM comments WHERE UserID = '$CurrnetReviewer' AND Topic = '$CurrentTopic';";
+                      $resultReviews = mysqli_query($conn, $sql);
+                      while ($rowR = mysqli_fetch_assoc($resultReviews)) {
+                          echo '<div class="col-md-8">
+															<div class="col-md" style="border-left:0.5px solid #ffffff;">
+																<strong>'.$rowR['CommenterU'].'</strong><br>
+															comment :	'.$rowR['Comment'].'
+															</div>
+														</div>
+														<hr style="border-top: width:90%;">';
+                      }
+
+                      echo '</div>
+                      <div class="form-group internal">
+                      <br><br>
+                        <form id="CForm" method="post" action="">
+                          <input class="form-control" id="Comment" name="Comment" placeholder="Comment here" type="text">
+                          <button id="submit" name='.$index.' tupe="submit" class="btn-submit" style="max-width: 100px; max-height: 40px;">submit</button>
+                        </form>
+                      </div>
+                      </p>
+
                     </div>';
             }
+
           ?>
         </div>
     </div>
