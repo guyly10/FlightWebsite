@@ -10,10 +10,22 @@ $chosenHotel = '';
 $chosenFlight = '';
 $chosenCar = '';
 $items = array();
+$itemsH = array();
+$itemsF = array();
+$itemsC = array();
 
-$itemsH = $_SESSION['idH'];
-$itemsF = $_SESSION['idF'];
-$itemsC = $_SESSION['idC'];
+if($_SESSION['idH'] != null && $_SESSION['idH'] != ''){
+    $itemsH = $_SESSION['idH'];
+}
+
+if($_SESSION['idF'] != null && $_SESSION['idF'] != ''){
+    $itemsF = $_SESSION['idF'];
+}
+
+if($_SESSION['idC'] != null && $_SESSION['idC'] != ''){
+    $itemsC = $_SESSION['idC'];
+}
+
 
 for ($idH = 0; $idH < count($itemsH); $idH++) {
     if (isset($_POST[$idH])) {

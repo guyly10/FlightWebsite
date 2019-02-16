@@ -9,10 +9,23 @@ $chosenHotel = '';
 $chosenFlight = '';
 $chosenCar = '';
 $items = array();
-$asd;
-$itemsH = $_SESSION['idh1'];
-$itemsF = $_SESSION['idf1'];
-$itemsC = $_SESSION['idc1'];
+
+$itemsH = array();
+$itemsF = array();
+$itemsC = array();
+
+if($_SESSION['idH'] != null && $_SESSION['idH'] != ''){
+    $itemsH = $_SESSION['idh1'];
+}
+
+if($_SESSION['idF'] != null && $_SESSION['idF'] != ''){
+    $itemsF = $_SESSION['idf1'];
+}
+
+if($_SESSION['idC'] != null && $_SESSION['idC'] != ''){
+    $itemsC = $_SESSION['idc1'];
+}
+
 if(isset($_POST['confirmBtn']))
 {
 
