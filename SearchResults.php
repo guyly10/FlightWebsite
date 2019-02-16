@@ -170,10 +170,10 @@ $_SESSION['idF'] = $itemIdF;
                 <h2>Search Results</h2>
                 <br>
                 <div style='<?php echo $searchf ?>'>
-                    <table style="width:50%">
-                        <h3>Flight</h3>
+                    <table style="width:85%">
+                        <h3>Flight</h3><br>
                         <tr>
-                            <td><b>Order #</b></td>
+                            <td><b></b></td>
                             <td><b>origin</b></td>
                             <td><b>Destination</b></td>
                             <td><b>Date From</b></td>
@@ -183,9 +183,9 @@ $_SESSION['idF'] = $itemIdF;
                         <tr>
                             <?php
                             for ($id = 0; $id < count($itemIdF); $id++)
-                                echo "<tr><td>
+                                echo "<tr><td height='50'>
                                         <form method='post' action='ShoppingCart.php'>
-                                            <button type='submit' name='$id'>$addToShoppingCart</button>
+                                            <button style='background: #4da6ff' type='submit' name='$id'>$addToShoppingCart</button>
                                         </form></td>
                                   <td>$originF[$id]</td>
                                   <td>$DestinationF[$id]</td>
@@ -199,10 +199,10 @@ $_SESSION['idF'] = $itemIdF;
                 <br>
                 <br>
                 <div style='<?php echo $searchh ?>'>
-                    <table style="width:40%">
+                    <table style="width:85%">
                         <h3>Hotels</h3>
                         <tr>
-                            <td><b>Order #</b></td>
+                            <td><b></b></td>
                             <td><b>Destination</b></td>
                             <td><b>Date From</b></td>
                             <td><b>Date To</b></td>
@@ -210,9 +210,9 @@ $_SESSION['idF'] = $itemIdF;
                         </tr>
                         <?php
                         for ($id = 0; $id < count($itemIdH); $id++)
-                            echo "<tr><td>
+                            echo "<tr><td height='50'>
                                         <form method='post' action='ShoppingCart.php'>
-                                            <button type='submit' name='$id'>$addToShoppingCart</button>
+                                            <button style='background: #4da6ff' type='submit' name='$id'>$addToShoppingCart</button>
                                         </form></td>
                                   <td>$destinationH[$id]</td>
                                   <td>$DateFromH[$id]</td>
@@ -224,10 +224,10 @@ $_SESSION['idF'] = $itemIdF;
                 <br>
                 <br>
                 <div style='<?php echo $searchc ?>'>
-                    <table style="width:70%">
+                    <table style="width:100%">
                         <h3>Cars</h3>
                         <tr>
-                            <td><b>Order #</b></td>
+                            <td><b></b></td>
                             <td><b>Destination</b></td>
                             <td><b>Date From</b></td>
                             <td><b>Pickup Hour</b></td>
@@ -240,9 +240,9 @@ $_SESSION['idF'] = $itemIdF;
                         <tr>
                             <?php
                             for ($id = 0; $id < count($itemIdC); $id++)
-                                echo "<tr><td>
-                                        <form method='post' action='ShoppingCart.php'>
-                                            <button type='submit' name='$id'>$addToShoppingCart</button>
+                                echo "<tr><td height='50'>
+                                        <form method='post' action='ShoppingCart.php' id='carForm'>
+                                            <button style='background: #4da6ff' type='submit' name='$id' value='$id'>$addToShoppingCart</button>
                                         </form></td>
                                   <td>$destinationC[$id]</td>
                                   <td>$DateFromC[$id]</td>
@@ -274,7 +274,30 @@ $_SESSION['idF'] = $itemIdF;
 
 <!-- Main JS-->
 <script src="js/global.js"></script>
-
+<!--<script !src="">-->
+<!--    $("#carForm").submit(function() {-->
+<!--        var id = $(this).find('button.clicked').prop('id');-->
+<!--        alert(id);-->
+<!--        var ajaxurl = 'functions.php',-->
+<!--            data =  {'action': 'addCar', 'car': };-->
+<!--        $.post(ajaxurl, data, function(response) {-->
+<!---->
+<!--        });-->
+<!--        return false;-->
+<!--    });-->
+<!--</script>-->
+<!--<script type="text/javascript">-->
+<!--    $(document).ready(function(){-->
+<!--        $("#games").click(function(){-->
+<!--                var ajaxurl = 'functions.php',-->
+<!--                    data =  {'action': 'getGames'};-->
+<!--                $.post(ajaxurl, data, function (response) {-->
+<!--                    jsonData = jQuery.parseJSON(response);-->
+<!--                });-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 
 </body>
 <footer>

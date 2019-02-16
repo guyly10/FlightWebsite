@@ -53,6 +53,22 @@ while ($rowFlight = mysqli_fetch_assoc($resultFlight)){
     }
 }
 
+$sqlCommercial = "SELECT * FROM commercials;";
+$resultCommercial = mysqli_query($conn, $sqlCommercial);
+
+while ($rowComercial = mysqli_fetch_assoc($resultCommercial)){
+    for ($idx = 0; $idx < count($items); $idx++){
+        if ($rowComercial['itemID'] == $items[$idx]){
+            array_push($itemIdF, $rowComercial['itemID']);
+            array_push($originF, "TLV");
+            array_push($DestinationF, $rowComercial['city']);
+            array_push($DateFromF, $rowComercial['goDate']);
+            array_push($DateToF, $rowComercial['returnDate']);
+            array_push($CostF, $rowComercial['price']);
+        }
+    }
+}
+
 $sqlHotels = "SELECT * FROM hotels;";
 $resultHotels = mysqli_query($conn, $sqlHotels);
 $hotels = array();

@@ -20,7 +20,8 @@ if($rowN['msg']!=null && $rowN['msg']!=''){
 $sql = "SELECT * FROM commercials;";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-//need to change to show more than one commercial
+$toCart = "Add to shopping cart";
+
 for ($idx = 0; $idx < 8; $idx++) {
     $city = $row['city'];
     $goDate = $row['goDate'];
@@ -300,7 +301,7 @@ for ($idx = 0; $idx < 8; $idx++) {
     <div class="card card-2">
         <div class="card-body">
             <ul class="tab-list">
-                <li class="tab-list__item active">
+                <li class="tab-list__item">
                     <a class="tab-list__link" data-toggle="tab"><?php echo $city ?></a>
                 </li>
                 <li class="tab-list__item">
@@ -314,6 +315,11 @@ for ($idx = 0; $idx < 8; $idx++) {
                 </li>
                 <li class="tab-list__item">
                     <a class="tab-list__link" data-toggle="tab"><?php echo $price ?></a>
+                </li>
+                <li class="tab-list__item">
+                    <form action="ShoppingCart.php" method="post">
+                        <button name="SugBtn" class="btn-submit"><?php echo $toCart ?></button>
+                    </form>
                 </li>
             </ul>
 

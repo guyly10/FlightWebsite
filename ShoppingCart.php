@@ -23,19 +23,10 @@ for ($idH = 0; $idH < count($itemsH); $idH++) {
             $sql = "INSERT INTO cart (UserId, itemId)
                 VALUES ('$displayName', '$chosenHotel');";
             mysqli_query($conn, $sql);
+            $conn->query("INSERT INTO userhotels (UserId, hotelId) VALUES ('$displayName', '$chosenHotel')");
         }
     }
 }
-
-//$sqlCart = "SELECT * FROM cart;";
-//$resultCart = mysqli_query($conn, $sqlCart);
-//
-//while ($rowCart = mysqli_fetch_assoc($resultCart)) {
-//    if ($rowCart['UserId'] == $displayName) {
-//        array_push($items, $rowCart['itemId']);
-//    }
-//}
-
 
 for ($idF = 0; $idF < count($itemsF); $idF++) {
     if (isset($_POST[$idF])) {
@@ -44,17 +35,9 @@ for ($idF = 0; $idF < count($itemsF); $idF++) {
             $sql = "INSERT INTO cart (UserId, itemId)
                 VALUES ('$displayName', '$chosenFlight');";
             mysqli_query($conn, $sql);
+            $conn->query("INSERT INTO usersflights (UserId, flightId) VALUES ('$displayName','$chosenFlight')");
     }
 }
-
-//$sqlCart = "SELECT * FROM cart;";
-//$resultCart = mysqli_query($conn, $sqlCart);
-//
-//while ($rowCart = mysqli_fetch_assoc($resultCart)) {
-//    if ($rowCart['UserId'] == $displayName) {
-//        array_push($items, $rowCart['itemId']);
-//    }
-//}
 
 for ($idC = 0; $idC < count($itemsC); $idC++) {
     if (isset($_POST[$idC])) {
@@ -64,7 +47,18 @@ for ($idC = 0; $idC < count($itemsC); $idC++) {
             $sql = "INSERT INTO cart (UserId, itemId)
                 VALUES ('$displayName', '$chosenCar');";
             mysqli_query($conn, $sql);
+            $conn->query("INSERT INTO userscars (UserId, CarId) VALUES ('$displayName','$chosenCar')");
         }
+    }
+}
+
+if (isset($_POST['SugBtn'])){
+
+    if ($displayName != "") {
+        $sql = "INSERT INTO cart (UserId, itemId)
+                VALUES ('$displayName', '100');";
+        mysqli_query($conn, $sql);
+        $conn->query("INSERT INTO userscommercials (UserId, commercialId) VALUES ('$displayName','100')");
     }
 }
 
@@ -77,28 +71,8 @@ while ($rowCart = mysqli_fetch_assoc($resultCart)) {
     }
 }
 
-$hotels = array();
-$sqlCart = "SELECT * FROM hotels JOIN cart ON hotels.itemId=cart.itemId;";
-$resultCart = mysqli_query($conn, $sqlCart);
-
-while ($rowCart = mysqli_fetch_assoc($resultCart)) {
-    if ($rowCart['UserId'] == $displayName) {
-        array_push($hotels, $rowCart['itemId']);
-    }
-}
 
 
-// $items1 = array();
-// $mergedItems = array_merge($itemsH, $itemsF);
-// $mergedItems = array_merge($mergedItems, $itemsC);
-//
-// foreach ($items as $val1){
-//     foreach ($mergedItems as $val2){
-//         if ($val1 == $val2){
-//             array_push($items1, $val2);
-//         }
-//     }
-// }
 
 
 $_SESSION['idh1'] = $itemsH;
@@ -125,25 +99,7 @@ $_SESSION['idc1'] = $itemsC;
 </head>
 <body>
 <div><b>
-        <?php echo "Hello, " . $displayName . " !"; ?><br>
-        <?php foreach ($hotels as $value){
-            echo $value;
-        } ?><br>
-        <?php foreach ($itemsF as $value){
-            echo $value;
-        } ?><br>
-        <?php foreach ($itemsC as $value){
-            echo $value;
-        } ?><br>
-        <!-- <?php foreach ($mergedItems as $value){
-            echo $value;
-        } ?><br> -->
-        <?php foreach ($items as $value){
-            echo $value;
-        } ?><br>
-        <!-- <?php foreach ($items1 as $value){
-            echo $value;
-        } ?> -->
+        <?php echo "Hello, " . $displayName . " !"; ?>
     </b></div>
 <a href="HeadPage.php">
     <div class="imgcontainer">
@@ -188,7 +144,6 @@ $_SESSION['idc1'] = $itemsC;
         <table style="width:50%">
             <h3>Flight</h3>
             <tr>
-                <td><b>Confirm</b></td>
                 <td><b>origin</b></td>
                 <td><b>Destination</b></td>
                 <td><b>Date From</b></td>
@@ -198,10 +153,7 @@ $_SESSION['idc1'] = $itemsC;
             <tr>
                 <?php
                 for ($id = 0; $id < count($itemIdF); $id++)
-                    echo "<tr><td>
-                              <form method='post' action='UserOrders.php'>
-                                <button type='submit' name='$id'>$Confirm</button>
-                                   </form></td>
+                    echo "<tr>
                                   <td>$originF[$id]</td>
                                   <td>$DestinationF[$id]</td>
                                   <td>$DateFromF[$id]</td>
@@ -215,7 +167,7 @@ $_SESSION['idc1'] = $itemsC;
         <table style="width:40%">
             <h3>Hotels</h3>
             <tr>
-                <td><b>Confirm</b></td>
+
                 <td><b>Destination</b></td>
                 <td><b>Date From</b></td>
                 <td><b>Date To</b></td>
@@ -224,10 +176,7 @@ $_SESSION['idc1'] = $itemsC;
             <tr>
                 <?php
                 for ($id = 0; $id < count($itemIdH); $id++)
-                    echo "<tr><td>
-                              <form method='post' action='UserOrders.php'>
-                                <button type='submit' name='$id'>$Confirm</button>
-                                 </form></td>
+                    echo "<tr>
                                  <td>$destinationH[$id]</td>
                                  <td>$DateFromH[$id]</td>
                                  <td>$DateToH[$id]</td>
@@ -240,7 +189,7 @@ $_SESSION['idc1'] = $itemsC;
         <table style="width:70%">
             <h3>Cars</h3>
             <tr>
-                <td><b>Confirm</b></td>
+
                 <td><b>Destination</b></td>
                 <td><b>Date From</b></td>
                 <td><b>Pickup Hour</b></td>
@@ -253,10 +202,7 @@ $_SESSION['idc1'] = $itemsC;
             <tr>
                 <?php
                 for ($id = 0; $id < count($itemIdC); $id++)
-                    echo "<tr><td>
-                             <form method='post' action='UserOrders.php'>
-                               <button type='submit' name='$id'>$Confirm</button>
-                                  </form></td>
+                    echo "<tr>
                                   <td>$destinationC[$id]</td>
                                   <td>$DateFromC[$id]</td>
                                   <td>$pickupHourC[$id]</td>
@@ -269,6 +215,9 @@ $_SESSION['idc1'] = $itemsC;
             </tr>
         </table>
     </div>
+    <form action="UserOrders.php" method="post">
+     <button class="btn btn-primary float-right" name="confirmBtn">Confirm</button>
+    </form>
 </div>
 <footer>
     <p style="text-align:center;"> Create by : 203371703 , 312233422

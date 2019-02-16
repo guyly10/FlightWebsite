@@ -9,77 +9,54 @@ $chosenHotel = '';
 $chosenFlight = '';
 $chosenCar = '';
 $items = array();
-
+$asd;
 $itemsH = $_SESSION['idh1'];
 $itemsF = $_SESSION['idf1'];
 $itemsC = $_SESSION['idc1'];
+if(isset($_POST['confirmBtn']))
+{
 
-for ($idH = 0; $idH < count($itemsH); $idH++) {
-    if (isset($_POST[$idH])) {
-        $chosenHotel= $itemsH[$idH];
-
-        if($displayName != "" && $chosenHotel != ""){
-            $sql = "DELETE FROM cart WHERE UserId = '$displayName' AND itemId='$chosenHotel';";
-            mysqli_query($conn, $sql);
-
-            unset($itemsH[$idH]);
-
-            $sqlInsert = "INSERT INTO orders (UserId, itemId)
-                VALUES ('$displayName', '$chosenHotel');";
-            mysqli_query($conn, $sqlInsert);
-        }
+    $res = $conn->query("SELECT * FROM userhotels WHERE UserId = '$displayName'");
+    while($row = $res->fetch_assoc())
+    {
+        $hotel = $row['hotelId'];
+       $conn->query("INSERT INTO orders (UserId, itemId)
+                VALUES ('$displayName', '$hotel')");
     }
-}
-
-//$sqlOrder = "SELECT * FROM orders;";
-//$resultOrder = mysqli_query($conn, $sqlOrder);
-//
-//while ($rowOrder = mysqli_fetch_assoc($resultOrder)){
-//    if ($rowOrder['UserId'] == $displayName){
-//        array_push($items, $rowOrder['itemId']);
-//    }
-//}
+    $conn->query("DELETE FROM userhotels WHERE UserId = '$displayName'");
 
 
-for ($idF = 0; $idF < count($itemsF); $idF++) {
-    if (isset($_POST[$idF])) {
-        $chosenFlight= $itemsF[$idF];
-
-            $sql = "DELETE FROM cart WHERE UserId = '$displayName' AND itemId='$chosenFlight';";
-            mysqli_query($conn, $sql);
-
-            unset($itemsF[$idF]);
-
-            $sqlInsert = "INSERT INTO orders (UserId, itemId)
-                VALUES ('$displayName', '$chosenFlight');";
-            mysqli_query($conn, $sqlInsert);
+    $res = $conn->query("SELECT * FROM userscars WHERE UserId = '$displayName'");
+    while($row = $res->fetch_assoc())
+    {
+        $car = $row['CarId'];
+        $conn->query("INSERT INTO orders (UserId, itemId)
+                VALUES ('$displayName', '$car')");
     }
-}
+    $conn->query("DELETE FROM userscars WHERE UserId = '$displayName'");
 
-//$sqlOrder = "SELECT * FROM orders;";
-//$resultOrder = mysqli_query($conn, $sqlOrder);
-//
-//while ($rowOrder = mysqli_fetch_assoc($resultOrder)){
-//    if ($rowOrder['UserId'] == $displayName){
-//        array_push($items, $rowOrder['itemId']);
-//    }
-//}
 
-for ($idC = 0; $idC < count($itemsC); $idC++) {
-    if (isset($_POST[$idC])) {
-        $chosenCar= $itemsC[$idC];
-
-        if($displayName != "" && $chosenCar != ""){
-            $sql = "DELETE FROM cart WHERE UserId = '$displayName' AND itemId='$chosenCar';";
-            mysqli_query($conn, $sql);
-
-            unset($itemsC[$idC]);
-
-            $sqlInsert = "INSERT INTO orders (UserId, itemId)
-                VALUES ('$displayName', '$chosenCar');";
-            mysqli_query($conn, $sqlInsert);
-        }
+    $res = $conn->query("SELECT * FROM usersflights WHERE UserId = '$displayName'");
+    while($row = $res->fetch_assoc())
+    {
+        $flight = $row['flightId'];
+        $conn->query("INSERT INTO orders (UserId, itemId)
+                VALUES ('$displayName', '$flight')");
     }
+    $conn->query("DELETE FROM usersflights WHERE UserId = '$displayName'");
+
+
+    $res = $conn->query("SELECT * FROM userscommercials WHERE UserId = '$displayName'");
+    while($row = $res->fetch_assoc())
+    {
+        $flightCommercial = $row['commercialId'];
+        $conn->query("INSERT INTO orders (UserId, itemId)
+                VALUES ('$displayName', '$flightCommercial')");
+    }
+    $conn->query("DELETE FROM userscommercials WHERE UserId = '$displayName'");
+
+
+    $conn->query("DELETE FROM cart WHERE UserId = '$displayName'");
 }
 
 $sqlOrder = "SELECT * FROM orders;";
