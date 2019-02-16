@@ -37,8 +37,8 @@ $displayName = $_SESSION['uname'];
 <div id='menu'>
     <ul>
         <li><a href='HeadPage.php'>Home</a></li>
-        <li class='active'><a href='AccountPage.php'>Account</a></li>
-        <li><a href='#'>Currency</a></li>
+        <li><a href='AccountPage.php'>Account</a></li>
+        <li class='active'><a href='Currency.php'>Currency</a></li>
         <li><a href='Reviews.php'>Write Review</a></li>
         <li><a href='UsersReviews.php'>Users Reviews</a></li>
         <li><a href='index.php'>Logout</a></li>

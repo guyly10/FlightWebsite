@@ -71,7 +71,7 @@ if (isset($_POST['submit'])){
     <ul>
         <li><a href='HeadPage.php'>Home</a></li>
         <li><a href='AccountPage.php'>Account</a></li>
-        <li><a href='#'>Currency</a></li>
+        <li><a href='Currency.php'>Currency</a></li>
         <li class='active' ><a href='#'>Write Review</a></li>
         <li><a href='UsersReviews.php'>Users Reviews</a></li>
         <li><a href='Logout.php'>Logout</a></li>

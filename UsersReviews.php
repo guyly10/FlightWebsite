@@ -96,7 +96,7 @@ for($i=0;$i<count($Topics);$i++){
     <ul>
         <li><a href='HeadPage.php'>Home</a></li>
         <li><a href='AccountPage.php'>Account</a></li>
-        <li><a href='#'>Currency</a></li>
+        <li><a href='Currency.php'>Currency</a></li>
         <li><a href='Reviews.php'>Write Review</a></li>
         <li class='active'><a href='#'>Users Reviews</a></li>
         <li><a href='Logout.php'>Logout</a></li>

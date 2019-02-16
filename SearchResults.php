@@ -155,7 +155,7 @@ $_SESSION['idF'] = $itemIdF;
     <ul>
         <li class='active'><a href='HeadPage.php'>Home</a></li>
         <li><a href='AccountPage.php'>Account</a></li>
-        <li><a href='#'>Currency</a></li>
+        <li><a href='Currency.php'>Currency</a></li>
         <li><a href='Reviews.php'>Write Review</a></li>
         <li><a href='UsersReviews.php'>Users Reviews</a></li>
         <li><a href='Logout.php'>Logout</a></li>
