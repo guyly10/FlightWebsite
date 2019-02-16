@@ -35,6 +35,11 @@ for($i=0;$i<count($Topics);$i++){
       $sql = "INSERT INTO comments (UserId,Topic, CommenterU, Comment)
           VALUES ('$reviewer','$Topic', '$displayName' , '$comment');";
         mysqli_query($conn, $sql);
+
+        $msg = "You Have a new comment on Your review !";
+        $sqlN = "INSERT INTO notifications (user,msg)
+          VALUES ('$reviewer', '$msg');";
+        mysqli_query($conn, $sqlN);
     }
   }
 }
