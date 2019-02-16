@@ -1,0 +1,37 @@
+@color_2: #3399ff;
+@color_1: white;
+@pad: 14px 20px;
+@pad1: 20px;
+@mar: 8px;
+@cur: pointer;
+@op: 0.8;
+@bor: none;
+@width: 100%;
+@mar1: 0;
+
+button {
+	background-color: @color_2;
+	color: @color_1;
+	padding: @pad;
+	margin: @mar;
+	border: @bor;
+	cursor: @cur;
+	width: @width;
+	&:hover {
+		opacity: @op;
+	}
+}
+@media screen and (max-width: 600px) {
+	.col-25 {
+		width: @width;
+		margin-top: @mar1;
+	}
+	.col-75 {
+		width: @width;
+		margin-top: @mar1;
+	}
+	input[type=submit] {
+		width: @width;
+		margin-top: @mar1;
+	}
+}

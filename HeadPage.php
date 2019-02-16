@@ -83,7 +83,7 @@ for ($idx = 0; $idx < 8; $idx++) {
     <ul>
         <li class='active'><a href='#'>Home</a></li>
         <li><a href='AccountPage.php'>Account</a></li>
-        <li><a href='#'>Currency</a></li>
+        <li><a href='Currency.php'>Currency</a></li>
         <li><a href='Reviews.php'>Write Review</a></li>
         <li><a href='UsersReviews.php'>Users Reviews</a></li>
         <li><a href='Logout.php'>Logout</a></li>
