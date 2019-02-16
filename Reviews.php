@@ -58,7 +58,7 @@ if (isset($_POST['submit'])){
 </head>
 <body>
 <div><b>
-        <?php echo "Hello, " . $displayName .$Topic.$rate.$textReview.$pic. " ! "; ?>
+        <?php echo "Hello, " . $displayName . " ! "; ?>
     </b></div>
 <a href="HeadPage.php">
     <div class="imgcontainer">

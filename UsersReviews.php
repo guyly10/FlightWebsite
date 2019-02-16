@@ -11,7 +11,7 @@ $reviewers = array();
 $Topics = array();
 $TextsR = array();
 $Rates = array();
-$Photo = array();
+$Photos = array();
 $sql = "SELECT * FROM reviews;";
 $resultReviews = mysqli_query($conn, $sql);
 while ($rowR = mysqli_fetch_assoc($resultReviews)) {
@@ -19,8 +19,11 @@ while ($rowR = mysqli_fetch_assoc($resultReviews)) {
     array_push($Topics, $rowR['Topic']);
     array_push($TextsR, $rowR['TextR']);
     array_push($Rates, $rowR['Rate']);
-    array_push($Photo, $rowR['Photo']);
+    array_push($Photos, $rowR['Photo']);
 }
+
+$page = $_SERVER['PHP_SELF'];
+$sec = "20";
 
 ?>
 <!DOCTYPE html>
@@ -28,6 +31,7 @@ while ($rowR = mysqli_fetch_assoc($resultReviews)) {
 <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="<?php echo $sec?>;URL='<?php echo $page?>'">
     <link rel="stylesheet" href="css/HeadPage.css">
     <link rel="stylesheet" href="css/StarCSS.css">
     <link rel="stylesheet" href="css/uploadPic.css">
@@ -84,7 +88,26 @@ while ($rowR = mysqli_fetch_assoc($resultReviews)) {
 <div class="wrapper wrapper--w680">
     <div class="card card-2">
         <div class="card-body">
-
+          <?php
+            for($index=0;$index<count($Topics);$index++){
+              echo '<div class="row">
+                      <div class="col-md-8">
+                        <p>
+                          <strong><u>author: '.$reviewers[$index].'</u></strong>
+                          <br><u>Topic :</u>
+                          '.$Topics[$index].'
+                          <br><u>Review :</u>
+                          '.$TextsR[$index].'
+                          <br>
+                          <u>Rate :</u> '.$Rates[$index].'
+                          <div class="col-md-4"><u>Photo :</u>
+                            <img src="IMAGES/'.$Photos[$index].'" style="max-width: 200px; max-height: 200px;" class="profilePic">
+                          </div>
+                        </p><br><br>
+                      </div>
+                    </div>';
+            }
+          ?>
         </div>
     </div>
 </div>
