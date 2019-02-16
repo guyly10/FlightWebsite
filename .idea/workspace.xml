@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eeeca2d3-ffbb-40b6-bae0-c7db1f149731" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SearchResults.php" beforeDir="false" afterPath="$PROJECT_DIR$/SearchResults.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShoppingCart.php" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingCart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserOrders.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,20 +17,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SearchResults.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+            <state relative-caret-position="408">
+              <caret line="240" column="56" selection-start-line="240" selection-start-column="56" selection-end-line="240" selection-end-column="56" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#form#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ShoppingCart.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="79" selection-start-line="79" selection-end-line="79" />
+            <state relative-caret-position="162">
+              <caret line="212" column="30" selection-start-line="212" selection-start-column="30" selection-end-line="212" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -36,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/UserOrders.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+              <caret line="109" column="115" lean-forward="true" selection-start-line="109" selection-start-column="115" selection-end-line="109" selection-end-column="115" />
             </state>
           </provider>
         </entry>
@@ -81,6 +91,7 @@
       <find>mysq</find>
       <find>idh</find>
       <find>submit</find>
+      <find>btn</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -93,7 +104,6 @@
         <option value="$PROJECT_DIR$/HeadPage.css" />
         <option value="$PROJECT_DIR$/mainLogin.css" />
         <option value="$PROJECT_DIR$/style.css" />
-        <option value="$PROJECT_DIR$/css/main.css" />
         <option value="$PROJECT_DIR$/main.html" />
         <option value="$PROJECT_DIR$/css/mainLogin.css" />
         <option value="$PROJECT_DIR$/vendor/select2/select2.min.css" />
@@ -126,10 +136,12 @@
         <option value="$PROJECT_DIR$/UpdateDetails.php" />
         <option value="$PROJECT_DIR$/AdminInfo.php" />
         <option value="$PROJECT_DIR$/FieldCheckLoginLogic.php" />
-        <option value="$PROJECT_DIR$/UserOrders.php" />
         <option value="$PROJECT_DIR$/DisplayOrdersLogic.php" />
-        <option value="$PROJECT_DIR$/ShoppingCart.php" />
+        <option value="$PROJECT_DIR$/functions.php" />
+        <option value="$PROJECT_DIR$/UserOrders.php" />
+        <option value="$PROJECT_DIR$/css/main.css" />
         <option value="$PROJECT_DIR$/SearchResults.php" />
+        <option value="$PROJECT_DIR$/ShoppingCart.php" />
       </list>
     </option>
   </component>
@@ -138,10 +150,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP from XAMPP" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="135" />
-    <option name="y" value="-15" />
-    <option name="width" value="2590" />
-    <option name="height" value="1105" />
+    <option name="x" value="-8" />
+    <option name="width" value="1148" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -157,6 +168,11 @@
             <path>
               <item name="FlightWebsite" type="b2602c69:ProjectViewProjectNode" />
               <item name="FlightWebsite" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FlightWebsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FlightWebsite" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FlightWebsite" type="b2602c69:ProjectViewProjectNode" />
@@ -237,12 +253,12 @@
       <workItem from="1550078148046" duration="1147000" />
       <workItem from="1550079346420" duration="317000" />
       <workItem from="1550079866865" duration="6843000" />
-      <workItem from="1550087687584" duration="35583000" />
+      <workItem from="1550087687584" duration="46536000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177736000" />
+    <option name="totallyTimeSpent" value="188689000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -286,8 +302,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/reset.css" />
-    <entry file="file://$PROJECT_DIR$/style.css" />
     <entry file="file://$PROJECT_DIR$/HeadPage.css" />
     <entry file="file://$PROJECT_DIR$/mainLogin.css" />
     <entry file="file://$PROJECT_DIR$/vendor/select2/select2.min.css">
@@ -321,13 +335,6 @@
     <entry file="file://$PROJECT_DIR$/js/SideBar.js" />
     <entry file="file://$PROJECT_DIR$/Try.html" />
     <entry file="file://$PROJECT_DIR$/css/SideBar.css" />
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2924">
-          <caret line="172" lean-forward="true" selection-start-line="172" selection-end-line="172" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/ProfilePic.js" />
     <entry file="file://$PROJECT_DIR$/css/ProfilePic.css" />
     <entry file="file://$PROJECT_DIR$/js/ProfilePic.js" />
@@ -456,24 +463,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UserOrders.php">
+    <entry file="file://$PROJECT_DIR$/vendor/jquery-validate/jquery.validate.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ShoppingCart.php">
+    <entry file="file://$PROJECT_DIR$/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UserOrders.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="109" column="115" lean-forward="true" selection-start-line="109" selection-start-column="115" selection-end-line="109" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="276" column="1" selection-start-line="276" selection-start-column="1" selection-end-line="276" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SearchResults.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+        <state relative-caret-position="408">
+          <caret line="240" column="56" selection-start-line="240" selection-start-column="56" selection-end-line="240" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#form#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ShoppingCart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="212" column="30" selection-start-line="212" selection-start-column="30" selection-end-line="212" selection-end-column="30" />
         </state>
       </provider>
     </entry>
