@@ -11,6 +11,7 @@ $address = "";
 $equalPass = "";
 $successLogin = "";
 $count = 0;
+$pic = "images/";
 $displayName = $_SESSION['uname'];
 
 $dbServerName = "localhost";
@@ -21,6 +22,7 @@ $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    $pic =$pic.$_POST['pic'];
     //check id_first_name
     if (preg_match('/^\s*$/', $_POST["id_first_name"])) {
         $fName = "Field can't be empty";
@@ -128,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_query($conn, $sqlUserName);
 
         $sql = "INSERT INTO users (UserID, firstName, lastName, dob, email, phone, password, address, photo)
-                VALUES ('$dFName', '$dFName', '$dLName', '$dDob', '$dEmail', '$dPhone', '$dPass', '$dAddress', 'empty');";
+                VALUES ('$dFName', '$dFName', '$dLName', '$dDob', '$dEmail', '$dPhone', '$dPass', '$dAddress', '$pic');";
         mysqli_query($conn, $sql);
 
 

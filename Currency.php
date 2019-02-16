@@ -45,17 +45,29 @@ $displayName = $_SESSION['uname'];
     </ul>
 </div>
 <div id="databinding" class='container'>
-    <h1>Currency Changer</h1><br>
-    <span>Enter Sum: </span><input type="number" v-model.number="amount" placeholder="Enter Sum"><br>
-    <span>Convert From:</span>
-    <select v-model="convertfrom" style="width:250px;">
-        <option v-for="(a, index) in currencyfrom" v-bind:value="a.name">{{a.desc}}</option>
-    </select><br>
-    <span>To:</span>
-    <select v-model="convertto" style="width:250px;">
-        <option v-for="(a, index) in currencyfrom" v-bind:value="a.name">{{a.desc}}</option>
-    </select><br>
-    <span>{{amount}} {{convertfrom}} is {{finalamount}} {{convertto}}</span>
+    <h1>Currency Changer</h1>
+    <table>
+        <tr>
+            <td><span>Enter Sum: </span><input type="number" v-model.number="amount" placeholder="Enter Sum"><br></td>
+        </tr>
+        <tr>
+            <td><span>Convert From:</span>
+            <select v-model="convertfrom" style="width:250px;">
+                <option v-for="(a, index) in currencyfrom" v-bind:value="a.name">{{a.desc}}</option>
+            </select><br></td>
+        </tr>
+        <tr>
+            <td><span>To:</span>
+            <select v-model="convertto" style="width:250px;">
+                    <option v-for="(a, index) in currencyfrom" v-bind:value="a.name">{{a.desc}}</option>
+                </select><br></td>
+        </tr>
+        <tr>
+            <td><span>{{amount}} {{convertfrom}} is {{finalamount}} {{convertto}}</span></td>
+        </tr>
+
+    </table>
+
 </div>
 <script>
     new Vue({

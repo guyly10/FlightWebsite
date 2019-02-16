@@ -1,4 +1,4 @@
-<?php include 'DataBaseConn.php'?>
+<?php include 'DataBaseConn.php' ?>
 
 <?php
 session_start();
@@ -25,23 +25,23 @@ while ($rowR = mysqli_fetch_assoc($resultReviews)) {
 $page = $_SERVER['PHP_SELF'];
 $sec = "20";
 
-for($i=0;$i<count($Topics);$i++){
-  if(isset($_POST[$i])){
-    if($_POST['Comment']!=""){
-      $CommenterU = $displayName;
-      $comment = $_POST['Comment'];
-      $reviewer=$reviewers[$i];
-      $Topic = $Topics[$i];
-      $sql = "INSERT INTO comments (UserId,Topic, CommenterU, Comment)
+for ($i = 0; $i < count($Topics); $i++) {
+    if (isset($_POST[$i])) {
+        if ($_POST['Comment'] != "") {
+            $CommenterU = $displayName;
+            $comment = $_POST['Comment'];
+            $reviewer = $reviewers[$i];
+            $Topic = $Topics[$i];
+            $sql = "INSERT INTO comments (UserId,Topic, CommenterU, Comment)
           VALUES ('$reviewer','$Topic', '$displayName' , '$comment');";
-        mysqli_query($conn, $sql);
+            mysqli_query($conn, $sql);
 
-        $msg = "You Have a new comment on Your review !";
-        $sqlN = "INSERT INTO notifications (user,msg)
+            $msg = "You Have a new comment on Your review !";
+            $sqlN = "INSERT INTO notifications (user,msg)
           VALUES ('$reviewer', '$msg');";
-        mysqli_query($conn, $sqlN);
+            mysqli_query($conn, $sqlN);
+        }
     }
-  }
 }
 
 ?>
@@ -50,7 +50,7 @@ for($i=0;$i<count($Topics);$i++){
 <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="<?php echo $sec?>;URL='<?php echo $page?>'">
+    <meta http-equiv="refresh" content="<?php echo $sec ?>;URL='<?php echo $page ?>'">
     <link rel="stylesheet" href="css/HeadPage.css">
     <link rel="stylesheet" href="css/StarCSS.css">
     <link rel="stylesheet" href="css/uploadPic.css">
@@ -107,57 +107,57 @@ for($i=0;$i<count($Topics);$i++){
 <div class="wrapper wrapper--w680">
     <div class="card card-2">
         <div class="card-body">
-          <?php
-            for($index=0;$index<count($Topics);$index++){
-              echo '<div class="row">
+            <?php
+            for ($index = 0; $index < count($Topics); $index++) {
+                echo '<div class="row">
                       <div class="col-md-8">
                         <p>
-                          <strong><u>author: '.$reviewers[$index].'</u></strong>
+                          <strong><u>Review author: ' . $reviewers[$index] . '</u></strong>
                           <br><u>Topic :</u>
-                          '.$Topics[$index].'
+                          ' . $Topics[$index] . '
                           <br><u>Review :</u>
-                          '.$TextsR[$index].'
+                          ' . $TextsR[$index] . '
                           <br>
-                          <u>Rate :</u> '.$Rates[$index].'
+                          <u>Rate :</u> ' . $Rates[$index] . '
                           <div class="col-md-4"><u>Photo :</u>
-                            <img src="IMAGES/'.$Photos[$index].'" style="max-width: 200px; max-height: 200px;" class="profilePic">
+                            <img src="IMAGES/' . $Photos[$index] . '" style="max-width: 200px; max-height: 200px;" class="profilePic">
                           </div>
                         </p><br><br>
                       </div>
-                      <p><strong><u> Comments </u></strong>
-                      <br>
-                      <div class="form-group internal">';
+                    </div>
+                    <p><strong><u> Comments </u></strong>
+                    <br>
+                    <div class="form-group internal"> </div>
+                    </p>';
 
-                      $CurrnetReviewer=$reviewers[$index];
-                      $CurrentTopic = $Topics[$index];
-                      $sql = "SELECT * FROM comments WHERE UserID = '$CurrnetReviewer' AND Topic = '$CurrentTopic';";
-                      $resultReviews = mysqli_query($conn, $sql);
-                      while ($rowR = mysqli_fetch_assoc($resultReviews)) {
-                          echo '<div class="col-md-8">
+                $CurrnetReviewer = $reviewers[$index];
+                $CurrentTopic = $Topics[$index];
+                $sql = "SELECT * FROM comments WHERE UserID = '$CurrnetReviewer' AND Topic = '$CurrentTopic';";
+                $resultReviews = mysqli_query($conn, $sql);
+                while ($rowR = mysqli_fetch_assoc($resultReviews)) {
+                    echo '<div class="col-md-8">
                               <br>
 															<div class="col-md" style="border-left:0.5px solid #ffffff;">
-																<strong>'.$rowR['CommenterU'].'</strong>
-															commented :	'.$rowR['Comment'].'
+																<strong>' . $rowR['CommenterU'] . '</strong>
+															commented :	' . $rowR['Comment'] . '
                               <br>
 															</div>
 														</div>
 														<hr style="border-top: width:90%;">';
-                      }
+                }
 
-                      echo '</div>
-                      </p>
+                echo '
 
-                    </div>
                     <div class="form-group internal">
                       <form id="CForm" method="post" action="">
                         <input class="form-control" id="Comment" name="Comment" placeholder="Comment here" type="text">
-                        <button id="submit" name='.$index.' tupe="submit" class="btn-submit" style="max-width: 100px; max-height: 40px;">submit</button>
+                        <button id="submit" name=' . $index . ' type="submit" class="btn-submit" style="max-width: 100px; max-height: 40px;">submit</button>
                       </form>
                     </div>
                     <br><br>';
             }
 
-          ?>
+            ?>
         </div>
     </div>
 </div>

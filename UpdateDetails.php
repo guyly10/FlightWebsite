@@ -90,7 +90,7 @@ if (isset($_POST['register'])){
                         <div class='form-group'>
                             <div class='col-md-11'>
 
-                                <input type='file' onchange="readURL(this);" />
+                                <input type='file' name="pic" onchange="readURL(this);" />
                                 <img class="profilePic" id="blah" src="#" alt="your image" />
                                 <script>
                                     function readURL(input) {
