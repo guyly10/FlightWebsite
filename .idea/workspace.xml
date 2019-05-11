@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eeeca2d3-ffbb-40b6-bae0-c7db1f149731" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Jsons/newFlights.json" beforeDir="false" afterPath="$PROJECT_DIR$/Jsons/newFlights.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requirements Implementation Status.xlsx" beforeDir="false" />
-    </list>
+    <list default="true" id="eeeca2d3-ffbb-40b6-bae0-c7db1f149731" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -193,7 +190,7 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP from XAMPP" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-9" />
     <option name="width" value="1149" />
     <option name="height" value="1039" />
@@ -299,16 +296,15 @@
       <workItem from="1550079346420" duration="317000" />
       <workItem from="1550079866865" duration="6843000" />
       <workItem from="1550087687584" duration="46536000" />
-      <workItem from="1550310955324" duration="20369000" />
+      <workItem from="1550310955324" duration="20383000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209071000" />
+    <option name="totallyTimeSpent" value="209085000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="1" />
